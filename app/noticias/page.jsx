@@ -1,13 +1,27 @@
 "use client";
 
-import React from "react";
-
+import React, { useEffect, useState } from "react";
+import Loader from "../../components/Loader";
 import styles from "../../styles/Noticias.module.css"; ;
 
 export default function Noticias() {
+    const [loading, setLoading] = React.useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setLoading(false); // Define como falso após 3 segundos (simulação)
+        }, 3000);
+
+        return () => clearTimeout(timer); // Limpa o timer ao desmontar o componente
+    }, []);
+
+    if (loading) {
+        return <Loader />; // Exibe o Loader enquanto está carregando
+    }
+
  return (
     <div className={styles.Container}>
-
+   
         <div className={styles.headerContainer}>
 
             <div className={styles.Navbar}>
