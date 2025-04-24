@@ -1,0 +1,97 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.headerWrapper {
+    width: 100%;
+    background-color: #d1e9e9;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .topBar {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 40px;
+    box-sizing: border-box;
+    background-color: #cfe8e8;
+  }
+  
+  .logoImage {
+    height: 150px;
+    width: auto;
+    object-fit: contain;
+  }
+  
+  .searchBox {
+    display: flex;
+    align-items: center;
+    background-color: #e6f0f0;
+    padding: 8px 12px;
+    border-radius: 999px;
+    flex-grow: 1;
+    max-width: 400px;
+    margin: 0 40px;
+    
+  }
+  
+  .searchIcon {
+    width: 40px;
+    height: 25px;
+    margin-right: 8px;
+    object-fit: contain;
+  }
+  
+  .searchInput {
+    border: none;
+    background: transparent;
+    outline: none;
+    font-size: 14px;
+    width: 100%;
+    font-family: poppins, sans-serif;
+
+  }
+  
+  .loginLink {
+    color: #237373;
+    text-decoration: none;
+    margin-right: 20px;
+    font-weight: 500;
+    font-family: poppins, sans-serif;
+
+  }
+  
+  .menuIcon {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 4px;
+    cursor: pointer;
+  }
+  
+  .bar {
+    width: 22px;
+    height: 3px;
+    background-color: #237373;
+    border-radius: 3px;
+  }
+  
+  .navBar {
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 10px 0;
+    background-color: #cfe8e8;
+    box-sizing: border-box;
+  }
+  
+  .navLink {
+    text-decoration: none;
+    color: black;
+    font-size: 14px;
+    font-family: poppins, sans-serif;
+  }
+  
