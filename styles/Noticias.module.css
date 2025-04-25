@@ -22,9 +22,9 @@
 
 .NavLinks {
     display: flex;
-    justify-content: center; /* Center the links horizontally */
-    align-items: center; /* Align the links vertically */
-    gap: 2rem; /* Add spacing between the links */
+    justify-content: center;
+    align-items: center; 
+    gap: 2rem; 
 }
 
 @media (max-width: 768px) {

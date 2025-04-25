@@ -9,14 +9,14 @@ export default function Noticias() {
 
     useEffect(() => {
         const timer = setTimeout(() => {
-            setLoading(false); // Define como falso após 3 segundos (simulação)
+            setLoading(false); 
         }, 3000);
 
-        return () => clearTimeout(timer); // Limpa o timer ao desmontar o componente
+        return () => clearTimeout(timer); 
     }, []);
 
     if (loading) {
-        return <Loader />; // Exibe o Loader enquanto está carregando
+        return <Loader />;
     }
 
  return (
