@@ -1,7 +1,9 @@
 "use client";
 
+
 import { useEffect } from "react";
 import { useRouter } from "next/navigation";
+import Header from "@/components/Header";
 import styles from ".././styles/Redirecionamento.module.css";
 
 export default function Redirecionamento() {
@@ -18,6 +20,11 @@ export default function Redirecionamento() {
       <div className={styles.loader}></div>
         <p className={styles.text}>Carregando...</p>
     
+
+export default function  HomePage() {
+  return (
+    <div style={styles.container}>
+      <Header bannerTitle={"BORA VIAJAR"} />
     </div>
   );
 }
