@@ -1,0 +1,26 @@
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3rem 2rem;
+    gap: 2rem;
+}
+
+.reversed {
+    flex-direction: row-reverse;
+}
+
+.imageContainer {
+    flex: 1;
+}
+
+.textContainer {
+    flex: 1;
+    font-size: 1.5rem;
+    font-family: poppins, sans-serif;
+    color: #000;
+}
+
+.textContainer p {
+    margin: 0;
+}
