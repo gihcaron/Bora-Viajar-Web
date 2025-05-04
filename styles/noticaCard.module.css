@@ -62,3 +62,42 @@
     margin-top: 0.4rem;
     line-height: 1;
 }
+
+@media (max-width: 768px) {
+    .card {
+        width: calc(50% - 1rem);
+        height: auto;
+        margin: 0.5rem;
+    }
+
+    .CardImage {
+        height: auto;
+    }
+
+    .cardSection {
+        padding: 0.5rem;
+    }
+
+    .titulo {
+        font-size: 1.1rem;
+    }
+
+    .descricao {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 90%;
+        margin: 0.5rem auto;
+    }
+
+    .titulo {
+        font-size: 1rem;
+    }
+
+    .descricao {
+        font-size: 0.8rem;
+    }
+}

@@ -101,10 +101,12 @@ export default function Noticias() {
             description={cardData.description}
              />
 
+
            
         </div>
 
       </div>
+    
     </div>
   );
 }
