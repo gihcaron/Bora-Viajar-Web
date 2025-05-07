@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Loader from "../../components/Loader";
 import Header from "../../components/Header";
 import NoticiaCard from "../../components/NoticiaCard";
+import Footer from "../../components/Footer";
 import styles from "../../styles/Noticias.module.css";
 
 export default function Noticias() { 
@@ -106,6 +107,8 @@ export default function Noticias() {
         </div>
 
       </div>
+
+      <Footer />
     
     </div>
   );
