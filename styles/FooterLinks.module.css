@@ -1,0 +1,56 @@
+/* Estilização FooterLinks */
+
+.link_Title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #021313;
+  margin-bottom: 0.5rem;
+}
+  
+  .list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .list li {
+    margin-bottom: 0.5rem;
+  }
+  
+  .list a {
+    color:#237373;
+    text-decoration: none;
+  }
+  
+  .list a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 768px) {
+    .link_Title {
+        font-size: 1.2rem;
+        text-align: center; 
+    }
+
+    .list {
+        padding: 0;
+        text-align: center;
+    }
+
+    .list li {
+        margin-bottom: 0.3rem;
+    }
+
+    .list a {
+        font-size: 1rem; 
+    }
+}
+
+@media (max-width: 480px) {
+    .link_Title {
+        font-size: 1rem; 
+    }
+
+    .list a {
+        font-size: 0.9rem; 
+    }
+}
