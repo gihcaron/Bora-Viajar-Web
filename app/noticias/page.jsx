@@ -113,9 +113,46 @@ export default function Noticias() {
         height={300}
         className={styles.AnuncioImg}
       />
+    </div>
+    </div>
+    <div className={styles.NoticiasSection}>
+        <div className={styles.ContentContainer}>
+          <h1 className={styles.NoticiasTitle}>Conheça os melhores destinos</h1>
+          <p className={styles.NoticiasText}>
+            Confira abaixo os melhores lugares para a sua próxima viagem!
+          </p>
+        </div>
 
-    </div>
-    </div>
+        <div className={styles.NoticiasCard}>
+
+            <NoticiaCard 
+            photo={cardData.photo}
+            info={cardData.info}
+            title={cardData.title}
+            description={cardData.description}
+             />
+            <NoticiaCard 
+            photo={cardData.photo}
+            info={cardData.info}
+            title={cardData.title}
+            description={cardData.description}
+             />
+            <NoticiaCard 
+            photo={cardData.photo}
+            info={cardData.info}
+            title={cardData.title}
+            description={cardData.description}
+             />
+            <NoticiaCard 
+            photo={cardData.photo}
+            info={cardData.info}
+            title={cardData.title}
+            description={cardData.description}
+             />
+           
+        </div>
+
+      </div>   
 
       <Footer />
     
