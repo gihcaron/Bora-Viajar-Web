@@ -43,6 +43,7 @@
 .buttonBanner{
     font-family: 'Poppins', sans-serif;
     position: absolute;
+    display: flex;
     top: 56%;
     left: 66%;
     transform: translate(-50%, -50%);
@@ -56,13 +57,16 @@
     font-weight: 400;
 }
 
+/* Seção dos melhores destinos */
+
 .destinoSection{
-    height:80vh;
+    height:90vh;
     background-color:#E9E9E9 ;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: flex-start;
+    margin-bottom: 7%;
     height: auto;
     gap: 1rem;
 }
@@ -95,6 +99,7 @@
 }
 
 /* Card com as Notícias */
+
 .destinoCard{
     display: flex;
     flex-direction: row;
@@ -103,9 +108,68 @@
     justify-content: space-evenly;
     align-items: center;
     gap: 1rem;
+    margin-bottom: 10%;
 }
 
+/* Seção com Anuncio */
 
+.AnuncioSection{
+    max-height: 45vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3%;
+    gap: 2rem;
+}
+
+.AnuncioContent{
+    width: 30%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.AnuncioTitle{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: #033c3c;
+    line-height: 1;
+}
+
+.Highlight{
+    color: #109191;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.AnuncioText{
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    font-weight: 400;
+    color: #2B2B2B;
+    line-height: 1.5;
+    text-align: justify;
+    word-break: break-word;
+}
+
+.AnuncioImage{
+    display: flex;
+    gap: 1.2rem;
+    width: 60%;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 7%;
+}
+.AnuncioImg{
+    border-radius: 16px;
+    object-fit: cover;
+    width: auto;
+    height: 500px;
+    aspect-ratio: 2 / 3;
+    max-width: 100%;
+}
 
 @media (max-width: 768px) {
     .titleBanner {

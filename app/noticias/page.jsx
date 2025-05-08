@@ -77,36 +77,45 @@ export default function Noticias() {
             title={cardData.title}
             description={cardData.description}
              />
-            <NoticiaCard 
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-             />
-            <NoticiaCard 
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-             />
-            <NoticiaCard 
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-             />
-            <NoticiaCard 
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-             />
-
-
            
         </div>
 
       </div>
+
+    <div className={styles.AnuncioSection}>
+      
+    <div className={styles.AnuncioContent}>
+      <h1 className={styles.AnuncioTitle}>Colecione momentos</h1>
+      <h1 className={styles.Highlight}>com o Bora!</h1>
+      <p className={styles.AnuncioText}>
+      Descubra destinos incríveis e torne sua próxima viagem inesquecível! Escolha agora o lugar perfeito para criar memórias que durarão para sempre. Vamos planejar juntos de forma segura e inesquecível?
+      </p>
+    </div>
+    <div className={styles.AnuncioImage} >
+      <Image
+        src="/rio-redirecionamento.jpg"
+        alt="Imagem de Anúncio"
+        width={200}
+        height={300}
+        className={styles.AnuncioImg}
+      />
+      <Image
+        src="/rio-redirecionamento.jpg"
+        alt="Imagem de Anúncio"
+        width={200}
+        height={300}
+        className={styles.AnuncioImg}
+      />
+      <Image
+        src="/rio-redirecionamento.jpg"
+        alt="Imagem de Anúncio"
+        width={200}
+        height={300}
+        className={styles.AnuncioImg}
+      />
+
+    </div>
+    </div>
 
       <Footer />
     
