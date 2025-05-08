@@ -90,8 +90,13 @@
   
   .navLink {
     text-decoration: none;
-    color: black;
+    color: #237373;
     font-size: 14px;
     font-family: poppins, sans-serif;
+  }
+
+  .navLink:hover {
+    color: #91b9b9;
+    transition: color 0.3s ease-in-out;
   }
   

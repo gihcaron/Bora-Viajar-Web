@@ -5,7 +5,7 @@ const Header = () => {
     <div className={styles.headerWrapper}>
       <div className={styles.topBar}>
         <div className={styles.logo}>
-        <img src="/logoo.png" alt="Logo Bora" className={styles.logoImage} />        </div>
+        <img src="/logo.png" alt="Logo Bora" className={styles.logoImage} />        </div>
 
         <div className={styles.searchBox}>
   <img src="/lupa.png" alt="Buscar" className={styles.searchIcon} />
@@ -22,10 +22,10 @@ const Header = () => {
       </div>
 
       <nav className={styles.navBar}>
-        <a href="/home" className={styles.navLink}>home</a>
-        <a href="/home" className={styles.navLink}>home</a>
-        <a href="/home" className={styles.navLink}>home</a>
-        <a href="/home" className={styles.navLink}>home</a>
+        <a href="/home" className={styles.navLink}>Notícias</a>
+        <a href="/home" className={styles.navLink}>Mais Procurados</a>
+        <a href="/home" className={styles.navLink}>Sobre Nós</a>
+        <a href="/home" className={styles.navLink}>Feed</a>
         <a href="/home" className={styles.navLink}>home</a>
         <a href="/home" className={styles.navLink}>home</a>
       </nav>
