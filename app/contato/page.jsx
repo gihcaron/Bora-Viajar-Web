@@ -1,9 +1,10 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button, Form, Input, Checkbox } from "antd";
+import { Button, Form, Input, Checkbox, Rate } from "antd";
 import styles from "../contato/Contato.module.css";
 import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 
 const Contato = () => {
   const [formDisabled, setFormDisabled] = useState(false);
@@ -15,7 +16,6 @@ const Contato = () => {
   return (
     <div style={styles.container}>
       <Header bannerTitle={"BORA VIAJAR"} />
-
       <div className={styles.contatoWrapper}>
         <div className={styles.topBar}>
           <h1 className={styles.title}>Entre em contato</h1>
@@ -59,6 +59,9 @@ const Contato = () => {
               className={styles.textarea}
             />
           </Form.Item>
+          <Form.Item label="Avalie nossa plataforma" name="rating">
+          <Rate />
+        </Form.Item>
 
           <Form.Item>
             <Button type="primary" htmlType="submit" className={styles.submitButton}>
@@ -66,8 +69,38 @@ const Contato = () => {
             </Button>
           </Form.Item>
         </Form>
+
+        <div className={styles.infoBox}>
+          <h2 className={styles.infoTitle}>📧Informações de Contato</h2>
+          <p className={styles.infoText}>Telefone: (19) 1234-5678</p>
+          <p className={styles.infoText}>Email:</p>
+        </div>
+
+        <div className={styles.infoBox}>
+          <h2 className={styles.infoTitle}>📞Informações de Contato</h2>
+          <p className={styles.infoText}>Telefone: (19) 1234-5678</p>
+          <p className={styles.infoText}>Email:</p>
+        </div>
+
+
+        <div className={styles.mapBox}>
+          <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2597.368392540495!2d-47.010399387728135!3d-22.97843564297745!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94c8cd9c133b52f5%3A0xbe859c603dcb641b!2sEscola%20SENAI%20de%20Valinhos!5e0!3m2!1spt-BR!2sbr!4v1747158652210!5m2!1spt-BR!2sbr"
+          width="300%"
+          height="200"
+          style={{ border: 0 }}
+          allowFullScreen
+          loading="lazy"
+          referrerPolicy="no-referrer-when-downgrade"
+          ></iframe>
+
+        </div>
       </div>
+    <div>
+      <Footer />
     </div>
+    </div>
+
   );
 };
 
