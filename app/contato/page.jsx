@@ -18,9 +18,9 @@ const Contato = () => {
       <Header bannerTitle={"BORA VIAJAR"} />
       <div className={styles.contatoWrapper}>
         <div className={styles.topBar}>
-          <h1 className={styles.title}>Entre em contato</h1>
+          <h1 className={styles.title}>Entre em Contato</h1>
           <p className={styles.subtitle}>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-          <p className={styles.subtitle}>Lorem Ipsum is simply dummy text of the printing.</p>
+          <p className={styles.subtitle}>Let's work togheter, contac us!</p>
         </div>
 
         <Form
