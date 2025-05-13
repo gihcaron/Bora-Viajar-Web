@@ -9,7 +9,7 @@
 .bannerContainer{
     background: linear-gradient(135deg, 
     rgba(4, 89, 89, 0.773)), 
-    url('../public/rio-redirecionamento.jpg');
+    url('../../public/rio-redirecionamento.jpg');
     background-size: cover;
     background-position: center;
     height:70vh;
@@ -121,10 +121,11 @@
     justify-content: space-between;
     padding: 3%;
     gap: 2rem;
+    
 }
 
 .AnuncioContent{
-    width: 30%;
+    width: 40%;
     flex-direction: column;
     justify-content: flex-start;
 }
@@ -157,18 +158,19 @@
 .AnuncioImage{
     display: flex;
     gap: 1.2rem;
-    width: 60%;
+    width: 55%;
     justify-content: center;
     gap: 2rem;
     margin-bottom: 7%;
+    flex-wrap: wrap;
 }
 .AnuncioImg{
     border-radius: 16px;
     object-fit: cover;
-    width: auto;
-    height: 500px;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
     aspect-ratio: 2 / 3;
-    max-width: 100%;
 }
 
 /* Seção de Noticias */
@@ -182,6 +184,11 @@
     justify-content: flex-start;
     height: auto;
     gap: 1rem; 
+}
+
+.ContentContainer{
+    text-align: center;
+    margin-bottom: 20px;
 }
 
 .NoticiasTitle{
@@ -212,7 +219,7 @@
 }
 
 
-
+/* Responsividade para tablets */
 @media (max-width: 768px) {
     .titleBanner {
         font-size: 2rem; 
@@ -226,6 +233,47 @@
         padding: 0.8rem 2rem; 
         font-size: 1rem; 
     }
+
+    .AnuncioSection {
+        max-height: 40vh;
+        flex-direction: column; 
+        align-items: center; 
+        padding: 2rem;
+    }
+    .AnuncioContent {
+        width: 100%; 
+        text-align: center;
+    }
+    .AnuncioTitle, .Highlight {
+        font-size: 2rem;
+    }
+    .AnuncioText {
+        font-size: 1.2rem;
+    }
+    .AnuncioImage {
+        width: 100%; 
+        justify-content: center;
+    }
+    .AnuncioImg {
+        max-width: 100px; 
+    }
+    .NoticiasSection {
+        flex-direction: column;
+      }
+    
+    .NoticiasCard {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .NoticiasTitle {
+        font-size: 1.5rem;
+      }
+
+    .NoticiasText {
+        font-size: 1.2rem; 
+    } 
+
 }
 
 @media (max-width: 480px) {
@@ -240,5 +288,10 @@
     .buttonBanner {
         padding: 0.6rem 1.5rem;
         font-size: 0.9rem;
+    }
+
+    .NoticiasCard img, 
+    .AnuncioImg {
+        max-width: 200px; 
     }
 }

@@ -6,7 +6,7 @@ import Loader from "../../components/Loader";
 import Header from "../../components/Header";
 import NoticiaCard from "../../components/NoticiaCard";
 import Footer from "../../components/Footer";
-import styles from "../../styles/Noticias.module.css";
+import styles from "./Noticias.module.css";
 
 export default function Noticias() { 
   const [loading, setLoading] = React.useState(true);
