@@ -47,6 +47,7 @@
     border: 1px solid #00796b; 
     padding: 0.5rem;
     border-radius: 4px;
+    width: 60%;
 }
 .textarea {
     background-color: #d1e9e9; 
@@ -54,11 +55,14 @@
     padding: 0.5rem;
     border-radius: 4px;
     resize: none; 
+    width: 60%;
 }
 
 .submitButton{
     color: rgb(255, 255, 255);
     background-color: rgb(2, 114, 108);
+    border: none;
+    width: 20%;
 }
 
 .submitButton:hover{
@@ -66,7 +70,7 @@
 }
 
 .mapBox{
-    width: 50%;
+    width: 62%;
     height: 400px;
     margin-top: 0.5rem;
     display: flex;
@@ -74,17 +78,91 @@
     align-items: center;
 }
 
-.infoBox{
-    background-color: rgb(111, 159, 153);
+.infoContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-top: 2rem;
+    background-color: rgb(255, 255, 255);
+}
+
+.infoBox1{
+    background-color: rgb(151, 214, 207);
     border-radius: 8px;
     padding: 1rem;
     color: white;
     display: flex;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
     flex-direction: column;
     align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+.infoBox2{
+    background-color: rgb(116, 184, 176);
+    border-radius: 8px;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+.infoBox3{
+    background-color: rgb(62, 146, 136);
+    border-radius: 8px;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.contentRow{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: flex-start;
+}
+
+.form{
+    width: 40%;
+}
+
+.imageBox{
     width: 30%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+}
+
+.contactImage{
+    width: 100%;
+    max-width: 500px;
     height: auto;
-    margin-top: 1rem;
+    border-radius: 10px;
+    margin-top: 7rem;
 }
 
 @media (max-width: 480px) {
