@@ -101,33 +101,7 @@
   }
 
 
-  @media (min-width: 1024px) {
-    .headerWrapper {
-      flex-direction: row;
-      justify-content: space-between;
-      padding: 20px 40px;
-    }
-
-    .topBar {
-      flex-direction: row;
-      align-items: center;
-      padding: 20px 40px;
-    }
-
-    .searchBox {
-      max-width: 600px;
-      margin: 0 20px;
-    }
-
-    .navBar {
-      justify-content: flex-end;
-      gap: 20px;
-    }
-
-    .menuIcon {
-      display: none;
-    }
-  }
+ 
 
   @media (max-width: 720px) {
     .topBar {
