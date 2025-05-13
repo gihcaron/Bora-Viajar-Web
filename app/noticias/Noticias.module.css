@@ -98,6 +98,24 @@
     line-height: 1;
 }
 
+/* Sessão de Filtros */ 
+
+.button {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: blue;
+    color: white;
+    border-radius: 5px;
+}
+
+.buttonReset {
+    margin: 5px;
+    padding: 10px 15px;
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+}
+
 /* Card com as Notícias */
 
 .destinoCard{
