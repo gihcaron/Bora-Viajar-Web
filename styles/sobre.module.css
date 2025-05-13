@@ -1,0 +1,51 @@
+.lequeContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 0;
+  margin-top: -60px;
+  perspective: 1000px;
+  transform-style: preserve-3d;
+}
+
+.card {
+  background-color: white;
+  border-radius: 20px;
+  padding: 1.5rem;
+  width: 200px;
+  height: 260px;
+  text-align: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transform-origin: center bottom;
+  position: relative;
+}
+
+.card:hover {
+  transform: scale(1.1) translateY(-20px) !important;
+  z-index: 999 !important;
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.3);
+}
+
+.card h3 {
+  margin-bottom: 0.5rem;
+  color: #333;
+}
+
+.card p {
+  margin: 0.3rem 0;
+  color: #555;
+}
+
+.card a {
+  display: inline-block;
+  margin-top: 1rem;
+  color: #0077b5;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.card a:hover {
+  text-decoration: underline;
+}

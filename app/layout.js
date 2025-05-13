@@ -1,5 +1,3 @@
-
-
 const poppins = Poppins({
   subsets: ["latin"],
   weight: ["400", "700"], 
@@ -15,6 +13,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="pt-BR">
+      <head>
+        <link rel="icon" href="/iconelogo.png" type="image/png" sizes="64x64" />
+      </head>
       <body>{children}</body>
     </html>
   );
