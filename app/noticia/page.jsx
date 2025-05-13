@@ -5,9 +5,10 @@ import Image from 'next/image';
 import Loader from "../../components/Loader";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import PlaceCard from "../../components/PlaceCard";
 import styles from "./Noticia.module.css";
 
-export default function Noticias() { 
+export default function Noticias() {
   const [loading, setLoading] = React.useState(true);
 
   useEffect(() => {
@@ -35,23 +36,44 @@ export default function Noticias() {
         </div>
       </div>
 
-    <div className={styles.BlueScreen}></div>
+      <div className={styles.BlueScreen}></div>
 
-    <div className={styles.ContentContainer}>
+      <div className={styles.CityContainer}>
 
-    <div className={styles.HeaderContainer}>
-        <h1 className={styles.TitleHeder}>Colecione momentos em</h1>
-        <h2 className={styles.TitleLocal}>São Paulo</h2>
-        <p className={styles.TextContent}>
-          São Paulo é uma cidade vibrante e cheia de vida, conhecida por sua diversidade cultural, gastronômica e artística. Com uma infinidade de atrações, desde museus renomados até parques exuberantes, a cidade oferece algo para todos os gostos. Não deixe de visitar o icônico Parque Ibirapuera, o Museu de Arte de São Paulo (MASP) e a Avenida Paulista, que é o coração pulsante da cidade. Além disso, a cena gastronômica é imperdível, com opções que vão desde a tradicional pizza paulistana até restaurantes estrelados. Venha explorar tudo o que São Paulo tem a oferecer!
-        </p>
+        <div className={styles.HeaderContainer}>
+          <h1 className={styles.TitleHeder}>Colecione momentos em</h1>
+          <h2 className={styles.TitleLocal}>São Paulo</h2>
+          <p className={styles.TextContent}>
+            São Paulo é uma cidade vibrante e cheia de vida, conhecida por sua diversidade cultural, gastronômica e artística. Com uma infinidade de atrações, desde museus renomados até parques exuberantes, a cidade oferece algo para todos os gostos!
+          </p>
 
+        <PlaceCard
+          PlaceName="Avenida Paulista"
+          PlaceImage="/rio-redirecionamento.jpg"
+          PlaceDescription="A Avenida Paulista é um dos principais cartões-postais de São Paulo, conhecida por sua arquitetura moderna, museus, centros culturais e uma variedade de opções de compras e gastronomia. É um local vibrante que reflete a diversidade e a energia da cidade."
+        />
+        <PlaceCard
+          PlaceName="Avenida Paulista"
+          PlaceImage="/rio-redirecionamento.jpg"
+          PlaceDescription="A Avenida Paulista é um dos principais cartões-postais de São Paulo, conhecida por sua arquitetura moderna, museus, centros culturais e uma variedade de opções de compras e gastronomia. É um local vibrante que reflete a diversidade e a energia da cidade."
+        />
+        <PlaceCard
+          PlaceName="Avenida Paulista"
+          PlaceImage="/rio-redirecionamento.jpg"
+          PlaceDescription="A Avenida Paulista é um dos principais cartões-postais de São Paulo, conhecida por sua arquitetura moderna, museus, centros culturais e uma variedade de opções de compras e gastronomia. É um local vibrante que reflete a diversidade e a energia da cidade."
+        />
+        <PlaceCard
+          PlaceName="Avenida Paulista"
+          PlaceImage="/rio-redirecionamento.jpg"
+          PlaceDescription="A Avenida Paulista é um dos principais cartões-postais de São Paulo, conhecida por sua arquitetura moderna, museus, centros culturais e uma variedade de opções de compras e gastronomia. É um local vibrante que reflete a diversidade e a energia da cidade."
+        />
         </div>
-    </div>
 
-      
+
+      </div>
+
       <Footer />
-    
+
     </div>
   );
 }
