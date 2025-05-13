@@ -6,7 +6,7 @@ import Loader from "../../components/Loader";
 import Header from "../../components/Header";
 import NoticiaCard from "../../components/NoticiaCard";
 import Footer from "../../components/Footer";
-import styles from "../../styles/Noticias.module.css";
+import styles from "./Noticias.module.css";
 
 export default function Noticias() { 
   const [loading, setLoading] = React.useState(true);
@@ -77,36 +77,82 @@ export default function Noticias() {
             title={cardData.title}
             description={cardData.description}
              />
-            <NoticiaCard 
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-             />
-            <NoticiaCard 
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-             />
-            <NoticiaCard 
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-             />
-            <NoticiaCard 
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-             />
-
-
            
         </div>
 
       </div>
+
+    <div className={styles.AnuncioSection}>
+      
+    <div className={styles.AnuncioContent}>
+      <h1 className={styles.AnuncioTitle}>Colecione momentos</h1>
+      <h1 className={styles.Highlight}>com o Bora!</h1>
+      <p className={styles.AnuncioText}>
+      Descubra destinos incríveis e torne sua próxima viagem inesquecível! Escolha agora o lugar perfeito para criar memórias que durarão para sempre. Vamos planejar juntos de forma segura e inesquecível?
+      </p>
+    </div>
+    <div className={styles.AnuncioImage} >
+      <Image
+        src="/rio-redirecionamento.jpg"
+        alt="Imagem de Anúncio"
+        width={200}
+        height={300}
+        className={styles.AnuncioImg}
+      />
+      <Image
+        src="/rio-redirecionamento.jpg"
+        alt="Imagem de Anúncio"
+        width={200}
+        height={300}
+        className={styles.AnuncioImg}
+      />
+      <Image
+        src="/rio-redirecionamento.jpg"
+        alt="Imagem de Anúncio"
+        width={200}
+        height={300}
+        className={styles.AnuncioImg}
+      />
+    </div>
+    </div>
+    <div className={styles.NoticiasSection}>
+        <div className={styles.ContentContainer}>
+          <h1 className={styles.NoticiasTitle}>Conheça os melhores destinos</h1>
+          <p className={styles.NoticiasText}>
+            Confira abaixo os melhores lugares para a sua próxima viagem!
+          </p>
+        </div>
+
+        <div className={styles.NoticiasCard}>
+
+            <NoticiaCard 
+            photo={cardData.photo}
+            info={cardData.info}
+            title={cardData.title}
+            description={cardData.description}
+             />
+            <NoticiaCard 
+            photo={cardData.photo}
+            info={cardData.info}
+            title={cardData.title}
+            description={cardData.description}
+             />
+            <NoticiaCard 
+            photo={cardData.photo}
+            info={cardData.info}
+            title={cardData.title}
+            description={cardData.description}
+             />
+            <NoticiaCard 
+            photo={cardData.photo}
+            info={cardData.info}
+            title={cardData.title}
+            description={cardData.description}
+             />
+           
+        </div>
+
+      </div>   
 
       <Footer />
     

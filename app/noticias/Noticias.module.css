@@ -1,0 +1,297 @@
+.Container{
+    margin: 0;
+    padding: 0 ;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+  
+}
+
+.bannerContainer{
+    background: linear-gradient(135deg, 
+    rgba(4, 89, 89, 0.773)), 
+    url('../../public/rio-redirecionamento.jpg');
+    background-size: cover;
+    background-position: center;
+    height:70vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+}
+
+.titleBanner{
+    color: rgba(235, 233, 233, 0.797);
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 3rem;
+    line-height: 1;
+    margin: 0;
+    
+}
+
+.subtitleBanner{
+    color: rgb(255, 255, 255);
+    text-transform: uppercase;
+    font-weight: 900;
+    font-size: 7rem;
+    margin: 0;
+    line-height: 1;
+}
+
+.buttonBanner{
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    display: flex;
+    top: 56%;
+    left: 66%;
+    transform: translate(-50%, -50%);
+    background-color: #109191;
+    color: white;
+    padding: 0.6rem 1.5rem;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    font-size: 1.3rem;
+    font-weight: 400;
+}
+
+/* Seção dos melhores destinos */
+
+.destinoSection{
+    height:90vh;
+    background-color:#E9E9E9 ;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    margin-bottom: 7%;
+    height: auto;
+    gap: 1rem;
+}
+
+.ContentContainer{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    width: 100%;
+    text-align: center;
+    margin-top: 8%; 
+
+}
+
+.Title{
+    font-size: 2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    color: #045959;
+    line-height: 1;
+}
+
+.Text{
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #2B2B2B;
+    line-height: 1;
+}
+
+/* Card com as Notícias */
+
+.destinoCard{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 10%;
+}
+
+/* Seção com Anuncio */
+
+.AnuncioSection{
+    max-height: 45vh;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 3%;
+    gap: 2rem;
+    
+}
+
+.AnuncioContent{
+    width: 40%;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.AnuncioTitle{
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    color: #033c3c;
+    line-height: 1;
+}
+
+.Highlight{
+    color: #109191;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    font-weight: bold;
+    line-height: 1;
+}
+
+.AnuncioText{
+    font-size: 1.3rem;
+    margin-top: 1rem;
+    font-weight: 400;
+    color: #2B2B2B;
+    line-height: 1.5;
+    text-align: justify;
+    word-break: break-word;
+}
+
+.AnuncioImage{
+    display: flex;
+    gap: 1.2rem;
+    width: 55%;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 7%;
+    flex-wrap: wrap;
+}
+.AnuncioImg{
+    border-radius: 16px;
+    object-fit: cover;
+    width: 100%;
+    max-width: 280px;
+    height: auto;
+    aspect-ratio: 2 / 3;
+}
+
+/* Seção de Noticias */
+
+.NoticiasSection{
+    height:90vh;
+    background-color: #109191;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    height: auto;
+    gap: 1rem; 
+}
+
+.ContentContainer{
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.NoticiasTitle{
+    font-size: 2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    color: #ffffff;
+    line-height: 1; 
+}
+
+.NoticiasText{
+    font-size: 1.3rem;
+    font-weight: 400;
+    color: #eae9e9e1;
+    line-height: 1;
+}
+
+.NoticiasCard{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-content: center;
+    justify-content: space-evenly;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 10%;
+}
+
+
+/* Responsividade para tablets */
+@media (max-width: 768px) {
+    .titleBanner {
+        font-size: 2rem; 
+    }
+
+    .subtitleBanner {
+        font-size: 4rem; 
+    }
+
+    .buttonBanner {
+        padding: 0.8rem 2rem; 
+        font-size: 1rem; 
+    }
+
+    .AnuncioSection {
+        max-height: 40vh;
+        flex-direction: column; 
+        align-items: center; 
+        padding: 2rem;
+    }
+    .AnuncioContent {
+        width: 100%; 
+        text-align: center;
+    }
+    .AnuncioTitle, .Highlight {
+        font-size: 2rem;
+    }
+    .AnuncioText {
+        font-size: 1.2rem;
+    }
+    .AnuncioImage {
+        width: 100%; 
+        justify-content: center;
+    }
+    .AnuncioImg {
+        max-width: 100px; 
+    }
+    .NoticiasSection {
+        flex-direction: column;
+      }
+    
+    .NoticiasCard {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .NoticiasTitle {
+        font-size: 1.5rem;
+      }
+
+    .NoticiasText {
+        font-size: 1.2rem; 
+    } 
+
+}
+
+@media (max-width: 480px) {
+    .titleBanner {
+        font-size: 1.5rem;
+    }
+
+    .subtitleBanner {
+        font-size: 3rem;
+    }
+
+    .buttonBanner {
+        padding: 0.6rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .NoticiasCard img, 
+    .AnuncioImg {
+        max-width: 200px; 
+    }
+}

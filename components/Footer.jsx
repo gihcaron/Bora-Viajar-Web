@@ -27,7 +27,7 @@ const Footer = () => {
           <div className={styles.brand}>
             <h1 className={styles.logo}>
               {" "}
-              📚 Books<span className={styles.highlight}>Verse</span>
+              Bora<span className={styles.highlight}>Viajar ✈️🌍</span>
             </h1>
           </div>
           <p className={styles.contentTitle}>Onde histórias ganham vida!</p>
@@ -44,7 +44,7 @@ const Footer = () => {
       <div className={styles.footer_bottom}>
         <p>
           {" "}
-          © {new Date().getFullYear()}BooksVerse. Todos os direitos reservados.
+          © {new Date().getFullYear()}BoraViajar. Todos os direitos reservados.
         </p>
 
         <div className={styles.Bottom_Link}>
