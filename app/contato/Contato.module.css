@@ -17,18 +17,72 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    padding: 1rem;
+    /* se decidirem tirar essa borda tira esses dois */
+    margin: 0;
+    padding: 0;
 }
 
 .form{
     background-color: rgb(255, 255, 255);
     width: 50%;
     margin-top:5%;
+    display: flex;
+    flex-direction: column;
 }
 
 .title{
     color: rgb(2, 114, 108);
+    font-size: 3rem;
 }
 
 .subtitle{
-    margin-bottom: 0.5rem;
+    margin: 0;
+    padding: 0.2rem;
+}
+
+.input {
+    background-color: #d1e9e9; 
+    color: #000000; 
+    border: 1px solid #00796b; 
+    padding: 0.5rem;
+    border-radius: 4px;
+}
+.textarea {
+    background-color: #d1e9e9; 
+    border: 1px solid #00796b; 
+    padding: 0.5rem;
+    border-radius: 4px;
+    resize: none; 
+}
+
+.submitButton{
+    color: rgb(255, 255, 255);
+    background-color: rgb(2, 114, 108);
+}
+
+.submitButton:hover{
+    background-color: rgb(9, 105, 102);
+}
+
+.mapBox{
+    width: 50%;
+    height: 400px;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoBox{
+    background-color: rgb(111, 159, 153);
+    border-radius: 8px;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+    height: auto;
+    margin-top: 1rem;
 }
