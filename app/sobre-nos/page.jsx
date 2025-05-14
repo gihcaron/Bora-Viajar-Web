@@ -1,18 +1,25 @@
- 'use client';
+'use client';
 
-import React, { useState, useEffect } from "react";
-import Header from "../../components/Header";
-import Loader from "../../components/Loader";
-import styles from "../../styles/sobre.module.css";
+import React, { useState, useEffect } from 'react';
+import Loader from '../../components/Loader';
+import Header from '../../components/Header';
+import styles from '../../styles/sobre.module.css';
 
-export default function HomePage() {
+export default function SobreNosPage() {
   const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
+  const pessoas = [
+    { nome: 'Amanda', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/joao', imagem: '/amanda.jpg', cor: '#FFC1CC' },
+    { nome: 'André', idade: 18, cidade: 'Rio de Janeiro', linkedin: 'https://linkedin.com/in/maria', imagem: '/andre.jpg', cor: '#A0E7E5' },
+    { nome: 'Flavia', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/pedro', imagem: '/flavia.jfif', cor: '#B4F8C8' },
+    { nome: 'Giovanna', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/giovanna.jpg', cor: '#FBE7C6' },
+    { nome: 'Isabella', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/isabella.jpg', cor: '#FFDAC1' },
+    { nome: 'João Vitor', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/andre', imagem: '/joaovitor.jpg', cor: '#C7CEEA' },
+    { nome: 'Laura', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/laura.jpg', cor: '#E2F0CB' },
+  ];
 
+  useEffect(() => {
+    const timer = setTimeout(() => setLoading(false), 1000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -21,64 +28,73 @@ export default function HomePage() {
   }
 
   return (
-    <div style={styles.container}>
+    <div className={styles.Container}>
       <Header bannerTitle={"BORA VIAJAR"} />
+
       <div className={styles.bannerContainer}>
         <div className={styles.textContainer}>
-          <h1 className={styles.titleBanner}> BORA VIAJAR!</h1>
-          <h2 className={styles.subtitleBanner}>com a equipe</h2>
-        </div>
-      </div>
-    </div>
-  );
-}
-
-  const pessoas = [
-    { nome: "Ana Souza", idade: 29, cidade: "São Paulo", linkedin: "https://linkedin.com/in/ana-souza" },
-    { nome: "Carlos Lima", idade: 34, cidade: "Rio de Janeiro", linkedin: "https://linkedin.com/in/carlos-lima" },
-    { nome: "Julia Mendes", idade: 26, cidade: "Belo Horizonte", linkedin: "https://linkedin.com/in/julia-mendes" },
-    { nome: "Pedro Martins", idade: 31, cidade: "Curitiba", linkedin: "https://linkedin.com/in/pedro-martins" },
-    { nome: "Larissa Dias", idade: 27, cidade: "Salvador", linkedin: "https://linkedin.com/in/larissa-dias" },
-    { nome: "Marcos Silva", idade: 38, cidade: "Brasília", linkedin: "https://linkedin.com/in/marcos-silva" },
-    { nome: "Renata Costa", idade: 25, cidade: "Fortaleza", linkedin: "https://linkedin.com/in/renata-costa" },
-  ];
-
-  if (loading) {
-    return <Loader />;
-  }
-
-  return (
-    <div className={styles.container}>
-      <Header bannerTitle={"BORA VIAJAR"} />
-      <div className={styles.bannerContainer}>
-        <div className={styles.textContainer}>
-          <h1 className={styles.titleBanner}> BORA VIAJAR!</h1>
-          <h2 className={styles.subtitleBanner}>com a equipe</h2>
+          <h2 className={styles.titleBanner}> BORA VIAJAR </h2>
+          <h1 className={styles.subtitleBanner}>Com a equipe </h1>
         </div>
       </div>
 
-      <div className={styles.lequeContainer}>
+      <div className={styles.lequeContainer} style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'flex-end',
+        overflowX: 'auto',
+        padding: '40px 20px',
+        perspective: '1000px'
+      }}>
         {pessoas.map((pessoa, index) => {
-          const offset = index - Math.floor(pessoas.length / 2);
-          const rotation = offset * 5;
-          const scale = 1 - Math.abs(offset) * 0.05;
-          const zIndex = 100 - Math.abs(offset);
+          let rotate = 'rotateY(0deg)';
+          if (index === 0) rotate = 'rotateY(-10deg)';
+          if (index === pessoas.length - 1) rotate = 'rotateY(10deg)';
+
+          const isCenter = index === Math.floor(pessoas.length / 2);
+          const scale = isCenter ? 1.1 : 0.95;
+          const zIndex = isCenter ? 10 : index;
 
           return (
             <div
               key={index}
               className={styles.card}
               style={{
-                transform: `rotate(${rotation}deg) scale(${scale}) translateY(${Math.abs(offset) * 10}px)`,
-                zIndex
+                backgroundColor: pessoa.cor,
+                transform: `${rotate} scale(${scale}) translateY(0px)`,
+                margin: '0 -40px',
+                zIndex: zIndex, // Valor inicial do zIndex
+                transition: 'transform 0.3s ease, z-index 0.3s ease', // Adicionado para suavizar o zIndex
+                boxShadow: '0 10px 20px rgba(0,0,0,0.15)',
+                cursor: 'pointer',
+                position: 'relative',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.style.transform = `scale(1.2) translateY(-20px)`;
+                e.currentTarget.style.zIndex = '999'; // Garante que o card fique na frente
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.style.transform = `${rotate} scale(${scale}) translateY(0px)`;
+                e.currentTarget.style.zIndex = `${zIndex}`; // Restaura o zIndex original
               }}
             >
-              <h3>{pessoa.nome}</h3>
-              <p>Idade: {pessoa.idade}</p>
-              <p>Cidade: {pessoa.cidade}</p>
-              <a href={pessoa.linkedin} target="_blank" rel="noopener noreferrer">
-                LinkedIn →
-              </a>
+              <div
+                className={styles.cardImage}
+                style={{ backgroundImage: `url(${pessoa.imagem})` }}
+              >
+                <span className={styles.idade}>{pessoa.idade} anos</span>
+              </div>
+              <div className={styles.cardInfo}>
+                <h3>{pessoa.nome}</h3>
+                <a
+                  href={pessoa.linkedin}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={styles.linkedinBtn}
+                >
+                  LinkedIn →
+                </a>
+              </div>
             </div>
           );
         })}
