@@ -3,7 +3,7 @@
 .Place{
     display: flex;
     margin-top: 4%;
-    margin-bottom: 8%;
+    margin-bottom: 2%;
     flex-direction: column;
     align-items: flex-start;
     text-align: flex-start;
@@ -25,17 +25,19 @@
 
 .ImagePlace{
     width: 100%;
-    height: 25rem;
+    height: 22rem;
     border-radius: 20px;
     margin-top: 2%;
+    object-fit: cover;
 }
 
 /* Responsividade */
 
 @media (max-width: 768px) {
     .Place {
-        align-items: center;
-        text-align: center; 
+        align-items: flex-start;
+        text-align: flex-start; 
+        justify-content: justify;
         margin-top: 3%;
         margin-bottom: 6%;
     }
@@ -49,13 +51,17 @@
     }
 
     .ImagePlace {
-        height: 20rem; 
+        height: 15rem; 
+        object-fit: cover;
     }
 }
 
 /* Responsividade para dispositivos móveis */
 @media (max-width: 480px) {
     .Place {
+        align-items: flex-start;
+        text-align: flex-start;
+        justify-content: justify;
         margin-top: 2%;
         margin-bottom: 4%;
         padding: 0.5rem; 
@@ -70,6 +76,7 @@
     }
 
     .ImagePlace {
-        height: 15rem; 
+        height: 10rem; 
+        object-fit: cover;
     }
 }
