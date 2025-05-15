@@ -77,8 +77,8 @@
 }
 
 .mapBox{
-    width: 53%;
-    height: 400px;
+    width: 50%;
+    height: 300px;
     margin-top: 0.5rem;
     display: flex;
     justify-content: center;
