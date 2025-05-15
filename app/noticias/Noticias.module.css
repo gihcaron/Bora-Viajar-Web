@@ -98,6 +98,26 @@
     line-height: 1;
 }
 
+/* Sessão de Filtros */ 
+
+.button {
+    margin: 5px;
+    width: 15%;
+    height: 3rem;
+    background-color: #d1e9e9;
+    color: white;
+    border-radius: 20px;
+}
+
+.buttonReset {
+    width: 15%;
+    height: 3rem;
+    background-color: #109191;
+    color: white;
+    border-radius: 20px;
+    border-color: #045959;
+}
+
 /* Card com as Notícias */
 
 .destinoCard{

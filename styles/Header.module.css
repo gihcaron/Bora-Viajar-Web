@@ -90,8 +90,73 @@
   
   .navLink {
     text-decoration: none;
-    color: black;
+    color: #237373;
     font-size: 14px;
     font-family: poppins, sans-serif;
   }
-  
+
+  .navLink:hover {
+    color: #91b9b9;
+    transition: color 0.3s ease-in-out;
+  }
+
+
+ 
+
+  @media (max-width: 720px) {
+    .topBar {
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 10px 20px;
+    }
+
+    .searchBox {
+      max-width: 100%;
+      margin: 10px 0;
+    }
+
+    .navBar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 10px;
+      padding: 10px 20px;
+    }
+
+    .navLink {
+      font-size: 12px;
+    }
+
+    .logoImage {
+      height: 100px;
+    }
+
+    .menuIcon {
+      display: flex;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .topBar {
+      padding: 10px 10px;
+    }
+
+    .searchBox {
+      max-width: 100%;
+      margin: 5px 0;
+    }
+
+    .navBar {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 5px;
+      padding: 5px 10px;
+    }
+
+    .navLink {
+      font-size: 10px;
+    }
+
+    .logoImage {
+      height: 80px;
+    }
+  }

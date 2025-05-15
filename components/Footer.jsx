@@ -9,8 +9,8 @@ const Footer = () => {
     { url: "/home", text: "Home" },
     { url: "/feed", text: "Feed" },
     { url: "/noticias", text: "Noticias" },
-    { url: "/sobrenos", text: "Sobre Nós" },
-    { url: "/contato", text: "contato" },
+    { url: "/sobre-nos", text: "Sobre Nós" },
+    { url: "/contato", text: "Contato" },
   ];
 
   const Redes = [
