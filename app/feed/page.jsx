@@ -6,6 +6,8 @@ import Header from "../../components/Header";
 import Loader from "../../components/Loader";
 import Banner from "../../components/Banner"; 
 import styles from "../../styles/Header.module.css";
+import Footer from "../../components/Footer";
+
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
@@ -92,6 +94,7 @@ export default function HomePage() {
         Nosso site é uma plataforma colaborativa que conecta guias turísticos e viajantes apaixonados. Aqui, guias profissionais têm a oportunidade de divulgar seus serviços e explorar novos destinos por todo o país, enquanto turistas podem compartilhar suas experiências de viagem, revelar lugares pouco conhecidos e oferecer sugestões de passeios para inspirar outros viajantes.Seja para divulgar o trabalho de um guia, ou para guardar e relembrar suas próprias memórias de viagem, nossa página proporciona um espaço único e acessível para todos. Unimos aqueles que buscam expandir seu alcance e visibilidade, com aqueles que desejam preservar suas histórias e experiências, criando uma comunidade rica de conteúdos autênticos e inspiradores.Agora que você conhece o nosso propósito, BORA VIAJAR!
         </p>
       </div>
+      <Footer />
     </div>
   );
 }

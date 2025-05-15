@@ -4,6 +4,7 @@ import React, { useState, useEffect } from 'react';
 import Loader from '../../components/Loader';
 import Header from '../../components/Header';
 import styles from '../../styles/sobre.module.css';
+import Footer  from '../../components/Footer';
 
 export default function SobreNosPage() {
   const [loading, setLoading] = useState(true);
@@ -39,7 +40,10 @@ export default function SobreNosPage() {
         </div>
       </div>
 
-      <div className={styles.lequeContainer}>
+      <div
+        className={styles.lequeContainer}
+        style={{ margin: '2rem 0', gap: '1rem' }}
+      >
         {pessoas.map((pessoa, index) => {
           const middle = Math.floor(pessoas.length / 2);
           const offset = index - middle;
@@ -98,6 +102,7 @@ export default function SobreNosPage() {
           );
         })}
       </div>
+      <Footer/>
     </div>
   );
 }
