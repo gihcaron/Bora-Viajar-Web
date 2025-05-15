@@ -17,9 +17,7 @@ const Header = () => {
 {/*<link href="/login" className={styles.loginLink}>Iniciar sessão</link>*/}   
      <a href="/login" className={styles.loginLink}>Iniciar Sessão</a>
 
-<a href="/login">
-  <img src="/MENU.png" alt="Menu Icon" className={styles.menuIcon} />
-</a>
+
       </div>  
 
 <nav className={styles.navBar}>

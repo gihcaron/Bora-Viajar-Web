@@ -140,7 +140,18 @@
     .topBar {
       padding: 10px 10px;
     }
+    .menuIcon {
+      align-self: flex-end;
+    }
 
+    .loginLink {
+      font-size: 12px;
+      margin-right: 10px;
+    }
+
+    .searchInput {
+      font-size: 12px;
+    }
     .searchBox {
       max-width: 100%;
       margin: 5px 0;
@@ -148,7 +159,7 @@
 
     .navBar {
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 5px;
       padding: 5px 10px;
     }
