@@ -20,8 +20,16 @@ const Contato = () => {
       <div className={styles.contatoWrapper}>
         <div className={styles.topBar}>
           <h1 className={styles.title}>Entre em Contato</h1>
-          <div className={styles.iconPlaceholder}>📍</div>
-          <p className={styles.subtitle}>Deixe seu e-mail abaixo e entraremos em contato! Estamos sempre abertos a sugestões, dúvidas ou parcerias. </p>
+          <div className={styles.aviao}>
+          <Image
+            src="/aviao.png"
+            alt="paisagem"
+            width={500}
+            height={300}
+            className={styles.contactImage}
+          />
+          </div>
+          <p className={styles.subtitle}>Estamos sempre abertos a sugestões, dúvidas ou parcerias. </p>
         </div>
 <div className={styles.contentRow}>
 
@@ -61,7 +69,7 @@ const Contato = () => {
               className={styles.textarea}
             />
           </Form.Item>
-          <Form.Item label="Avalie nossa plataforma" name="rating">
+          <Form.Item label="Avalie nossa plataforma" name="rating" className="rating">
             <Rate />
           </Form.Item>
 
@@ -71,35 +79,51 @@ const Contato = () => {
             </Button>
           </Form.Item>
         </Form>
-
-        <div className={styles.imagebox}>
-          <Image
-            src="/conatoo.jpeg"
-            alt="paisagem"
-            width={500}
-            height={300}
-            className={styles.contactImage}
-          />
-        </div>
 </div>
 
         <div className={styles.infoContainer}>
           <div className={styles.infoBox1}>
-            <h2 className={styles.infoTitle}>📧Informações de Contato</h2>
+            <h2 className={styles.infoTitle}>
+              <Image
+                src="/celular.png"
+                alt="Informações de Contato"
+                width={24}
+                height={24}
+              />
+              Suporte ao Cliente
+            </h2>
             <p className={styles.infoText}>Telefone: (19) 1234-5678</p>
-            <p className={styles.infoText}>Email:</p>
+            <p className={styles.infoText}>Email:contato@boraviajar.com.br</p>
+            <p className={styles.infoText}>Atendimento: Seg a Sex, 9h às 18h</p>
           </div>
 
           <div className={styles.infoBox2}>
-            <h2 className={styles.infoTitle}>📞Informações de Contato</h2>
+            <h2 className={styles.infoTitle}>
+              <Image
+                src="/anexo.png"
+                alt="Informações de Contato"
+                width={24}
+                height={24}
+              />
+              Parcerias 
+            </h2>
+            <p className={styles.infoText}>Envie sua proposta!</p>
             <p className={styles.infoText}>Telefone: (19) 1234-5678</p>
-            <p className={styles.infoText}>Email:</p>
+            <p className={styles.infoText}>Email:parceiro@boraviajar.com.br</p>
           </div>
 
           <div className={styles.infoBox3}>
-            <h2 className={styles.infoTitle}>📞Informações de Contato</h2>
-            <p className={styles.infoText}>Telefone: (19) 1234-5678</p>
-            <p className={styles.infoText}>Email:</p>
+            <h2 className={styles.infoTitle}>
+              <Image
+                src="/computador.png"
+                alt="Informações de Contato"
+                width={24}
+                height={24}
+              />
+              Suporte Técnico
+            </h2>
+            <p className={styles.infoText}>Telefone (TI): (19) 1234-5678</p>
+            <p className={styles.infoText}>Email:  suporte@boraviajar.com.br</p>
           </div>
         </div>
 
