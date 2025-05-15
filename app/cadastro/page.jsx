@@ -183,14 +183,79 @@ const Cadastro = () => {
   const onFinish = values => {
     console.log('Received values of form: ', values);
   };
-  const prefixSelector = (
+const prefixSelector = (
     <Form.Item name="prefix" noStyle>
-      <Select style={{ width: 70 }}>
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
-      </Select>
+        <Select style={{ width: 70 }}>
+            <Option value="11">+11</Option>
+            <Option value="12">+12</Option>
+            <Option value="13">+13</Option>
+            <Option value="14">+14</Option>
+            <Option value="15">+15</Option>
+            <Option value="16">+16</Option>
+            <Option value="17">+17</Option>
+            <Option value="18">+18</Option>
+            <Option value="19">+19</Option>
+            <Option value="21">+21</Option>
+            <Option value="22">+22</Option>
+            <Option value="24">+24</Option>
+            <Option value="27">+27</Option>
+            <Option value="28">+28</Option>
+            <Option value="31">+31</Option>
+            <Option value="32">+32</Option>
+            <Option value="33">+33</Option>
+            <Option value="34">+34</Option>
+            <Option value="35">+35</Option>
+            <Option value="37">+37</Option>
+            <Option value="38">+38</Option>
+            <Option value="41">+41</Option>
+            <Option value="42">+42</Option>
+            <Option value="43">+43</Option>
+            <Option value="44">+44</Option>
+            <Option value="45">+45</Option>
+            <Option value="46">+46</Option>
+            <Option value="47">+47</Option>
+            <Option value="48">+48</Option>
+            <Option value="49">+49</Option>
+            <Option value="51">+51</Option>
+            <Option value="53">+53</Option>
+            <Option value="54">+54</Option>
+            <Option value="55">+55</Option>
+            <Option value="61">+61</Option>
+            <Option value="62">+62</Option>
+            <Option value="63">+63</Option>
+            <Option value="64">+64</Option>
+            <Option value="65">+65</Option>
+            <Option value="66">+66</Option>
+            <Option value="67">+67</Option>
+            <Option value="68">+68</Option>
+            <Option value="69">+69</Option>
+            <Option value="71">+71</Option>
+            <Option value="73">+73</Option>
+            <Option value="74">+74</Option>
+            <Option value="75">+75</Option>
+            <Option value="77">+77</Option>
+            <Option value="79">+79</Option>
+            <Option value="81">+81</Option>
+            <Option value="82">+82</Option>
+            <Option value="83">+83</Option>
+            <Option value="84">+84</Option>
+            <Option value="85">+85</Option>
+            <Option value="86">+86</Option>
+            <Option value="87">+87</Option>
+            <Option value="88">+88</Option>
+            <Option value="89">+89</Option>
+            <Option value="91">+91</Option>
+            <Option value="92">+92</Option>
+            <Option value="93">+93</Option>
+            <Option value="94">+94</Option>
+            <Option value="95">+95</Option>
+            <Option value="96">+96</Option>
+            <Option value="97">+97</Option>
+            <Option value="98">+98</Option>
+            <Option value="99">+99</Option>
+        </Select>
     </Form.Item>
-  );
+);
   const suffixSelector = (
     <Form.Item name="suffix" noStyle>
       <Select style={{ width: 70 }}>
@@ -300,86 +365,53 @@ const Cadastro = () => {
       </Form.Item>
 
       <Form.Item
-        name="phone"
-        label="Phone Number"
-        rules={[{ required: true, message: 'Please input your phone number!' }]}
+        name="telefone"
+        label="Telefone"
+        rules={[{ required: true, message: 'Favor, insira seu telefone' }]}
       >
         <Input addonBefore={prefixSelector} style={{ width: '100%' }} />
       </Form.Item>
 
       <Form.Item
-        name="donation"
-        label="Donation"
-        rules={[{ required: true, message: 'Please input donation amount!' }]}
+        name="Biografia"
+        label="Biografia"
+        rules={[{ required: true, message: 'Por favor adicione uma breve descrição' }]}
       >
-        <InputNumber addonAfter={suffixSelector} style={{ width: '100%' }} />
+        <Input.TextArea showCount maxLength={300} />
       </Form.Item>
 
       <Form.Item
-        name="website"
-        label="Website"
-        rules={[{ required: true, message: 'Please input website!' }]}
+        name="Genero"
+        label="Genero"
+        rules={[{ required: true, message: 'Favor, selecione seu gênero!' }]}
       >
-        <AutoComplete options={websiteOptions} onChange={onWebsiteChange} placeholder="website">
-          <Input />
-        </AutoComplete>
-      </Form.Item>
-
-      <Form.Item
-        name="intro"
-        label="Intro"
-        rules={[{ required: true, message: 'Please input Intro' }]}
-      >
-        <Input.TextArea showCount maxLength={100} />
-      </Form.Item>
-
-      <Form.Item
-        name="gender"
-        label="Gender"
-        rules={[{ required: true, message: 'Please select gender!' }]}
-      >
-        <Select placeholder="select your gender">
-          <Option value="male">Male</Option>
-          <Option value="female">Female</Option>
-          <Option value="other">Other</Option>
+        <Select placeholder="Selecione seu gênero">
+          <Option value="male">Homem</Option>
+          <Option value="female">Mulher</Option>
+          <Option value="other">Outro</Option>
+          <Option value="other">Prefiro não informar</Option>
         </Select>
       </Form.Item>
 
-      <Form.Item label="Captcha" extra="We must make sure that your are a human.">
-        <Row gutter={8}>
-          <Col span={12}>
-            <Form.Item
-              name="captcha"
-              noStyle
-              rules={[{ required: true, message: 'Please input the captcha you got!' }]}
-            >
-              <Input />
-            </Form.Item>
-          </Col>
-          <Col span={12}>
-            <Button>Get captcha</Button>
-          </Col>
-        </Row>
-      </Form.Item>
-
+    
       <Form.Item
-        name="agreement"
+        name="Aceitar termos"
         valuePropName="checked"
         rules={[
           {
             validator: (_, value) =>
-              value ? Promise.resolve() : Promise.reject(new Error('Should accept agreement')),
+              value ? Promise.resolve() : Promise.reject(new Error('Você deve aceitar os termos!')),
           },
         ]}
         {...tailFormItemLayout}
       >
         <Checkbox>
-          I have read the <a href="">agreement</a>
+          Eu li e concordo com os <a href="">termos de uso e privacidade</a>
         </Checkbox>
       </Form.Item>
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">
-          Register
+            Cadastrar
         </Button>
       </Form.Item>
     </Form>
