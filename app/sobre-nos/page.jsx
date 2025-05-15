@@ -1,5 +1,20 @@
 'use client';
 
+<<<<<<< HEAD
+import React, { useState, useEffect } from "react";
+import Header from "../../components/Header";
+import Loader from "../../components/Loader";
+import styles from "../../styles/Header.module.css";
+
+export default function HomePage() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+=======
 import React, { useState, useEffect } from 'react';
 import Loader from '../../components/Loader';
 import Header from '../../components/Header';
@@ -22,6 +37,7 @@ export default function SobreNosPage() {
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
+>>>>>>> 8e04e808d1dc177e5fa9ebde7b9f18100d3cf21d
     return () => clearTimeout(timer);
   }, []);
 
@@ -30,6 +46,13 @@ export default function SobreNosPage() {
   }
 
   return (
+<<<<<<< HEAD
+    <div style={styles.container}>
+      <Header bannerTitle={"BORA VIAJAR"} />
+    </div>
+  );
+}
+=======
     <div className={styles.Container}>
       <Header bannerTitle={"BORA VIAJAR"} />
 
@@ -106,3 +129,4 @@ export default function SobreNosPage() {
     </div>
   );
 }
+>>>>>>> 8e04e808d1dc177e5fa9ebde7b9f18100d3cf21d

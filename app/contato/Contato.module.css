@@ -10,20 +10,33 @@
 }
 
 .topBar{
+<<<<<<< HEAD
+    background-color: #d1e9e9;
+    width: 100%;
+    height: auto;
+=======
     background-color: #73b8b8;
     width: 100%;
     height: 280px;
+>>>>>>> 8e04e808d1dc177e5fa9ebde7b9f18100d3cf21d
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+<<<<<<< HEAD
+=======
     /* se decidirem tirar essa borda tira esses dois */
     margin: 0;
     padding: 0.5rem 0;
+>>>>>>> 8e04e808d1dc177e5fa9ebde7b9f18100d3cf21d
 }
 
 .form{
     background-color: rgb(255, 255, 255);
+<<<<<<< HEAD
+    width: 50%;
+    margin-top:5%;
+=======
     width: 100%;
     margin-top:3%;
     display: flex;
@@ -33,10 +46,17 @@
     border-radius: 8px;
     font-family: poppins, sans-serif;
     font-size: 16px;
+>>>>>>> 8e04e808d1dc177e5fa9ebde7b9f18100d3cf21d
 }
 
 .title{
     color: rgb(2, 114, 108);
+<<<<<<< HEAD
+}
+
+.subtitle{
+    margin-bottom: 0.5rem;
+=======
     font-size: 3rem;
     margin-top: 0.5rem;
 }
@@ -232,4 +252,5 @@
         height: 300px;
     }
 
+>>>>>>> 8e04e808d1dc177e5fa9ebde7b9f18100d3cf21d
 }

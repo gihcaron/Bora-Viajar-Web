@@ -73,7 +73,6 @@ export default function Noticias() {
           <h2 className={styles.titleBanner}> Planeje os melhores momentos</h2>
           <h1 className={styles.subtitleBanner}>Bora viajar!</h1>
         </div>
-        <button className={styles.buttonBanner}>Comece Já!</button>
       </div>
 
       <div className={styles.destinoSection}>
