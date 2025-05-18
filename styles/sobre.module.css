@@ -56,14 +56,16 @@ background: linear-gradient(135deg, rgba(16, 145, 145, 0.773), rgba(37, 192, 192
 }
 
 .lequeContainer {
-  margin: 2rem 0; /* Adiciona espaçamento acima e abaixo */
   display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 1rem; /* Espaçamento entre os cards */
+  flex-direction: row;
+  flex-wrap: nowrap;
+  gap: 1rem;
+  justify-content: flex-start;
+  align-items: flex-end;
+  overflow-x: auto;
+  padding-bottom: 2rem;
+  width: 100%;
 }
-
 
 .cardImage {
   width: 100%;

@@ -1,0 +1,121 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+.containerGeral {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f9f9f9;
+  font-family: 'Poppins', sans-serif;
+  padding-top: 40px;
+  padding-bottom: 40px;
+}
+
+.container {
+  background-color: white;
+  width: 900px;
+  height: 600px;
+  display: flex;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  margin-top: 32px;     
+  margin-bottom: 32px;  
+}
+
+.leftPanel {
+  background-color: #d2eceb;
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  position: relative;
+}
+
+.logo {
+  width: 120px;
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  z-index: 2;
+}
+
+.image {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 400px;
+  transform: translateX(-10%);
+  z-index: 1;
+}
+
+.rightPanel {
+  flex: 1;
+  padding: 60px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.rightPanel h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+  color: #4eb2b8;
+}
+
+.rightPanel p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 30px;
+}
+
+.formGroup {
+  margin-bottom: 20px;
+}
+
+.formGroup input {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 16px;
+}
+
+.forgotPassword {
+  margin-bottom: 20px;
+  text-align: right;
+  font-size: 14px;
+}
+
+.forgotPassword a {
+  color: #4eb2b8;
+  text-decoration: none;
+}
+
+.btnLogin {
+  background-color: #4eb2b8;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-bottom: 10px;
+}
+
+.btnLogin:hover {
+  background-color: #3a9b9f;
+}
+
+.btnSignup {
+  background-color: #f0f0f0;
+  color: #333;
+  border: none;
+  border-radius: 20px;
+  padding: 12px;
+  font-size: 16px;
+  cursor: pointer;
+}
