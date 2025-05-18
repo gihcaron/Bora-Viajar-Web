@@ -118,8 +118,99 @@ export default function HomePage() {
           Nosso site é o ponto de encontro entre guias e viajantes apaixonados. Aqui, guias mostram seu trabalho e turistas trocam dicas, memórias e achados incríveis pelo Brasil. É um espaço leve, feito pra inspirar, divulgar e conectar histórias reais. Curtiu a ideia? Então... BORA VIAJAR! 
         </p>
       </div>
+    {/* Avaliações*/}
+    <h2 style={{ textAlign: "center", fontFamily: "poppins", fontWeight: "bold", fontSize: "24px", marginBottom: "20px", marginTop: "40px" }}>
+      AVALIAÇÕES
+    </h2>
+    <div style={{
+  display: "flex",
+  backgroundColor: "#cbebe9",
+  borderRadius: "8px",
+  margin: "20px auto",
+  padding: 0,
+  alignItems: "stretch",
+  gap: 0,
+  maxWidth: "520px", // aumente aqui
+  height: "180px",   // aumente aqui
+  overflow: "hidden"
+}}>
+  <img
+    src="/avaliacao-aquario.jpg"
+    alt="Mulher no aquário"
+    style={{
+      width: "50%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: "8px 0 0 8px"
+    }}
+  />
+  <div style={{
+    fontFamily: "Poppins",
+    fontSize: "15px",
+    color: "#333",
+    flex: 1,
+    padding: "20px", 
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center"
+  }}>
+    <p style={{ margin: 0 }}>
+      <strong>@usuariodasilva</strong><br />
+      <span style={{ color: "#5f7f7a", fontWeight: "bold" }}>Local: AguaRio</span><br />
+      <span style={{ color: "#f7b801", fontSize: "16px" }}>★★★★★</span>
+    </p>
+    <p style={{ marginTop: "10px", textAlign: "justify", fontSize: "15px" }}>
+      Comentário sobre como foi a experiência no local, com o aplicativo, com os guias turísticos da plataforma.
+    </p>
+  </div>
+</div>
+<div style={{
+  display: "flex",
+  backgroundColor: "#cbebe9",
+  borderRadius: "8px",
+  margin: "20px auto",
+  padding: 0,
+  alignItems: "stretch",
+  gap: 0,
+  flexDirection: "row-reverse",
+  maxWidth: "520px", 
+  height: "180px",   
+  overflow: "hidden"
+}}>
+  <img
+    src="/avaliacao-lencois.jpg"
+    alt="Mulher nos lençóis maranhenses"
+    style={{
+      width: "50%",
+      height: "100%",
+      objectFit: "cover",
+      borderRadius: "0 8px 8px 0"
+    }}
+  />
+  <div style={{
+    fontFamily: "Poppins",
+    fontSize: "15px",
+    color: "#333",
+    flex: 1,
+    padding: "20px",
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "center",
+    direction: "rtl",         
+    textAlign: "justify"      
+  }}>
+    <p style={{ margin: 0 }}>
+      <strong>usuariocosta@</strong><br />
+      <span style={{ color: "#5f7f7a", fontWeight: "bold" }}>Local: Lençóis Maranhenses</span><br />
+      <span style={{ color: "#f7b801", fontSize: "16px" }}>★★★★★</span>
+    </p>
+    <p style={{ marginTop: "10px", fontSize: "15px" }}>
+      Comentário sobre como foi a experiência no local, com o aplicativo, com os guias turísticos da plataforma.
+    </p>
+  </div>
+</div>
 
-      <Footer />
-    </div>
+    <Footer />
+  </div>
   );
 }
