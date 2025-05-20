@@ -11,10 +11,34 @@ import axios from "axios";
 
 
 export default function Noticias() {
-  const [isLoading, setIsLoading] = useState(true);
   const [cards, setCards] = useState([]);
-
   const [loading, setLoading] = React.useState(true);
+  const [regions, setRegions] = useState([]);
+  const [selectedRegion, setSelectedRegion] = useState("");
+  const [isLoading, setIsLoading] = useState(true);
+  const [allRegions, setAllRegions] = useState([]);
+
+  const fetchRegions = async (region = "") => {
+    setIsLoading(true);
+
+     try {
+      const url = `http://localhost:3000/api/regions/`;
+      const response = await axios.get(url);
+      setRegions(response.data);
+      if (!region) {
+        setAllRegions(response.data);
+      }
+    } catch (error) {
+      console.error("Erro ao carregar regiões:", error);
+    } finally {
+      setIsLoading(false);
+    }
+    
+  }
+
+  useEffect(() => {
+  fetchRegions();
+}, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -55,20 +79,18 @@ export default function Noticias() {
           </p>
         </div>
 
-     
-
         <div className={styles.destinoCard}>
-            {cards.map((card) => (
+            {regions.map((region) => (
       <NoticiaCard
-        key={card.id}
-        photo={"/rio-redirecionamento.jpg"} // ou card.photo se vier do backend
-        info={card.state}
-        title={card.name}
-        description={card.text}
-        link={card.links || "#"}
+        key={regions.id}
+        photo={"/rio-redirecionamento.jpg"} 
+        name={region.name}
+        text={region.text}
+        link={region.links || "#"}
       />
     ))}
         </div>
+
       </div>
 
       {/* Seção com Anúncio */}

@@ -1,7 +1,6 @@
 import styles from "../styles/noticaCard.module.css";
 
 import Image from 'next/image';
-import { useRouter } from "next/router";
 
 
 const NoticiaCard = ({photo, info, name, text, link}) => {
