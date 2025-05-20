@@ -11,10 +11,9 @@ import axios from "axios";
 
 
 export default function Noticias() {
-  const [cards, setCards] = useState([]);
   const [loading, setLoading] = React.useState(true);
   const [regions, setRegions] = useState([]);
-  const [selectedRegion, setSelectedRegion] = useState("");
+  const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [allRegions, setAllRegions] = useState([]);
 
@@ -39,6 +38,29 @@ export default function Noticias() {
   useEffect(() => {
   fetchRegions();
 }, []);
+
+  const fetchNews = async (news = "") => {
+    setIsLoading(true);
+
+     try {
+      const url = `http://localhost:3000/api/news/`;
+      const response = await axios.get(url);
+      setNews(response.data);
+      if (!news) {
+        setAllNews(response.data);
+      }
+    } catch (error) {
+      console.error("Erro ao carregar Noticia:", error);
+    } finally {
+      setIsLoading(false);
+    }
+    
+  }
+
+  useEffect(() => {
+  fetchNews();
+}, []);
+
 
   useEffect(() => {
     const timer = setTimeout(() => {
