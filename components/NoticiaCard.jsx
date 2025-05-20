@@ -4,11 +4,11 @@ import Image from 'next/image';
 import { useRouter } from "next/router";
 
 
-const NoticiaCard = ({photo, info, title, description, link}) => {
- 
+const NoticiaCard = ({photo, info, name, text, link}) => {
+
     const handleClick = () => {
-      router.push(link); // Redireciona para a 
-    };
+       if (link) router.push(link);
+  };
 
   return (
     <div className={styles.card} onClick={handleClick} style={{ cursor: "pointer" }}>
@@ -22,8 +22,8 @@ const NoticiaCard = ({photo, info, title, description, link}) => {
       />
       <div className={styles.overlay}></div>
       <div className={styles.cardSection}>
-        <h3 className={styles.titulo}>{title}</h3>
-        <p className={styles.descricao}>{description}</p>
+        <h3 className={styles.titulo}>{name}</h3>
+        <p className={styles.descricao}>{text}</p>
       </div>
     </div>
   );

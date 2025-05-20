@@ -12,6 +12,7 @@ import axios from "axios";
 
 export default function Noticias() {
   const [isLoading, setIsLoading] = useState(true);
+  const [cards, setCards] = useState([]);
 
   const [loading, setLoading] = React.useState(true);
 
@@ -57,31 +58,16 @@ export default function Noticias() {
      
 
         <div className={styles.destinoCard}>
-          <NoticiaCard
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-            link={cardData.link}
-          />
-          <NoticiaCard
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-          />
-          <NoticiaCard
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-          />
-          <NoticiaCard
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-          />
+            {cards.map((card) => (
+      <NoticiaCard
+        key={card.id}
+        photo={"/rio-redirecionamento.jpg"} // ou card.photo se vier do backend
+        info={card.state}
+        title={card.name}
+        description={card.text}
+        link={card.links || "#"}
+      />
+    ))}
         </div>
       </div>
 
