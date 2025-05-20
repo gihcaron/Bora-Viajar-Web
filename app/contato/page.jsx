@@ -1,17 +1,25 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button, Form, Input, Rate } from "antd";
+import { Button, Form, Input, Rate, Skeleton } from "antd";
 import styles from "../contato/Contato.module.css";
 import Header from "../../components/Header";
 import Image from "next/image";
 import Footer from "../../components/Footer";
 
+
 const Contato = () => {
   const [formDisabled, setFormDisabled] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const onFinish = (values) => {
     console.log("Form values:", values);
+    setLoading(true);
+    setFormDisabled(true);
+    setTimeout(() => {
+      setLoading(false);
+      setFormDisabled(false);
+    }, 2000);
   };
 
   return (
@@ -36,52 +44,56 @@ const Contato = () => {
         </div>
 
         <div className={styles.contentRow}>
-          <Form
-            layout="vertical"
-            onFinish={onFinish}
-            disabled={formDisabled}
-            className={styles.form}
-          >
-            <Form.Item
-              label="Nome"
-              name="name"
-              rules={[{ required: true, message: "Por favor, insira seu nome!" }]}
+          {loading ? (
+            <Skeleton active paragraph={{ rows: 6 }}/>
+          ) : (
+            <Form
+              layout="vertical"
+              onFinish={onFinish}
+              disabled={formDisabled}
+              className={styles.form}
             >
-              <Input placeholder="Digite seu nome" className={styles.input} />
-            </Form.Item>
+              <Form.Item
+                label="Nome"
+                name="name"
+                rules={[{ required: true, message: "Por favor, insira seu nome!" }]}
+              >
+                <Input placeholder="Digite seu nome" className={styles.input} />
+              </Form.Item>
 
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                { required: true, message: "Por favor, insira seu email!" },
-                { type: "email", message: "Por favor, insira um email válido!" },
-              ]}
-            >
-              <Input placeholder="Digite seu email" className={styles.input} />
-            </Form.Item>
+              <Form.Item
+                label="Email"
+                name="email"
+                rules={[
+                  { required: true, message: "Por favor, insira seu email!" },
+                  { type: "email", message: "Por favor, insira um email válido!" },
+                ]}
+              >
+                <Input placeholder="Digite seu email" className={styles.input} />
+              </Form.Item>
 
-            <Form.Item
-              label="Mensagem"
-              name="message"
-              rules={[{ required: true, message: "Por favor, insira sua mensagem!" }]}
-            >
-              <Input.TextArea
-                placeholder="Digite sua mensagem"
-                rows={4}
-                className={styles.textarea}
-              />
-            </Form.Item>
-            <Form.Item label="Avalie nossa plataforma" name="rating" className="rating">
-              <Rate />
-            </Form.Item>
+              <Form.Item
+                label="Mensagem"
+                name="message"
+                rules={[{ required: true, message: "Por favor, insira sua mensagem!" }]}
+              >
+                <Input.TextArea
+                  placeholder="Digite sua mensagem"
+                  rows={4}
+                  className={styles.textarea}
+                />
+              </Form.Item>
+              <Form.Item label="Avalie nossa plataforma" name="rating" className="rating">
+                <Rate />
+              </Form.Item>
 
-            <Form.Item>
-              <Button type="primary" htmlType="submit" className={styles.submitButton}>
-                Enviar
-              </Button>
-            </Form.Item>
-          </Form>
+              <Form.Item>
+                <Button type="primary" htmlType="submit" className={styles.submitButton}>
+                  Enviar
+                </Button>
+              </Form.Item>
+            </Form>
+          )}
         </div>
 
         <div className={styles.infoContainer}>

@@ -1,43 +1,27 @@
 'use client';
 
-<<<<<<< HEAD
-import React, { useState, useEffect } from "react";
-import Header from "../../components/Header";
-import Loader from "../../components/Loader";
-import styles from "../../styles/Header.module.css";
-
-export default function HomePage() {
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      setLoading(false);
-    }, 1000);
-
-=======
 import React, { useState, useEffect } from 'react';
 import Loader from '../../components/Loader';
 import Header from '../../components/Header';
 import styles from '../../styles/sobre.module.css';
-import Footer  from '../../components/Footer';
+import Footer from '../../components/Footer';
 
 export default function SobreNosPage() {
   const [loading, setLoading] = useState(true);
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const pessoas = [
-    { nome: 'Amanda', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/joao', imagem: '/amanda.png', cor: '#FFC1CC' },
-    { nome: 'André', idade: 18, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/maria', imagem: '/andre.jpg', cor: '#A0E7E5' },
-    { nome: 'Flavia', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/flaviamendes17', imagem: '/flavia.jfif', cor: '#B4F8C8' },
-    { nome: 'Giovanna', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/giovanna.jpeg', cor: '#FBE7C6' },
-    { nome: 'Isabella', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/isabella.jpg', cor: '#FFDAC1' },
-    { nome: 'João Vitor', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/andre', imagem: '/joaovitor.jpg', cor: '#C7CEEA' },
-    { nome: 'Laura', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/laura.jpg', cor: '#E2F0CB' },
+    { nome: 'Amanda', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/joao', imagem: '/amanda.png', cor: '#14746f' },
+    { nome: 'André', idade: 18, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/maria', imagem: '/andre.jpg', cor: '#209c91' },
+    { nome: 'Flavia', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/flaviamendes17', imagem: '/flavia.jfif', cor: '#38b2ac' },
+    { nome: 'Giovanna', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/giovanna.jpeg', cor: '#57c6a9' },
+    { nome: 'Isabella', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/isabella.jpg', cor: '#7de2d1' },
+    { nome: 'João Vitor', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/andre', imagem: '/joao.jpg', cor: '#b2f7ef' },
+    { nome: 'Laura', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/laura.jpg', cor: '#e0fcf9' },
   ];
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1000);
->>>>>>> 8e04e808d1dc177e5fa9ebde7b9f18100d3cf21d
     return () => clearTimeout(timer);
   }, []);
 
@@ -46,13 +30,6 @@ export default function SobreNosPage() {
   }
 
   return (
-<<<<<<< HEAD
-    <div style={styles.container}>
-      <Header bannerTitle={"BORA VIAJAR"} />
-    </div>
-  );
-}
-=======
     <div className={styles.Container}>
       <Header bannerTitle={"BORA VIAJAR"} />
 
@@ -125,8 +102,8 @@ export default function SobreNosPage() {
           );
         })}
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 }
->>>>>>> 8e04e808d1dc177e5fa9ebde7b9f18100d3cf21d
+
