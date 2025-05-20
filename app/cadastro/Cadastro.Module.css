@@ -68,3 +68,41 @@
     margin:2rem;
 }
 
+.form{
+    background-color: rgb(218, 0, 0);
+    color: yellow;
+}
+
+.telefone{
+    background-color: aqua;
+    color: blueviolet;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.selector{
+    background-color: aqua;
+    color: blueviolet;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 10px;
+}
+
+.form2, .email,  .senha, .nome, .residencia, .genero, .termos{
+    background-color: rgba(110, 255, 26, 0.773);
+    color: blueviolet;
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 10px;
+    margin: 1rem;
+    padding: 1rem;
+}
+
+.selector{
+    background-color: rgb(234, 0, 255);
+    color: rgb(226, 122, 43);
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-radius: 10px;
+}
