@@ -6,7 +6,6 @@ import { useRouter } from "next/router";
 
 const NoticiaCard = ({photo, info, title, description, link}) => {
  
-
     const handleClick = () => {
       router.push(link); // Redireciona para a 
     };

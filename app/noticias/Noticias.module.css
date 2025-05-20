@@ -224,7 +224,7 @@
 
 
 /* Responsividade para tablets */
-@media (max-width: 768px) {
+@media  (min-width: 481px) and (max-width: 768px) {
     .titleBanner {
         font-size: 2rem; 
     }
@@ -239,7 +239,7 @@
     }
 
     .AnuncioSection {
-        max-height: 40vh;
+        max-height: 60vh;
         flex-direction: column; 
         align-items: center; 
         padding: 2rem;
@@ -277,6 +277,10 @@
     .NoticiasText {
         font-size: 1.2rem; 
     } 
+
+@media (min-width: 500px) and (max-width: 768px) {
+    /* Adicione regras específicas para telas entre 500px e 768px aqui */
+}
 
 }
 

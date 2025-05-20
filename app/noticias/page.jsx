@@ -9,38 +9,9 @@ import Footer from "../../components/Footer";
 import styles from "./Noticias.module.css";
 import axios from "axios";
 
-const regions = ["Norte", "Nordeste", "Centro-Oeste", "Sudeste", "Sul"];
 
 export default function Noticias() {
-  const [regions, setRegions] = useState([]);
-  const [selectedRegion, setSelectedRegion] = useState("");
   const [isLoading, setIsLoading] = useState(true);
-  const [allRegions, setAllRegions] = useState([]);
-
-  const fetchRegions = async (region = "") => {
-    setIsLoading(true);
-    try {
-      const baseURL = region
-        ? "http://localhost:3000"
-        : "http://localhost:4000";
-      const url = `${baseURL}/api/regions/${region}`;
-      const response = await axios.get(url);
-      setRegions(response.data);
-      if (!region) {
-        setAllRegions(response.data);
-      }
-    } catch (error) {
-      console.error("Erro ao carregar regiões:", error);
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  useEffect(() => {
-    fetchRegions();
-  }, []);
-
-  const resetFilter = () => fetchRegions();
 
   const [loading, setLoading] = React.useState(true);
 
@@ -61,7 +32,7 @@ export default function Noticias() {
     info: "Descrição da imagem",
     title: "Título do Card",
     description: "Descrição do Card",
-    link: "/noticias",
+    link: "/noticia",
   };
 
   return (
@@ -83,20 +54,7 @@ export default function Noticias() {
           </p>
         </div>
 
-        <div>
-          {regions.map((regions) => (
-            <button
-              key={regions}
-              className={styles.button}
-              onClick={() => {
-                fetchRegions(regions);
-              }}
-            ></button>
-          ))}
-          <button className={styles.buttonReset} onClick={resetFilter}>
-            Mostrar Todos
-          </button>
-        </div>
+     
 
         <div className={styles.destinoCard}>
           <NoticiaCard
@@ -104,6 +62,7 @@ export default function Noticias() {
             info={cardData.info}
             title={cardData.title}
             description={cardData.description}
+            link={cardData.link}
           />
           <NoticiaCard
             photo={cardData.photo}
@@ -126,6 +85,7 @@ export default function Noticias() {
         </div>
       </div>
 
+      {/* Seção com Anúncio */}
       <div className={styles.AnuncioSection}>
         <div className={styles.AnuncioContent}>
           <h1 className={styles.AnuncioTitle}>Colecione momentos</h1>
@@ -160,6 +120,7 @@ export default function Noticias() {
           />
         </div>
       </div>
+
       <div className={styles.NoticiasSection}>
         <div className={styles.ContentContainer}>
           <h1 className={styles.NoticiasTitle}>Conheça os melhores destinos</h1>
