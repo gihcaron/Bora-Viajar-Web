@@ -56,4 +56,19 @@
     height: 100vh;
 }
 
+.formItemLayout{
+    margin: 0 auto;
+    width: 100%;
+    max-width: 400px;
+    padding: 2rem;
+}
+
+.ant-form-item, .ant-form-item-label{
+    margin-bottom: 0;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #0c4b4b;
+    text-align: left;
+}
 
