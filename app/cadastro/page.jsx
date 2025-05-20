@@ -1,6 +1,6 @@
 "use client";
-import styles from "./Cadastro.module.css";
 import React, { useState } from "react";
+import styles from "./Cadastro.module.css";
 
 import {
   AutoComplete,
@@ -260,6 +260,7 @@ const Cadastro = () => {
       <Select style={{ width: 70 }}>
         <Option value="USD">$</Option>
         <Option value="CNY">¥</Option>
+        
       </Select>
     </Form.Item>
   );
@@ -296,7 +297,7 @@ const Cadastro = () => {
             name="register"
             onFinish={onFinish}
             initialValues={{ residence: ["Região", "Estado"], prefix: "86" }}
-            style={{ maxWidth: 600 }}
+            style={styles.form2}
             scrollToFirstError
           >
             <Form.Item
@@ -411,8 +412,8 @@ const Cadastro = () => {
             </Form.Item>
 
             <Form.Item
-              name="Genero"
-              label="Genero"
+              name="Gênero"
+              label="Gênero"
               rules={[
                 { required: true, message: "Favor, selecione seu gênero!" },
               ]}
