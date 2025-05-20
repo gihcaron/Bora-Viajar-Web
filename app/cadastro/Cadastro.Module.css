@@ -37,7 +37,6 @@
   font-weight: 700;
 }
 
-
 .TextContent{
     display: flex;
     flex-direction: column;
@@ -56,4 +55,16 @@
     height: 100vh;
 }
 
+.form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: left;
+    font-size: 1.5rem;
+    font-weight: 600;
+    word-break: break-word;
+    height: 100%;
+    margin:2rem;
+}
 

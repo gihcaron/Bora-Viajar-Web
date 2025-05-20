@@ -22,11 +22,9 @@ const Header = () => {
 
 <nav className={styles.navBar}>
   <Link href="/noticias" className={styles.navLink}>Noticias</Link>
-  <Link href="/home" className={styles.navLink}>Mais procurados</Link>
   <Link href="/sobre-nos" className={styles.navLink}>Sobre Nós</Link>
   <Link href="/feed" className={styles.navLink}>Feed</Link>
   <Link href="/home" className={styles.navLink}>Contato</Link>
-  <Link href="/home" className={styles.navLink}>Home</Link>
       </nav>
     </div>
   );
