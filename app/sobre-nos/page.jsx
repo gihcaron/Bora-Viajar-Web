@@ -11,10 +11,10 @@ export default function SobreNosPage() {
   const [hoveredIndex, setHoveredIndex] = useState(null);
 
   const pessoas = [
-    { nome: 'Amanda', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/joao', imagem: '/amanda.png', cor: '#14746f' },
+    { nome: 'Amanda', idade: 17, cidade: 'Campinas', linkedin: 'https://www.linkedin.com/in/amanda-mechi-4287b52b1', imagem: '/amanda.png', cor: '#14746f' },
     { nome: 'André', idade: 18, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/maria', imagem: '/andre.jpg', cor: '#209c91' },
-    { nome: 'Flavia', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/flaviamendes17', imagem: '/flavia.jfif', cor: '#38b2ac' },
-    { nome: 'Giovanna', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/giovanna.jpeg', cor: '#57c6a9' },
+    { nome: 'Flavia', idade: 17, cidade: 'Campinas', linkedin: 'https://www.linkedin.com/in/flaviamendes17', imagem: '/flavia.jfif', cor: '#38b2ac' },
+    { nome: 'Giovanna', idade: 17, cidade: 'Valinhos', linkedin: 'https://www.linkedin.com/in/giovanna-caron/', imagem: '/giovanna.jpeg', cor: '#57c6a9' },
     { nome: 'Isabella', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/isabella.jpg', cor: '#7de2d1' },
     { nome: 'João Vitor', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/andre', imagem: '/joao.jpg', cor: '#b2f7ef' },
     { nome: 'Laura', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/laura.jpg', cor: '#e0fcf9' },
