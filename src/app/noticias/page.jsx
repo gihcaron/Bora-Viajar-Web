@@ -1,6 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import Image from "next/image";
 import Loader from "../../components/Loader";
 import Header from "../../components/Header";
@@ -16,50 +17,52 @@ export default function Noticias() {
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [allRegions, setAllRegions] = useState([]);
+  const router = useRouter();
 
-  const fetchRegions = async (region = "") => {
-    setIsLoading(true);
 
-     try {
-      const url = `http://localhost:3000/api/regions/`;
-      const response = await axios.get(url);
-      setRegions(response.data);
-      if (!region) {
-        setAllRegions(response.data);
-      }
-    } catch (error) {
-      console.error("Erro ao carregar regiões:", error);
-    } finally {
-      setIsLoading(false);
-    }
+//   const fetchRegions = async (region = "") => {
+//     setIsLoading(true);
+
+//      try {
+//       const url = `http://localhost:3000/api/regions/`;
+//       const response = await axios.get(url);
+//       setRegions(response.data);
+//       if (!region) {
+//         setAllRegions(response.data);
+//       }
+//     } catch (error) {
+//       console.error("Erro ao carregar regiões:", error);
+//     } finally {
+//       setIsLoading(false);
+//     }
     
-  }
+//   }
 
-  useEffect(() => {
-  fetchRegions();
-}, []);
+//   useEffect(() => {
+//   fetchRegions();
+// }, []);
 
-  const fetchNews = async (news = "") => {
-    setIsLoading(true);
+//   const fetchNews = async (regions = "") => {
+//     setIsLoading(true);
 
-     try {
-      const url = `http://localhost:3000/api/news/`;
-      const response = await axios.get(url);
-      setNews(response.data);
-      if (!news) {
-        setAllNews(response.data);
-      }
-    } catch (error) {
-      console.error("Erro ao carregar Noticia:", error);
-    } finally {
-      setIsLoading(false);
-    }
+//      try {
+//       const url = `http://localhost:3000/api/news/`;
+//       const response = await axios.get(url);
+//       setNews(response.data);
+//       if (!news) {
+//         setAllNews(response.data);
+//       }
+//     } catch (error) {
+//       console.error("Erro ao carregar Noticia:", error);
+//     } finally {
+//       setIsLoading(false);
+//     }
     
-  }
+//   }
 
-  useEffect(() => {
-  fetchNews();
-}, []);
+//   useEffect(() => {
+//   fetchNews();
+// }, []);
 
 
   useEffect(() => {
@@ -74,6 +77,42 @@ export default function Noticias() {
     return <Loader />;
   }
 
+// Regiões
+
+  const NorteRegion = {
+    photo: "/norte.jpg",
+    info: "Imagem região Norte",
+    title: "Norte",
+    description: "Principais destinos da região Norte",
+  };
+
+  const NordesteRegion = {
+    photo: "/nordeste.jpg",
+    info: "Imagem região Nordeste",
+    title: "Nordeste",
+    description: "Principais destinos da região Nordeste",
+  };
+
+  const CentroOesteRegion = {
+    photo: "/centro.jpg",
+    info: "Imagem região Centro-Oeste",
+    title: "Centro-Oeste",
+    description: "Principais destinos da região Centro-Oeste",
+  };
+
+  const SudesteRegion = {
+    photo: "/sudeste.jpg",
+    info: "Imagem região Sudeste",
+    title: "Sudeste",
+    description: "Principais destinos da região Sudeste",
+  };
+
+  const SulRegion = {
+    photo: "/sul.jpg",
+    info: "Imagem região Sul",
+    title: "Sul",
+    description: "Principais destinos da região Sul",
+  };
   const cardData = {
     photo: "/rio-redirecionamento.jpg",
     info: "Descrição da imagem",
@@ -102,15 +141,39 @@ export default function Noticias() {
         </div>
 
         <div className={styles.destinoCard}>
-            {regions.map((region) => (
-      <NoticiaCard
-        key={regions.id}
-        photo={"/rio-redirecionamento.jpg"} 
-        name={region.name}
-        text={region.text}
-        link={region.links || "#"}
-      />
-    ))}
+          
+        <NoticiaCard
+        onClick={() => router.push("/regiaoNorte")}
+        photo={NorteRegion.photo}
+        info={NorteRegion.info}
+        title={NorteRegion.title}
+        description={NorteRegion.description}
+        />
+        <NoticiaCard
+        photo={NordesteRegion.photo}
+        info={NordesteRegion.info}
+        title={NordesteRegion.title}
+        description={NordesteRegion.description}
+        />
+        <NoticiaCard
+        photo={CentroOesteRegion.photo}
+        info={CentroOesteRegion.info}
+        title={CentroOesteRegion.title}
+        description={CentroOesteRegion.description}
+        />
+        <NoticiaCard
+        photo={SudesteRegion.photo}
+        info={SudesteRegion.info}
+        title={SudesteRegion.title}
+        description={SudesteRegion.description}
+        />
+        <NoticiaCard
+        photo={SulRegion.photo}
+        info={SulRegion.info}
+        title={SulRegion.title}
+        description={SulRegion.description}
+        />
+    
         </div>
 
       </div>
