@@ -7,7 +7,7 @@ import Loader from "../../components/Loader";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import PlaceCard from "../../components/PlaceCard";
-import styles from "./Norte.module.css";
+import styles from "./Regioes.module.css";
 
 export default function Noticias() {
   const [loading, setLoading] = React.useState(true);
@@ -72,7 +72,8 @@ if (loading) {
           <p className={styles.TextContent}>
             A Região Norte do Brasil é um destino fascinante, repleto de belezas naturais, cultura rica e biodiversidade única. Com suas florestas tropicais exuberantes, rios majestosos, essa região oferece uma experiência inesquecível para os viajantes que buscam aventura e conexão com a natureza.
           </p>
-        
+
+        <div className={styles.touristicPoint}>      
         {data.touristicPoints.map((regions) => (
           <PlaceCard
             key={regions.id}
@@ -83,6 +84,7 @@ if (loading) {
             alt={regions.alt || `Imagem de ${regions.name}`}
           />
         ))}
+        </div>  
         </div>
 
 

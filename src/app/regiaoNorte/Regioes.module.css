@@ -94,6 +94,10 @@
     color: #313131;
 }
 
+.touristicPoint{
+    max-width: 100%;
+}
+
 /* Responsividade */
 
 /* Responsividade para tablets */
