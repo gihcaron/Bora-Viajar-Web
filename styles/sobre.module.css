@@ -6,6 +6,7 @@
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow: visible;
 }
 
 .bannerContainer {
@@ -40,6 +41,36 @@ background: linear-gradient(135deg, rgba(16, 145, 145, 0.773), rgba(37, 192, 192
   line-height: 1;
 }
 
+.lequeContainer {
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  gap: 8px; 
+  padding: 40px 0;
+  width: 100%;
+  margin-top: 7rem;
+  margin-bottom: 5rem;
+  position: relative;
+  z-index: 200;
+  overflow: visible; 
+}
+
+.card {
+  position: relative; 
+  background: linear-gradient(to bottom, #b2f0e4, #ffffff);
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+  width: 100px; 
+  padding: 16px;
+  text-align: center;
+  transition: transform 0.3s ease, z-index 0.3s ease;
+  z-index: 1; 
+}
+
+.card:hover {
+  transform: translateY(-30px);
+  z-index: 999;
+}
 .card {
   background-color: white;
   border-radius: 20px;
@@ -55,19 +86,7 @@ background: linear-gradient(135deg, rgba(16, 145, 145, 0.773), rgba(37, 192, 192
   user-select: none;
 }
 
-.lequeContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  gap: 1rem;
-  justify-content: flex-start;
-  align-items: flex-end;
-  overflow-x: auto;
-  padding-bottom: 2rem;
-  width: 100%;
-  margin-top: 5rem;
-  margin-bottom: 5rem;
-}
+
 
 .cardImage {
   width: 100%;
@@ -147,4 +166,73 @@ background: linear-gradient(135deg, rgba(16, 145, 145, 0.773), rgba(37, 192, 192
 .linkedinBtn:hover {
   background-color: #e6f0f7;
   text-decoration: underline;
+}
+
+.card:hover {
+  z-index: 9999 !important;
+}
+
+
+@media (max-width: 900px) {
+  .bannerContainer {
+    height: 220px;
+  }
+  .titleBanner {
+    font-size: 2.2rem;
+  }
+  .subtitleBanner {
+    font-size: 4rem;
+  }
+  .lequeContainer {
+    gap: 0.5rem;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+  }
+  .card {
+    width: 160px;
+    height: 240px;
+    padding: 1rem 0.5rem;
+  }
+  .cardImage {
+    height: 110px;
+  }
+}
+
+@media (max-width: 600px) {
+  .bannerContainer {
+    height: 140px;
+    padding: 1rem;
+  }
+  .titleBanner {
+    font-size: 1.2rem;
+  }
+  .subtitleBanner {
+    font-size: 2rem;
+  }
+  .lequeContainer {
+    gap: 0.3rem;
+    padding-bottom: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+  .card {
+    width: 110px;
+    height: 170px;
+    padding: 0.5rem 0.2rem;
+    font-size: 0.85rem;
+  }
+  .cardImage {
+    height: 60px;
+  }
+  .cardInfo h3 {
+    font-size: 1rem;
+  }
+  .idade {
+    font-size: 0.6rem;
+    padding: 2px 5px;
+  }
+  .linkedinBtn {
+    font-size: 0.8rem;
+    padding: 4px 8px;
+  }
 }
