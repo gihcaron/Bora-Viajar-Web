@@ -17,6 +17,7 @@ export default function Noticias() {
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [allRegions, setAllRegions] = useState([]);
+  const [current, setCurrent] = useState(0);
   const router = useRouter();
 
 
@@ -65,6 +66,7 @@ export default function Noticias() {
 // }, []);
 
 
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
@@ -77,42 +79,46 @@ export default function Noticias() {
     return <Loader />;
   }
 
-// Regiões
+  // Regiões
 
-  const NorteRegion = {
+const destinos = [
+  
+  {
     photo: "/norte.jpg",
     info: "Imagem região Norte",
     title: "Norte",
     description: "Principais destinos da região Norte",
-  };
+    link: "/regiaoNorte",
+  },
 
-  const NordesteRegion = {
+ {
     photo: "/nordeste.jpg",
     info: "Imagem região Nordeste",
     title: "Nordeste",
     description: "Principais destinos da região Nordeste",
-  };
+  },
 
-  const CentroOesteRegion = {
+  {
     photo: "/centro.jpg",
     info: "Imagem região Centro-Oeste",
     title: "Centro-Oeste",
     description: "Principais destinos da região Centro-Oeste",
-  };
+  },
 
-  const SudesteRegion = {
+  {
     photo: "/sudeste.jpg",
     info: "Imagem região Sudeste",
     title: "Sudeste",
     description: "Principais destinos da região Sudeste",
-  };
+  },
 
-  const SulRegion = {
+  {
     photo: "/sul.jpg",
     info: "Imagem região Sul",
     title: "Sul",
     description: "Principais destinos da região Sul",
-  };
+  },
+];
   const cardData = {
     photo: "/rio-redirecionamento.jpg",
     info: "Descrição da imagem",
@@ -120,6 +126,30 @@ export default function Noticias() {
     description: "Descrição do Card",
     link: "/noticia",
   };
+  
+  const cardsPorPagina = 3;
+ const totalPaginas = Math.ceil(destinos.length / cardsPorPagina);
+
+  function nextCard() {
+    setCurrent((prev) =>
+      prev + cardsPorPagina >= destinos.length ? 0 : prev + cardsPorPagina
+    );
+  }
+
+  function prevCard() {
+    setCurrent((prev) =>
+      prev - cardsPorPagina < 0
+        ? (totalPaginas - 1) * cardsPorPagina
+        : prev - cardsPorPagina
+    );
+  }
+
+  const cardsParaExibir = [];
+  for (let i = 0; i < cardsPorPagina; i++) {
+    const id = (current + i) % destinos.length;
+    cardsParaExibir.push(destinos[id]);
+  }
+
 
   return (
     <div className={styles.Container}>
@@ -141,39 +171,36 @@ export default function Noticias() {
         </div>
 
         <div className={styles.destinoCard}>
-          
-        <NoticiaCard
-        onClick={() => router.push("/regiaoNorte")}
-        photo={NorteRegion.photo}
-        info={NorteRegion.info}
-        title={NorteRegion.title}
-        description={NorteRegion.description}
-        />
-        <NoticiaCard
-        photo={NordesteRegion.photo}
-        info={NordesteRegion.info}
-        title={NordesteRegion.title}
-        description={NordesteRegion.description}
-        />
-        <NoticiaCard
-        photo={CentroOesteRegion.photo}
-        info={CentroOesteRegion.info}
-        title={CentroOesteRegion.title}
-        description={CentroOesteRegion.description}
-        />
-        <NoticiaCard
-        photo={SudesteRegion.photo}
-        info={SudesteRegion.info}
-        title={SudesteRegion.title}
-        description={SudesteRegion.description}
-        />
-        <NoticiaCard
-        photo={SulRegion.photo}
-        info={SulRegion.info}
-        title={SulRegion.title}
-        description={SulRegion.description}
-        />
-    
+               {cardsParaExibir.map((destino, id) => (
+            <NoticiaCard
+              key={destino.title + id}
+              photo={destino.photo}
+              info={destino.info}
+              title={destino.title}
+              description={destino.description}
+              onClick={() => router.push(destino.link)}
+            />
+          ))}
+        </div>
+        <div
+          className={styles.PaginationButtons}
+         
+        >
+          <button 
+          className={styles.button} 
+          onClick={prevCard}>
+          Anterior
+          </button>
+
+          <span className={styles.pageInfo}>
+            {Math.floor(current / cardsPorPagina) + 1} / {totalPaginas}
+          </span>
+
+          <button 
+          className={styles.button} 
+          onClick={nextCard}>
+            Próximo
+          </button>
         </div>
 
       </div>

@@ -7,7 +7,10 @@ const NoticiaCard = ({photo, info, title, description, onClick}) => {
 
 
   return (
-    <div className={styles.card} onClick={onClick} style={{ cursor: "pointer" }}>
+    <div className={styles.card} 
+    onClick={onClick} 
+    style={{ cursor: "pointer" }}
+    >
       <Image
         className={styles.CardImage}
         src= {photo}
