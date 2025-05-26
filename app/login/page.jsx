@@ -69,7 +69,7 @@ export default function Login() {
               </button>
             </div>
             <div className={styles.forgotPassword}>
-              <a href="#">Esqueci a senha</a>
+              <a href="/esqueci-senha">Esqueci a senha</a>
             </div>
             <button className={styles.btnLogin} onClick={() => router.push('/feed')}>Entrar</button>
             <button className={styles.btnSignup} onClick={() => router.push('/cadastro')}>Cadastre-se</button>
