@@ -209,21 +209,21 @@ export default function Noticias() {
         </div>
         <div className={styles.AnuncioImage}>
           <Image
-            src="/rio-redirecionamento.jpg"
+            src="/surf.jpg"
             alt="Imagem de Anúncio"
             width={200}
             height={300}
             className={styles.AnuncioImg}
           />
           <Image
-            src="/rio-redirecionamento.jpg"
+            src="/paraty.jpg"
             alt="Imagem de Anúncio"
             width={200}
             height={300}
             className={styles.AnuncioImg}
           />
           <Image
-            src="/rio-redirecionamento.jpg"
+            src="/rua-brasil.jpg"
             alt="Imagem de Anúncio"
             width={200}
             height={300}

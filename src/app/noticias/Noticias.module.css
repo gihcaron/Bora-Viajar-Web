@@ -147,8 +147,7 @@
 /* Seção com Anuncio */
 
 .AnuncioSection{
-    max-height: 45vh;
-    max-height: 45vh;
+    max-height: 65vh;
     display: flex;
     flex-direction: row;
     align-items: center;
