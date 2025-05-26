@@ -11,6 +11,7 @@ import styles from "./Regioes.module.css";
 
 export default function Noticias() {
   const [loading, setLoading] = React.useState(true);
+  
   const [data, setData] = useState({
         touristicPoints: [], 
         loading: true,
@@ -23,7 +24,7 @@ export default function Noticias() {
               const { data : regions } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/regions`,);
               const nortePoints = regions.filter((region) => region.region === "Norte");
                 
-                
+            
                 setData({touristicPoints: nortePoints,
                   loading: false, 
                   current: 1});

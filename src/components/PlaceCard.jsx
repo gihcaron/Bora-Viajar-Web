@@ -8,7 +8,7 @@ const PlaceCard = ({name, PlaceImage, text, links, alt}) => {
   return (
     <div className={styles.Place}>
 
-          <h1 className={styles.TitlePlace}>{name}</h1>
+          <h1 className={styles.TitlePlace}>{name}/</h1>
           <Image
             className={styles.ImagePlace}
             src={PlaceImage}

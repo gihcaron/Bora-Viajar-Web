@@ -7,65 +7,39 @@ import Loader from "../../components/Loader";
 import Header from "../../components/Header";
 import NoticiaCard from "../../components/NoticiaCard";
 import Footer from "../../components/Footer";
+import NoticiaNewsCard from "../../components/NoticiaNewsCard";
 import styles from "./Noticias.module.css";
 import axios from "axios";
 
-
 export default function Noticias() {
   const [loading, setLoading] = React.useState(true);
-  const [regions, setRegions] = useState([]);
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
-  const [allRegions, setAllRegions] = useState([]);
-  const [current, setCurrent] = useState(0);
+  const [allNews, setAllNews] = useState([]);
+  const [current, setCurrentDestino] = useState(0);
+  const [currentNews, setCurrentNews] = useState(0);
   const router = useRouter();
 
+  const fetchNews = async (news = "") => {
+    setIsLoading(true);
 
-//   const fetchRegions = async (region = "") => {
-//     setIsLoading(true);
+    try {
+      const url = `http://localhost:3000/api/news/`;
+      const response = await axios.get(url);
+      setNews(response.data);
+      if (!news) {
+        setAllNews(response.data);
+      }
+    } catch (error) {
+      console.error("Erro ao carregar notícias:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
-//      try {
-//       const url = `http://localhost:3000/api/regions/`;
-//       const response = await axios.get(url);
-//       setRegions(response.data);
-//       if (!region) {
-//         setAllRegions(response.data);
-//       }
-//     } catch (error) {
-//       console.error("Erro ao carregar regiões:", error);
-//     } finally {
-//       setIsLoading(false);
-//     }
-    
-//   }
-
-//   useEffect(() => {
-//   fetchRegions();
-// }, []);
-
-//   const fetchNews = async (regions = "") => {
-//     setIsLoading(true);
-
-//      try {
-//       const url = `http://localhost:3000/api/news/`;
-//       const response = await axios.get(url);
-//       setNews(response.data);
-//       if (!news) {
-//         setAllNews(response.data);
-//       }
-//     } catch (error) {
-//       console.error("Erro ao carregar Noticia:", error);
-//     } finally {
-//       setIsLoading(false);
-//     }
-    
-//   }
-
-//   useEffect(() => {
-//   fetchNews();
-// }, []);
-
-
+  useEffect(() => {
+    fetchNews();
+  }, []);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -81,44 +55,43 @@ export default function Noticias() {
 
   // Regiões
 
-const destinos = [
-  
-  {
-    photo: "/norte.jpg",
-    info: "Imagem região Norte",
-    title: "Norte",
-    description: "Principais destinos da região Norte",
-    link: "/regiaoNorte",
-  },
+  const destinos = [
+    {
+      photo: "/norte.jpg",
+      info: "Imagem região Norte",
+      title: "Norte",
+      description: "Principais destinos da região Norte",
+      link: "/regiaoNorte",
+    },
 
- {
-    photo: "/nordeste.jpg",
-    info: "Imagem região Nordeste",
-    title: "Nordeste",
-    description: "Principais destinos da região Nordeste",
-  },
+    {
+      photo: "/nordeste.jpg",
+      info: "Imagem região Nordeste",
+      title: "Nordeste",
+      description: "Principais destinos da região Nordeste",
+    },
 
-  {
-    photo: "/centro.jpg",
-    info: "Imagem região Centro-Oeste",
-    title: "Centro-Oeste",
-    description: "Principais destinos da região Centro-Oeste",
-  },
+    {
+      photo: "/centro.jpg",
+      info: "Imagem região Centro-Oeste",
+      title: "Centro-Oeste",
+      description: "Principais destinos da região Centro-Oeste",
+    },
 
-  {
-    photo: "/sudeste.jpg",
-    info: "Imagem região Sudeste",
-    title: "Sudeste",
-    description: "Principais destinos da região Sudeste",
-  },
+    {
+      photo: "/sudeste.jpg",
+      info: "Imagem região Sudeste",
+      title: "Sudeste",
+      description: "Principais destinos da região Sudeste",
+    },
 
-  {
-    photo: "/sul.jpg",
-    info: "Imagem região Sul",
-    title: "Sul",
-    description: "Principais destinos da região Sul",
-  },
-];
+    {
+      photo: "/sul.jpg",
+      info: "Imagem região Sul",
+      title: "Sul",
+      description: "Principais destinos da região Sul",
+    },
+  ];
   const cardData = {
     photo: "/rio-redirecionamento.jpg",
     info: "Descrição da imagem",
@@ -126,18 +99,22 @@ const destinos = [
     description: "Descrição do Card",
     link: "/noticia",
   };
+
+  //  Paginação 
   
   const cardsPorPagina = 3;
- const totalPaginas = Math.ceil(destinos.length / cardsPorPagina);
+  const totalPaginas = Math.ceil(destinos.length / cardsPorPagina);
+
+  //  Paginação Destinos
 
   function nextCard() {
-    setCurrent((prev) =>
+    setCurrentDestino((prev) =>
       prev + cardsPorPagina >= destinos.length ? 0 : prev + cardsPorPagina
     );
   }
 
   function prevCard() {
-    setCurrent((prev) =>
+    setCurrentDestino((prev) =>
       prev - cardsPorPagina < 0
         ? (totalPaginas - 1) * cardsPorPagina
         : prev - cardsPorPagina
@@ -149,6 +126,28 @@ const destinos = [
     const id = (current + i) % destinos.length;
     cardsParaExibir.push(destinos[id]);
   }
+
+  //  Paginação para notícias
+  
+  // function nextCard() {
+  //   setCurrentNews((prev) =>
+  //     prev + cardsPorPagina >= news.length ? 0 : prev + cardsPorPagina
+  //   );
+  // }
+
+  // function prevCard() {
+  //   setCurrentNews((prev) =>
+  //     prev - cardsPorPagina < 0
+  //       ? (totalPaginas - 1) * cardsPorPagina
+  //       : prev - cardsPorPagina
+  //   );
+  // }
+
+  // const cardsParaExibir = [];
+  // for (let i = 0; i < cardsPorPagina; i++) {
+  //   const id = (current + i) % news.length;
+  //   cardsParaExibir.push(news[id]);
+  // }
 
 
   return (
@@ -170,8 +169,8 @@ const destinos = [
           </p>
         </div>
 
-        <div className={styles.destinoCard}>
-               {cardsParaExibir.map((destino, id) => (
+        <div className={styles.CardContainer}>
+          {cardsParaExibir.map((destino, id) => (
             <NoticiaCard
               key={destino.title + id}
               photo={destino.photo}
@@ -182,27 +181,19 @@ const destinos = [
             />
           ))}
         </div>
-        <div
-          className={styles.PaginationButtons}
-         
-        >
-          <button 
-          className={styles.button} 
-          onClick={prevCard}>
-          Anterior
+        <div className={styles.PaginationButtons}>
+          <button className={styles.button} onClick={prevCard}>
+            Anterior
           </button>
 
           <span className={styles.pageInfo}>
             {Math.floor(current / cardsPorPagina) + 1} / {totalPaginas}
           </span>
 
-          <button 
-          className={styles.button} 
-          onClick={nextCard}>
+          <button className={styles.button} onClick={nextCard}>
             Próximo
           </button>
         </div>
-
       </div>
 
       {/* Seção com Anúncio */}
@@ -250,30 +241,32 @@ const destinos = [
         </div>
 
         <div className={styles.NoticiasCard}>
-          <NoticiaCard
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-          />
-          <NoticiaCard
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-          />
-          <NoticiaCard
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-          />
-          <NoticiaCard
-            photo={cardData.photo}
-            info={cardData.info}
-            title={cardData.title}
-            description={cardData.description}
-          />
+          <div className={styles.NoticiasCardContainer}>
+            {news.map((news) => (
+              <NoticiaNewsCard
+                key={news.id}
+                photo={news.photo ? news.photo : "/noticia.jpeg"}
+                info={news.name}
+                place={news.place}
+                name={news.name}
+                link={`/news/${news.id}`}
+                onClick={() => router.push(`/news/${news.id}`)}
+              />
+            ))}
+          </div>
+        </div>
+         <div className={styles.PaginationButtons}>
+          <button className={styles.button} onClick={prevCard}>
+            Anterior
+          </button>
+
+          <span className={styles.pageInfo}>
+            {Math.floor(currentNews / cardsPorPagina) + 1} / {totalPaginas}
+          </span>
+
+          <button className={styles.button} onClick={nextCard}>
+            Próximo
+          </button>
         </div>
       </div>
 
