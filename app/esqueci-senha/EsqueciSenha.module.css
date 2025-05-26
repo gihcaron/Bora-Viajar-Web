@@ -166,6 +166,46 @@
   background: #fff;
 }
 
+.toastSnackbar {
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  min-width: 220px;
+  max-width: 90vw;
+  background: #323232;
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+  z-index: 9999;
+  box-shadow: 0 4px 24px #0003;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, bottom 0.3s;
+}
+
+.toastSnackbar.show {
+  opacity: 1;
+  pointer-events: auto;
+  bottom: 60px;
+}
+
+.toastSnackbar.success {
+  background: #209c9236;
+  color: #18514c;
+}
+
+.input[type="password"]::-ms-reveal,
+.input[type="password"]::-ms-clear,
+.input[type="password"]::-webkit-credentials-auto-fill-button,
+.input[type="password"]::-webkit-input-decoration,
+.input[type="password"]::-webkit-input-clear-button,
+.input[type="password"]::-webkit-input-password-toggle-button {
+  display: none !important;
+}
+
 @media (max-width: 600px) {
   .wrapper {
     max-width: 98vw;

@@ -13,6 +13,8 @@ export default function EsqueciSenhaPage() {
   const [novaSenha, setNovaSenha] = useState("");
   const [confirmarSenha, setConfirmarSenha] = useState("");
   const [toast, setToast] = useState("");
+  const [showNovaSenha, setShowNovaSenha] = useState(false);
+  const [showConfirmarSenha, setShowConfirmarSenha] = useState(false);
   const router = useRouter();
 
   const ddds = [
@@ -33,19 +35,20 @@ export default function EsqueciSenhaPage() {
     e.preventDefault();
     if (!nome || !opcao || (opcao === "email" && !email) || (opcao === "telefone" && !telefone) || !novaSenha || !confirmarSenha) {
       setToast("Preencha todos os campos obrigatórios.");
+      setTimeout(() => setToast(""), 3000);
       return;
     }
     if (novaSenha !== confirmarSenha) {
       setToast("As senhas não coincidem.");
+      setTimeout(() => setToast(""), 3000);
       return;
     }
     const contato = opcao === "email" ? email : `(${ddd}) ${telefone}`;
     setToast(`Senha alterada! Confirmação enviada para ${contato}.`);
-  };
-
-  const handleToastClose = () => {
-    setToast("");
-    router.push("/login");
+    setTimeout(() => {
+      setToast("");
+      router.push("/login");
+    }, 2500); 
   };
 
   return (
@@ -128,24 +131,88 @@ export default function EsqueciSenhaPage() {
         )}
 
         <label htmlFor="novaSenha">Nova senha:</label>
-        <input
-          type="password"
-          id="novaSenha"
-          required
-          value={novaSenha}
-          onChange={e => setNovaSenha(e.target.value)}
-          className={styles.input}
-        />
+        <div style={{ position: "relative" }}>
+          <input
+            type={showNovaSenha ? "text" : "password"}
+            id="novaSenha"
+            required
+            value={novaSenha}
+            onChange={e => setNovaSenha(e.target.value)}
+            className={styles.input}
+            style={{ paddingRight: "40px" }}
+          />
+          <button
+            type="button"
+            onClick={() => setShowNovaSenha(v => !v)}
+            style={{
+              position: "absolute",
+              right: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: 0
+            }}
+            tabIndex={-1}
+            aria-label={showNovaSenha ? "Ocultar senha" : "Mostrar senha"}
+          >
+            {showNovaSenha ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.94 17.94C16.13 19.17 14.13 20 12 20C7 20 2.73 16.11 1 12C1.73 10.21 2.91 8.6 4.44 7.35M9.9 5.08C10.59 5.03 11.29 5 12 5C17 5 21.27 8.89 23 13C22.37 14.53 21.37 15.89 20.11 17M1 1L23 23" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 12C2.73 16.11 7 20 12 20C17 20 21.27 16.11 23 12C21.27 7.89 17 4 12 4C7 4 2.73 7.89 1 12Z" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="12" cy="12" r="3" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            )}
+          </button>
+        </div>
 
         <label htmlFor="confirmarSenha">Confirmar nova senha:</label>
-        <input
-          type="password"
-          id="confirmarSenha"
-          required
-          value={confirmarSenha}
-          onChange={e => setConfirmarSenha(e.target.value)}
-          className={styles.input}
-        />
+        <div style={{ position: "relative" }}>
+          <input
+            type={showConfirmarSenha ? "text" : "password"}
+            id="confirmarSenha"
+            required
+            value={confirmarSenha}
+            onChange={e => setConfirmarSenha(e.target.value)}
+            className={styles.input}
+            style={{ paddingRight: "40px" }}
+          />
+          <button
+            type="button"
+            onClick={() => setShowConfirmarSenha(v => !v)}
+            style={{
+              position: "absolute",
+              right: "10px",
+              top: "50%",
+              transform: "translateY(-50%)",
+              background: "none",
+              border: "none",
+              cursor: "pointer",
+              padding: 0
+            }}
+            tabIndex={-1}
+            aria-label={showConfirmarSenha ? "Ocultar senha" : "Mostrar senha"}
+          >
+            {showConfirmarSenha ? (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M17.94 17.94C16.13 19.17 14.13 20 12 20C7 20 2.73 16.11 1 12C1.73 10.21 2.91 8.6 4.44 7.35M9.9 5.08C10.59 5.03 11.29 5 12 5C17 5 21.27 8.89 23 13C22.37 14.53 21.37 15.89 20.11 17M1 1L23 23" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            ) : (
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+                xmlns="http://www.w3.org/2000/svg">
+                <path d="M1 12C2.73 16.11 7 20 12 20C17 20 21.27 16.11 23 12C21.27 7.89 17 4 12 4C7 4 2.73 7.89 1 12Z" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <circle cx="12" cy="12" r="3" stroke="#666" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+            )}
+          </button>
+        </div>
 
         <button
           type="submit"
@@ -156,15 +223,13 @@ export default function EsqueciSenhaPage() {
       </form>
 
       {toast && (
-        <div className={styles.toast}>
+        <div
+          className={
+            `${styles.toastSnackbar} ${styles.show}` +
+            (toast.startsWith("Senha alterada!") ? ` ${styles.success}` : "")
+          }
+        >
           {toast}
-          <br />
-          <button
-            onClick={handleToastClose}
-            className={styles.toastButton}
-          >
-            Voltar para a página de login
-          </button>
         </div>
       )}
     </div>
