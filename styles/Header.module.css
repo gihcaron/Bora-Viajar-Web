@@ -9,14 +9,6 @@
   position: relative; 
   z-index: 5; 
 }
-.headerWrapper {
-    width: 100%;
-    background-color: #d1e9e9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
   .topBar {
     width: 100%;
     height: 90%;
@@ -109,6 +101,16 @@
     color: #91b9b9;
     transition: color 0.3s ease-in-out;
   }
+  
+  .menuButton{
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    box-shadow: none;
+  
+  }
 
 
  
@@ -167,10 +169,17 @@
     }
 
     .navBar {
+      display: none;
+      background-color: #cfe8e8;
       flex-direction: column;
       align-items: center;
       gap: 5px;
-      padding: 5px 10px;
+      padding: 10px;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     .navLink {
@@ -179,5 +188,13 @@
 
     .logoImage {
       height: 80px;
+    }
+    .menuButton {
+      display: block;
+      border: none;
+    }
+
+    .navBar.open {
+      display: flex;
     }
   }
