@@ -406,6 +406,7 @@ const Cadastro = () => {
             <Form.Item
               name="Biografia"
               label="Biografia"
+              className={styles.biografia}
               rules={[
                 {
                   required: true,

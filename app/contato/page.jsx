@@ -28,7 +28,7 @@ const Contato = () => {
 
       <div className={styles.contatoWrapper}>
         <div className={styles.topBar}>
-          <h1 className={styles.title}>Entre em contato</h1>
+          <h1 className={styles.title}>Entre em Contato</h1>
           <div className={styles.aviao}>
             <Image
               src="/aviao.png"
