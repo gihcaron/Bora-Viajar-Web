@@ -25,7 +25,7 @@
 }
 
 .leftPanel {
-  background-color: #d2eceb;
+  background: linear-gradient(135deg, #b2f0e4 0%, #7be3d8 40%, #209c91 100%);
   flex: 1;
   padding: 40px;
   display: flex;
@@ -33,14 +33,17 @@
   justify-content: flex-start;
   align-items: flex-start;
   position: relative;
+  overflow: hidden;
 }
 
 .logo {
   width: 120px;
   position: absolute;
-  top: 20px;
-  left: 20px;
+  top: 0;
+  left: 0;
   z-index: 2;
+  margin: 0;
+  padding: 0;
 }
 
 .image {
@@ -63,7 +66,7 @@
 .rightPanel h2 {
   font-size: 36px;
   margin-bottom: 20px;
-  color: #4eb2b8;
+  color: #209c91; 
 }
 
 .rightPanel p {
@@ -79,9 +82,18 @@
 .formGroup input {
   width: 100%;
   padding: 10px 12px;
-  border: 1px solid #ccc;
+  border: 1px solid #b2f0e4; 
   border-radius: 6px;
   font-size: 16px;
+  background: #f8f8f8;
+  font-family: 'Poppins', sans-serif;
+  transition: border 0.2s;
+}
+
+.formGroup input:focus {
+  border: 1.5px solid #209c91;
+  outline: none;
+  background: #fff;
 }
 
 .forgotPassword {
@@ -91,31 +103,100 @@
 }
 
 .forgotPassword a {
-  color: #4eb2b8;
+  color: #209c91;
   text-decoration: none;
 }
 
+.btnLogin,
+.btnSignup {
+  width: 100%;
+  display: block;
+  border-radius: 20px;
+  padding: 14px;
+  font-size: 18px;
+  margin-bottom: 12px; 
+}
+
 .btnLogin {
-  background-color: #4eb2b8;
+  background-color: #209c91; 
   color: white;
   border: none;
-  border-radius: 20px;
-  padding: 12px;
-  font-size: 16px;
   cursor: pointer;
-  margin-bottom: 10px;
 }
 
 .btnLogin:hover {
-  background-color: #3a9b9f;
+  background-color: #14746f; 
 }
 
 .btnSignup {
   background-color: #f0f0f0;
   color: #333;
   border: none;
-  border-radius: 20px;
-  padding: 12px;
-  font-size: 16px;
   cursor: pointer;
+}
+
+.btnSignup:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+
+.leftPanel::before {
+  content: "";
+  position: absolute;
+  top: -60px;
+  left: -60px;
+  width: 200px;
+  height: 200px;
+  background: radial-gradient(circle, #fff7 0%, #209c9100 80%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+
+.leftPanel > * {
+  position: relative;
+  z-index: 2;
+}
+
+
+.toastSnackbar {
+  position: fixed;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  min-width: 220px;
+  max-width: 90vw;
+  background: #323232;
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 8px;
+  font-size: 1rem;
+  text-align: center;
+  z-index: 9999;
+  box-shadow: 0 4px 24px #0003;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s, bottom 0.3s;
+}
+
+.toastSnackbar.show {
+  opacity: 1;
+  pointer-events: auto;
+  bottom: 60px;
+}
+
+.toastSnackbar.success {
+  background: #209c91;
+  color: #fff;
+}
+
+
+.formGroup input[type="password"]::-ms-reveal,
+.formGroup input[type="password"]::-ms-clear,
+.formGroup input[type="password"]::-webkit-credentials-auto-fill-button,
+.formGroup input[type="password"]::-webkit-input-decoration,
+.formGroup input[type="password"]::-webkit-input-clear-button,
+.formGroup input[type="password"]::-webkit-input-password-toggle-button {
+  display: none !important;
 }
