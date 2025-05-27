@@ -162,6 +162,8 @@
 
     .searchInput {
       font-size: 12px;
+      display: flex;
+      align-items: center;
     }
     .searchBox {
       max-width: 100%;
