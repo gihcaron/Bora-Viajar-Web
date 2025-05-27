@@ -10,7 +10,7 @@
 }
 
 .bannerContainer {
-background: linear-gradient(135deg, rgba(16, 145, 145, 0.773), rgba(37, 192, 192, 0.638)), url('../public/rio-de-janeiro.png');
+background: linear-gradient(135deg, rgba(16, 145, 145, 0.773), rgba(37, 192, 192, 0.638)), url('../../public/rio-redirecionamento.jpg');
   background-size: cover;
   background-position: center;
   height: 300px;
