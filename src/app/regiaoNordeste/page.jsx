@@ -7,7 +7,7 @@ import Loader from "../../components/Loader";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
 import PlaceCard from "../../components/PlaceCard";
-import styles from "../regiaoNorte/Regioes.module.css";
+import styles from "./Nordeste.module.css";
 
 export default function Noticias() {
   const [loading, setLoading] = React.useState(true);
@@ -19,13 +19,13 @@ export default function Noticias() {
     });
 
    useEffect (() => {
-        const fetchNorte = async () => {
+        const fetchNordeste = async () => {
             try{
               const { data : regions } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/regions`,);
-              const nortePoints = regions.filter((region) => region.region === "Nordeste");
+              const nordestePoints = regions.filter((region) => region.region === "Nordeste");
                 
             
-                setData({touristicPoints: nortePoints,
+                setData({touristicPoints: nordestePoints,
                   loading: false, 
                   current: 1});
                 }
@@ -35,7 +35,7 @@ export default function Noticias() {
                   setData((d) => ({...d, loading: false}));
             }
         };
-        fetchNorte();
+        fetchNordeste();
         
 },[])
 
