@@ -58,7 +58,7 @@ if (loading) {
 
       <div className={styles.bannerContainer}>
         <div className={styles.textContainer}>
-          <h1 className={styles.subtitleBanner}>Região Centro-Oeste</h1>
+          <h1 className={styles.subtitleBanner}>Região Sul</h1>
           <h2 className={styles.titleBanner}> Descubra os melhores destinos</h2>
         </div>
       </div>
@@ -69,9 +69,9 @@ if (loading) {
 
         <div className={styles.HeaderContainer}>
           <h1 className={styles.TitleHeder}>Colecione momentos no</h1>
-          <h2 className={styles.TitleLocal}>Centro-Oeste</h2>
+          <h2 className={styles.TitleLocal}>Sul</h2>
           <p className={styles.TextContent}>
-            A Região Centro-Oeste do Brasil encanta com suas paisagens únicas, que vão do cerrado às chapadas, além de cidades históricas e uma rica cultura local. É o destino ideal para quem busca aventura, natureza exuberante e experiências inesquecíveis em meio ao coração do país.
+            A Região Sul do Brasil é conhecida por suas paisagens deslumbrantes, clima mais ameno, rica herança cultural e culinária marcante. Com cidades acolhedoras, belas praias, serras e tradições únicas, o Sul oferece experiências inesquecíveis para todos os tipos de viajantes.
           </p>
 
         <div className={styles.touristicPoint}>      
