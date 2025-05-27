@@ -86,6 +86,7 @@ export default function Noticias() {
       info: "Imagem região Sudeste",
       title: "Sudeste",
       description: "Principais destinos da região Sudeste",
+      link: "/regiaoSudeste",
     
     },
 
@@ -94,6 +95,7 @@ export default function Noticias() {
       info: "Imagem região Sul",
       title: "Sul",
       description: "Principais destinos da região Sul",
+      link: "/regiaoSul",
     },
   ];
   const cardData = {
