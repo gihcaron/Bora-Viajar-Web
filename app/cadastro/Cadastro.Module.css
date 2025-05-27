@@ -64,7 +64,7 @@
     padding: 2rem;
     border-radius: 12px;
     width: 90%;
-    max-width: 800%;
+    max-width: 800px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     flex-direction: column-reverse;
 }
@@ -142,20 +142,6 @@
     padding: 0.8rem 2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
-}
-
-.Cadastro_form__4wISq {
-    background-color: #f0f4f8;
-    flex-direction: column;
-    align-items: end;
-    font-size: 1rem;
-    font-weight: 500;
-    margin: 1rem auto;
-    padding: 2rem;
-    border-radius: 12px;
-    width: 90%;
-    max-width: 800%;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .Cadastro_biografia__g8ikC {
