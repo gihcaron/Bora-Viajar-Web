@@ -3,7 +3,7 @@
 import Image from "next/image";
 import styles from "../styles/PlaceCard.module.css";
 
-const PlaceCard = ({name, PlaceImage, text, links, alt}) => {
+const PlaceCard = ({name, image, text, links, alt}) => {
 
   return (
     <div className={styles.Place}>
@@ -11,7 +11,7 @@ const PlaceCard = ({name, PlaceImage, text, links, alt}) => {
           <h1 className={styles.TitlePlace}>{name}/</h1>
           <Image
             className={styles.ImagePlace}
-            src={PlaceImage}
+            src={`http://localhost:3000/uploads/` + image}
             alt={alt}
             width={800}
             height={200}

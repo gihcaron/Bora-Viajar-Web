@@ -11,45 +11,47 @@ import styles from "./CentroOeste.module.css";
 
 export default function Noticias() {
   const [loading, setLoading] = React.useState(true);
-  
+
   const [data, setData] = useState({
-        touristicPoints: [], 
-        loading: true,
-        current: 1,
-    });
+    touristicPoints: [],
+    loading: true,
+    current: 1,
+  });
 
-   useEffect (() => {
-        const fetchNorte = async () => {
-            try{
-              const { data : regions } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/regions`,);
-              const centroPoints = regions.filter((region) => region.region === "Centro-Oeste");
-                
-            
-                setData({touristicPoints: centroPoints,
-                  loading: false, 
-                  current: 1});
-                }
-                catch(error){
-                  console.error("Erro ao buscar centro:", error);
-                  toast.error("Erro ao buscar centro");
-                  setData((d) => ({...d, loading: false}));
-            }
-        };
-        fetchNorte();
-        
-},[])
+  useEffect(() => {
+    const fetchNorte = async () => {
+      try {
+        const { data: regions } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/regions`,);
+        const centroPoints = regions.filter((region) => region.region === "Centro-Oeste");
 
-useEffect(() => {
-  const timer = setTimeout(() => {
-    setLoading(false);
-  }, 1000);
 
-  return () => clearTimeout(timer);
-}, []);
+        setData({
+          touristicPoints: centroPoints,
+          loading: false,
+          current: 1
+        });
+      }
+      catch (error) {
+        console.error("Erro ao buscar centro:", error);
+        toast.error("Erro ao buscar centro");
+        setData((d) => ({ ...d, loading: false }));
+      }
+    };
+    fetchNorte();
 
-if (loading) {
-  return <Loader />;
-}
+  }, [])
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
+  if (loading) {
+    return <Loader />;
+  }
 
 
   return (
@@ -74,18 +76,18 @@ if (loading) {
             A Região Centro-Oeste do Brasil encanta com suas paisagens únicas, que vão do cerrado às chapadas, além de cidades históricas e uma rica cultura local. É o destino ideal para quem busca aventura, natureza exuberante e experiências inesquecíveis em meio ao coração do país.
           </p>
 
-        <div className={styles.touristicPoint}>      
-        {data.touristicPoints.map((regions) => (
-          <PlaceCard
-            key={regions.id}
-            name={regions.name}
-            PlaceImage={regions.photo}
-            text={regions.text}
-            links={regions.links}
-            alt={regions.alt || `Imagem de ${regions.name}`}
-          />
-        ))}
-        </div>  
+          <div className={styles.touristicPoint}>
+            {data.touristicPoints.map((regions) => (
+              <PlaceCard
+                key={regions.id}
+                name={regions.name}
+                image={regions.image}
+                text={regions.text}
+                links={regions.links}
+                alt={regions.alt || `Imagem de ${regions.name}`}
+              />
+            ))}
+          </div>
         </div>
 
       </div>
