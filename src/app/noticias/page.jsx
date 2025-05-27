@@ -24,11 +24,12 @@ export default function Noticias() {
     setIsLoading(true);
 
     try {
-      const url = `http://localhost:3000/api/news/`;
-      const response = await axios.get(url);
-      setNews(response.data);
-      if (!news) {
-        setAllNews(response.data);
+      const { data : newsData } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/news`,);
+      setNews(newsData);
+      if (!newsData) {
+        setAllNews([]);
+      } else  {
+        setAllNews(newsData);
       }
     } catch (error) {
       console.error("Erro ao carregar notícias:", error);
@@ -69,6 +70,7 @@ export default function Noticias() {
       info: "Imagem região Nordeste",
       title: "Nordeste",
       description: "Principais destinos da região Nordeste",
+      link: "/regiaoNordeste",
     },
 
     {
@@ -76,6 +78,7 @@ export default function Noticias() {
       info: "Imagem região Centro-Oeste",
       title: "Centro-Oeste",
       description: "Principais destinos da região Centro-Oeste",
+      link: "/regiaoCentroOeste",
     },
 
     {
@@ -83,6 +86,8 @@ export default function Noticias() {
       info: "Imagem região Sudeste",
       title: "Sudeste",
       description: "Principais destinos da região Sudeste",
+      link: "/regiaoSudeste",
+    
     },
 
     {
@@ -90,6 +95,7 @@ export default function Noticias() {
       info: "Imagem região Sul",
       title: "Sul",
       description: "Principais destinos da região Sul",
+      link: "/regiaoSul",
     },
   ];
   const cardData = {
