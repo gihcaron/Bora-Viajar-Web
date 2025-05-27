@@ -135,25 +135,20 @@ export default function Noticias() {
 
   //  Paginação para notícias
   
-  // function nextCard() {
-  //   setCurrentNews((prev) =>
-  //     prev + cardsPorPagina >= news.length ? 0 : prev + cardsPorPagina
-  //   );
-  // }
+  function nextCard() {
+    setCurrentNews((prev) =>
+      prev + cardsPorPagina >= news.length ? 0 : prev + cardsPorPagina
+    );
+  }
 
-  // function prevCard() {
-  //   setCurrentNews((prev) =>
-  //     prev - cardsPorPagina < 0
-  //       ? (totalPaginas - 1) * cardsPorPagina
-  //       : prev - cardsPorPagina
-  //   );
-  // }
+  function prevCard() {
+    setCurrentNews((prev) =>
+      prev - cardsPorPagina < 0
+        ? (totalPaginas - 1) * cardsPorPagina
+        : prev - cardsPorPagina
+    );
+  }
 
-  // const cardsParaExibir = [];
-  // for (let i = 0; i < cardsPorPagina; i++) {
-  //   const id = (current + i) % news.length;
-  //   cardsParaExibir.push(news[id]);
-  // }
 
 
   return (
@@ -261,7 +256,7 @@ export default function Noticias() {
             ))}
           </div>
         </div>
-         <div className={styles.PaginationButtons}>
+         {/* <div className={styles.PaginationButtons}>
           <button className={styles.button} onClick={prevCard}>
             Anterior
           </button>
@@ -273,7 +268,7 @@ export default function Noticias() {
           <button className={styles.button} onClick={nextCard}>
             Próximo
           </button>
-        </div>
+        </div> */}
       </div>
 
       <Footer />

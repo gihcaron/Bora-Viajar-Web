@@ -79,7 +79,7 @@ if (loading) {
           <PlaceCard
             key={regions.id}
             name={regions.name}
-            PlaceImage={regions.photo}
+            image={regions.image}
             text={regions.text}
             links={regions.links}
             alt={regions.alt || `Imagem de ${regions.name}`}

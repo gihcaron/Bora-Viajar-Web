@@ -76,14 +76,14 @@ if (loading) {
 
         <div className={styles.touristicPoint}>      
         {data.touristicPoints.map((regions) => (
-          <PlaceCard
-            key={regions.id}
-            name={regions.name}
-            PlaceImage={regions.photo}
-            text={regions.text}
-            links={regions.links}
-            alt={regions.alt || `Imagem de ${regions.name}`}
-          />
+           <PlaceCard
+             key={regions.id}
+             name={regions.name}
+             image={regions.image}
+             text={regions.text}
+             links={regions.links}
+             alt={regions.alt || `Imagem de ${regions.name}`}
+           />
         ))}
         </div>  
         </div>

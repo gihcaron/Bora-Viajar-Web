@@ -244,10 +244,11 @@
   }
 
 .NoticiasCardContainer {
-    display: grid;
-    gap: 24px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     justify-items: center;
-    align-items: stretch;
+    gap: 24px;
   }
 
 /* Responsividade para tablets */
