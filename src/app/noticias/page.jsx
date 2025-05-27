@@ -77,6 +77,7 @@ export default function Noticias() {
       info: "Imagem região Centro-Oeste",
       title: "Centro-Oeste",
       description: "Principais destinos da região Centro-Oeste",
+      link: "/regiaoCentroOeste",
     },
 
     {
@@ -84,6 +85,7 @@ export default function Noticias() {
       info: "Imagem região Sudeste",
       title: "Sudeste",
       description: "Principais destinos da região Sudeste",
+    
     },
 
     {
