@@ -1,18 +1,16 @@
 import styles from "../styles/noticaCard.module.css";
 
 import Image from 'next/image';
-import { useRouter } from "next/router";
 
 
-const NoticiaCard = ({photo, info, title, description, link}) => {
- 
+const NoticiaCard = ({photo, info, title, description, onClick}) => {
 
-    const handleClick = () => {
-      router.push(link); // Redireciona para a 
-    };
 
   return (
-    <div className={styles.card} onClick={handleClick} style={{ cursor: "pointer" }}>
+    <div className={styles.card} 
+    onClick={onClick} 
+    style={{ cursor: "pointer" }}
+    >
       <Image
         className={styles.CardImage}
         src= {photo}

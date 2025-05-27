@@ -58,6 +58,8 @@
 
 .descricao{
     font-size: 1rem;
+    text-align: left;
+    justify-content: left;
     color: #ffffffbe;
     margin-top: 0.4rem;
     line-height: 1;

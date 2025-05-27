@@ -8,7 +8,7 @@
 
 .bannerContainer{
     background: linear-gradient(135deg, rgba(4, 89, 89, 0.773), rgba(16, 145, 145, 0.5)), 
-    url('../../public/rio-redirecionamento.jpg');
+    url('../../../public/elevador-lacerda.jpg');
     background-size: cover;
     background-position: center;
     height:70vh;
@@ -104,7 +104,7 @@
 
 /* Card com as Notícias */
 
-.destinoCard{
+.CardContainer{
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -112,19 +112,47 @@
     justify-content: space-evenly;
     align-items: center;
     gap: 1rem;
-    margin-bottom: 10%;
+    margin-bottom: 3%;
 }
 
+.PaginationButtons{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    margin-bottom: 2%;
+    flex-direction: row;
+    align-content: center;
+    align-items: center;
+
+}
+
+.button{
+    padding: 0.3rem 3rem;
+    background-color: #109191;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+.pageInfo{
+    font-size: 1.2rem;
+    color: #045959;
+    font-weight: 500;
+    margin: 0 1rem;
+}
 /* Seção com Anuncio */
 
 .AnuncioSection{
-    max-height: 45vh;
+    max-height: 65vh;
     display: flex;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
     padding: 3%;
-    gap: 2rem;
+    gap: 15%;
     
 }
 
@@ -156,7 +184,7 @@
     color: #2B2B2B;
     line-height: 1.5;
     text-align: justify;
-    word-break: break-word;
+    word-break:normal;
 }
 
 .AnuncioImage{
@@ -171,7 +199,7 @@
 .AnuncioImg{
     border-radius: 16px;
     object-fit: cover;
-    width: 100%;
+    width: 30%;
     max-width: 280px;
     height: auto;
     aspect-ratio: 2 / 3;
@@ -224,7 +252,28 @@
 
 
 /* Responsividade para tablets */
-@media (max-width: 768px) {
+@media (max-width: 1440px) {
+  .AnuncioImage{
+    gap: 1rem;
+  }
+    .AnuncioImg{
+        max-width: 200px; 
+    }
+}
+
+@media (max-width: 1024px) {
+  .AnuncioImage{
+    gap: 1rem;
+  }
+    .AnuncioImg{
+        max-width: 200px; 
+    }
+}
+
+@media (max-width: 820px) {
+    .bannerContainer {
+        height: 50vh;
+    }
     .titleBanner {
         font-size: 2rem; 
     }
@@ -233,42 +282,50 @@
         font-size: 4rem; 
     }
 
-    .buttonBanner {
-        padding: 0.8rem 2rem; 
-        font-size: 1rem; 
-    }
-
     .AnuncioSection {
-        max-height: 40vh;
-        flex-direction: column; 
-        align-items: center; 
-        padding: 2rem;
+        min-height: 100vh;
+        width: 100%;
+        flex-direction: column;
+        padding: 2rem 1rem;
     }
     .AnuncioContent {
         width: 100%; 
         text-align: center;
+        justify-content: center;
+        flex-direction: column
     }
     .AnuncioTitle, .Highlight {
         font-size: 2rem;
     }
     .AnuncioText {
         font-size: 1.2rem;
+        margin: 5%;
     }
-    .AnuncioImage {
-        width: 100%; 
+    .AnuncioImage{
+        width: 100%;
+        display: flex;        
+        text-align: center;
         justify-content: center;
-    }
-    .AnuncioImg {
-        max-width: 100px; 
+        flex-direction: row;
+        flex-wrap: nowrap;
+        align-content: center;
+        align-items: center;  
+      }
+    .AnuncioImg{
+        max-width: 90%; 
     }
     .NoticiasSection {
         flex-direction: column;
       }
     
-    .NoticiasCard {
-        flex-direction: column;
-        align-items: center;
-    }
+   .CardContainer, .NoticiasCard {
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    height: auto;
+
+  }
+
 
     .NoticiasTitle {
         font-size: 1.5rem;
@@ -276,26 +333,78 @@
 
     .NoticiasText {
         font-size: 1.2rem; 
+      
     } 
-
+   
 }
 
 @media (max-width: 480px) {
+    .bannerContainer {
+        height: 40vh;
+    }
     .titleBanner {
-        font-size: 1.5rem;
+        font-size: 1rem;
     }
 
     .subtitleBanner {
-        font-size: 3rem;
+        font-size: 1.5rem;
+    }
+    .Title,
+    .NoticiasTitle {
+        margin: 0 auto 1rem auto;
+        display: block;
+        text-align: center;
     }
 
     .buttonBanner {
-        padding: 0.6rem 1.5rem;
+        padding: 0.6rem 1.2rem;
+        font-size: 0.8rem;
+    }
+
+    .Text,
+    .NoticiasText,
+    .AnuncioText {
+        text-align: justify;
+        margin-left: 1rem;
+        margin-right: 1rem;
+    }
+
+    .Title,
+    .NoticiasTitle {
+        font-size: 1rem;
+    }
+
+    .Text,
+    .NoticiasText,
+    .AnuncioText {
         font-size: 0.9rem;
     }
+    .AnuncioSection {
+    min-height: 80vh;
+    width: 100%;
+    flex-direction: column;
+    padding: 2rem 1rem;
+    }
+
+    .AnuncioTitle,
+    .Highlight {
+        font-size: 1.2rem;
+    }
+
+    .button,
+    .buttonReset {
+        font-size: 0.8rem;
+    }
+
+    .PaginationButtons {
+        flex-direction: column;
+        align-items: center;
+        width: 40%;  
+    }
+
 
     .NoticiasCard img, 
     .AnuncioImg {
-        max-width: 200px; 
+        max-width: 120px; 
     }
 }
