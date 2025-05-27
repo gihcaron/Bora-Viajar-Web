@@ -239,17 +239,16 @@
     line-height: 1;
 }
 
-.NoticiasCard{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    align-content: center;
-    justify-content: space-evenly;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 10%;
-}
+.NoticiasCard {
+    width: 100%;
+  }
 
+.NoticiasCardContainer {
+    display: grid;
+    gap: 24px;
+    justify-items: center;
+    align-items: stretch;
+  }
 
 /* Responsividade para tablets */
 @media (max-width: 1440px) {
