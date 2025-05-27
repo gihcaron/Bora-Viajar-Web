@@ -295,9 +295,9 @@ const Cadastro = () => {
             {...formItemLayout}
             form={form}
             name="register"
+            className={styles.form1}	
             onFinish={onFinish}
             initialValues={{ residence: ["Região", "Estado"], prefix: "86" }}
-            style={styles.form2}
             scrollToFirstError
           >
             <Form.Item
@@ -346,16 +346,6 @@ const Cadastro = () => {
                   required: true,
                   message: "Por favor, confirme sua senha!",
                 },
-                ({ getFieldValue }) => ({
-                  validator(_, value) {
-                    if (!value || getFieldValue("password") === value) {
-                      return Promise.resolve();
-                    }
-                    return Promise.reject(
-                      new Error("A nova senha digitada não confere!")
-                    );
-                  },
-                }),
               ]}
             >
               <Input.Password />
