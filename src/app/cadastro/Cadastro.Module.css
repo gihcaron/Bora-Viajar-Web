@@ -37,7 +37,6 @@
   font-weight: 700;
 }
 
-
 .TextContent{
     display: flex;
     flex-direction: column;
@@ -56,3 +55,77 @@
     height: 100vh;
 }
 
+.form{
+    background-color:#f0f4f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 1rem;
+    font-weight: 500;
+    margin:1rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 800%;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.form-grid{
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem 2rem;
+    width: 100%;
+}
+
+.form input,
+.form select,
+.form textarea{
+    background-color: rgba(255, 255, 255, 0.773);
+    color: blueviolet;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+    height: 48px;
+}
+
+.form2, .email,  .senha, .nome, .residencia, .genero, .termos, .telefone {
+    width: 100%;
+}
+.biografia{
+    min-height: 120px;
+    height: auto;
+    resize: vertical;
+}
+
+.form label{
+    margin-bottom: 0.3rem;
+    font-weight: 600;
+    color: #333;
+    display: block;
+}
+
+.form textarea{
+    min-height: 100px;
+    resize: vertical;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+}
+
+.form button{
+    margin-top: 1.5rem;
+    background-color: aquamarine;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}

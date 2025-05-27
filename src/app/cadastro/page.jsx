@@ -1,6 +1,6 @@
 "use client";
-import styles from "./Cadastro.module.css";
 import React, { useState } from "react";
+import styles from "./Cadastro.module.css";
 
 import {
   AutoComplete,
@@ -183,7 +183,7 @@ const Cadastro = () => {
     console.log("Received values of form: ", values);
   };
   const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
+    <Form.Item name="prefix" noStyle className={styles.telefone}>
       <Select style={{ width: 70 }}>
         <Option value="11">+11</Option>
         <Option value="12">+12</Option>
@@ -260,6 +260,7 @@ const Cadastro = () => {
       <Select style={{ width: 70 }}>
         <Option value="USD">$</Option>
         <Option value="CNY">¥</Option>
+        className={styles.selector}
       </Select>
     </Form.Item>
   );
@@ -296,12 +297,13 @@ const Cadastro = () => {
             name="register"
             onFinish={onFinish}
             initialValues={{ residence: ["Região", "Estado"], prefix: "86" }}
-            style={{ maxWidth: 600 }}
+            style={styles.form2}
             scrollToFirstError
           >
             <Form.Item
               name="email"
               label="E-mail"
+              className={styles.email}
               rules={[
                 {
                   type: "email",
@@ -319,6 +321,7 @@ const Cadastro = () => {
             <Form.Item
               name="Senha"
               label="Senha"
+              className={styles.senha}
               rules={[
                 {
                   required: true,
@@ -336,6 +339,7 @@ const Cadastro = () => {
               name="ConfirmarSenha"
               label="Confirme sua Senha"
               dependencies={["password"]}
+              className={styles.senha}
               hasFeedback
               rules={[
                 {
@@ -362,6 +366,7 @@ const Cadastro = () => {
               name="Nome de usuário"
               label="Nome de usuário"
               tooltip="Como você gostaria de ser chamado?"
+              className={styles.nome}
               rules={[
                 {
                   required: true,
@@ -376,6 +381,7 @@ const Cadastro = () => {
             <Form.Item
               name="residence"
               label="Habitual Residence"
+              className={styles.residencia}
               rules={[
                 {
                   type: "array",
@@ -400,6 +406,7 @@ const Cadastro = () => {
             <Form.Item
               name="Biografia"
               label="Biografia"
+              className={styles.biografia}
               rules={[
                 {
                   required: true,
@@ -411,8 +418,9 @@ const Cadastro = () => {
             </Form.Item>
 
             <Form.Item
-              name="Genero"
-              label="Genero"
+              name="Gênero"
+              label="Gênero"
+              className={styles.genero}
               rules={[
                 { required: true, message: "Favor, selecione seu gênero!" },
               ]}
@@ -428,6 +436,7 @@ const Cadastro = () => {
             <Form.Item
               name="Aceitar termos"
               valuePropName="checked"
+              className={styles.termos}
               rules={[
                 {
                   validator: (_, value) =>

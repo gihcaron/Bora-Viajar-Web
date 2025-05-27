@@ -1,0 +1,235 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+.contatoWrapper{
+    width: 100%;
+    background-color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-family: poppins, sans-serif;
+}
+
+.topBar{
+    background-color: #d1e9e9;
+    width: 100%;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    /* se decidirem tirar essa borda tira esses dois */
+    margin: 0;
+    padding: 0.5rem 0;
+}
+
+.form{
+    background-color: rgb(255, 255, 255);
+    width: 100%;
+    margin-top:3%;
+    display: flex;
+    flex-direction: column;
+    max-width: 500px;
+    /* box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); */
+    border-radius: 8px;
+    font-family: poppins, sans-serif;
+    font-size: 16px;
+}
+
+.title{
+    color: rgb(2, 114, 108);
+    font-size: 3rem;
+    margin-top: 0.5rem;
+}
+
+.subtitle{
+    margin: 0;
+    padding: 0.2rem;
+}
+
+.input {
+    background-color: #d1e9e9; 
+    color: #000000; 
+    border: 1px solid #00796b; 
+    padding: 0.5rem;
+    border-radius: 4px;
+    width: 90%;
+    font-size: 16px;
+    font-family: poppins, sans-serif;
+}
+.textarea {
+    background-color: #d1e9e9; 
+    border: 1px solid #00796b; 
+    padding: 0.5rem;
+    border-radius: 4px;
+    resize: none; 
+    width: 90%;
+}
+
+.submitButton{
+    color: rgb(255, 255, 255);
+    background-color: rgb(2, 114, 108);
+    border: none;
+    width: 20%;
+}
+
+.submitButton:hover{
+    background-color: rgb(9, 105, 102);
+}
+
+.mapBox{
+    width: 50%;
+    height: 300px;
+    margin-top: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoContainer{
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    gap: 1rem;
+    margin-top: 2rem;
+    margin-top: 2rem;
+    background-color: rgb(255, 255, 255);
+}
+
+.infoBox1{
+    background-color: rgb(151, 214, 207);
+    border-radius: 8px;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+.infoBox2{
+    background-color: rgb(116, 184, 176);
+    border-radius: 8px;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+.infoBox3{
+    background-color: rgb(62, 146, 136);
+    border-radius: 8px;
+    padding: 1rem;
+    color: white;
+    display: flex;
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s;
+}
+
+.contentRow{
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 2rem;
+    width: 100%;
+    flex-wrap: wrap;
+    align-items: center;
+}
+.contactImage{
+    width: 100%;
+    max-width: 500px;
+    height: auto;
+    border-radius: 10px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+}
+
+@media (max-width:780px){
+    .form{
+        width: 90%;
+        margin-top: 10%;
+    }
+
+    .title{
+        font-size: 2.5rem;
+        text-align: center;
+    }
+
+    .subtitle{
+        font-size: 1.2rem;
+        text-align: center;
+    }
+
+    .input, .textarea {
+        width: 100%;
+        font-size: 1rem;
+    }
+
+    .submitButton {
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 1rem;
+    }
+
+    .mapBox {
+        width: 100%;
+        height: 300px;
+    }
+    .infoContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+    .infoBox1, .infoBox2, .infoBox3 {
+        width: 90%;
+        margin-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .form {
+        width: 90%;
+        margin-top: 10%;
+    }
+
+    .title {
+        font-size: 2rem;
+        text-align: center;
+    }
+
+    .subtitle {
+        font-size: 1rem;
+        text-align: center;
+    }
+
+    .input, .textarea {
+        width: 100%;
+        font-size: 0.9rem;
+    }
+
+    .submitButton {
+        width: 100%;
+        padding: 0.7rem;
+        font-size: 1rem;
+    }
+
+    .mapBox {
+        width: 100%;
+        height: 300px;
+    }
+
+}

@@ -1,13 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 .headerWrapper {
-    width: 100%;
-    background-color: #d1e9e9;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
+  width: 100%;
+  background-color: #d1e9e9;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative; 
+  z-index: 5; 
+}
   .topBar {
     width: 100%;
     height: 90%;
@@ -100,6 +101,16 @@
     color: #91b9b9;
     transition: color 0.3s ease-in-out;
   }
+  
+  .menuButton{
+    border: none;
+    background: transparent;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    box-shadow: none;
+  
+  }
 
 
  
@@ -140,17 +151,35 @@
     .topBar {
       padding: 10px 10px;
     }
+    .menuIcon {
+      align-self: flex-end;
+    }
 
+    .loginLink {
+      font-size: 12px;
+      margin-right: 10px;
+    }
+
+    .searchInput {
+      font-size: 12px;
+    }
     .searchBox {
       max-width: 100%;
       margin: 5px 0;
     }
 
     .navBar {
+      display: none;
+      background-color: #cfe8e8;
       flex-direction: column;
-      align-items: flex-start;
+      align-items: center;
       gap: 5px;
-      padding: 5px 10px;
+      padding: 10px;
+      position: absolute;
+      top: 60px;
+      right: 0;
+      width: 100%;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     }
 
     .navLink {
@@ -159,5 +188,13 @@
 
     .logoImage {
       height: 80px;
+    }
+    .menuButton {
+      display: block;
+      border: none;
+    }
+
+    .navBar.open {
+      display: flex;
     }
   }
