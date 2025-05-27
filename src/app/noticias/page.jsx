@@ -69,6 +69,7 @@ export default function Noticias() {
       info: "Imagem região Nordeste",
       title: "Nordeste",
       description: "Principais destinos da região Nordeste",
+      link: "/regiaoNordeste",
     },
 
     {
