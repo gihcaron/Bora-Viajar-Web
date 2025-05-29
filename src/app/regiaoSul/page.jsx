@@ -6,6 +6,7 @@ import axios from "axios";
 import Loader from "../../components/Loader";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { toast } from "react-toastify";
 import PlaceCard from "../../components/PlaceCard";
 import styles from "./sul.module.css";
 
