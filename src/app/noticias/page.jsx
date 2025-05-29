@@ -7,7 +7,7 @@ import Loader from "../../components/Loader";
 import Header from "../../components/Header";
 import NoticiaCard from "../../components/NoticiaCard";
 import Footer from "../../components/Footer";
-import { Pagination, Modal } from 'antd'
+import { Pagination, Modal, Skeleton } from "antd";
 import NoticiaNewsCard from "../../components/NoticiaNewsCard";
 import styles from "./Noticias.module.css";
 import axios from "axios";
@@ -18,77 +18,85 @@ export default function Noticias() {
   const [isLoading, setIsLoading] = useState(true);
   const [allNews, setAllNews] = useState([]);
   const router = useRouter();
-  const cardsPerPage = 3
-  
+  const cardsPerPage = 3;
+
   // Regiões
   const [data, setData] = useState({
     current: 1,
     pageSize: cardsPerPage,
     destinos: [
-      
-          {
-            photo: "/norte.jpg",
-            info: "Imagem região Norte",
-            title: "Norte",
-            description: "Principais destinos da região Norte",
-            link: "/regiaoNorte",
-          },
-      
-          {
-            photo: "/nordeste.jpg",
-            info: "Imagem região Nordeste",
-            title: "Nordeste",
-            description: "Principais destinos da região Nordeste",
-            link: "/regiaoNordeste",
-          },
-      
-          {
-            photo: "/centro.jpg",
-            info: "Imagem região Centro-Oeste",
-            title: "Centro-Oeste",
-            description: "Principais destinos da região Centro-Oeste",
-            link: "/regiaoCentroOeste",
-          },
-      
-          {
-            photo: "/sudeste.jpg",
-            info: "Imagem região Sudeste",
-            title: "Sudeste",
-            description: "Principais destinos da região Sudeste",
-            link: "/regiaoSudeste",
-          
-          },
-      
-          {
-            photo: "/sul.jpg",
-            info: "Imagem região Sul",
-            title: "Sul",
-            description: "Principais destinos da região Sul",
-            link: "/regiaoSul",
-          },
-          
-        ],
-  })
+      {
+        photo: "/norte.jpg",
+        info: "Imagem região Norte",
+        title: "Norte",
+        description: "Principais destinos da região Norte",
+        link: "/regiaoNorte",
+      },
+
+      {
+        photo: "/nordeste.jpg",
+        info: "Imagem região Nordeste",
+        title: "Nordeste",
+        description: "Principais destinos da região Nordeste",
+        link: "/regiaoNordeste",
+      },
+
+      {
+        photo: "/centro.jpg",
+        info: "Imagem região Centro-Oeste",
+        title: "Centro-Oeste",
+        description: "Principais destinos da região Centro-Oeste",
+        link: "/regiaoCentroOeste",
+      },
+
+      {
+        photo: "/sudeste.jpg",
+        info: "Imagem região Sudeste",
+        title: "Sudeste",
+        description: "Principais destinos da região Sudeste",
+        link: "/regiaoSudeste",
+      },
+
+      {
+        photo: "/sul.jpg",
+        info: "Imagem região Sul",
+        title: "Sul",
+        description: "Principais destinos da região Sul",
+        link: "/regiaoSul",
+      },
+    ],
+  });
 
   const [dataNews, setDataNews] = useState({
     current: 1,
     pageSize: cardsPerPage,
     news: [],
-  })
+  });
+
+  const  [modalInfo, setModalInfo] = useState({
+    visible: false,
+    news: null,
+    name: null,
+    photo: null,
+    place: null,
+    text: null,
+})
 
   const fetchNews = async (news = "") => {
     setIsLoading(true);
 
     try {
-      const { data : newsData } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/news`,);
+      const { data: newsData } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/news`
+      );
       setNews(newsData);
       setDataNews((prev) => ({
         ...prev,
         news: newsData || [],
-      }))
+      }));
       if (!newsData) {
         setAllNews([]);
-      } else  {
+      } else {
         setAllNews(newsData);
       }
     } catch (error) {
@@ -97,6 +105,25 @@ export default function Noticias() {
       setIsLoading(false);
     }
   };
+
+  const openModal = async (news) => {
+    setModalInfo({
+        visible: true, 
+        news: null,
+        loading:true})
+
+    try{
+      const { data: newsData } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/news/${news.id}`
+      );
+        setModalInfo((m)=> ({
+            ...m, 
+            news,
+            loading:false}))
+    } catch(error){
+        setModalInfo((m)=> ({...m, loading:false}))
+    };
+}
 
   useEffect(() => {
     fetchNews();
@@ -114,24 +141,15 @@ export default function Noticias() {
     return <Loader />;
   }
 
-  const cardData = {
-    photo: "/rio-redirecionamento.jpg",
-    info: "Descrição da imagem",
-    title: "Título do Card",
-    description: "Descrição do Card",
-    link: "/noticia",
-  };
-
   const paginatedDestinos = () => {
-      const start = (data.current - 1) * data.pageSize;
-      return data.destinos.slice(start, start + data.pageSize);
+    const start = (data.current - 1) * data.pageSize;
+    return data.destinos.slice(start, start + data.pageSize);
   };
 
   const paginatedNews = () => {
-      const start = (dataNews.current - 1) * dataNews.pageSize;
-      return dataNews.news.slice(start, start + data.pageSize);
+    const start = (dataNews.current - 1) * dataNews.pageSize;
+    return dataNews.news.slice(start, start + data.pageSize);
   };
-
 
   return (
     <div className={styles.Container}>
@@ -165,16 +183,16 @@ export default function Noticias() {
           ))}
         </div>
         <div className={styles.PaginationContainer}>
-          <Pagination 
-          className={styles.Pagination}
-          defaultCurrent={1} 
-          current={data.current}
-          pageSize={data.pageSize}
-          total={data.destinos.length}
-          onChange={(page, size) => {
-            setData((d) => ({...d, current: page, pageSize: size}));
+          <Pagination
+            className={styles.Pagination}
+            defaultCurrent={1}
+            current={data.current}
+            pageSize={data.pageSize}
+            total={data.destinos.length}
+            onChange={(page, size) => {
+              setData((d) => ({ ...d, current: page, pageSize: size }));
             }}
-         />
+          />
         </div>
       </div>
 
@@ -232,26 +250,95 @@ export default function Noticias() {
                 place={news.place}
                 name={news.name}
                 link={`/news/${news.id}`}
-                onClick={() => router.push(`/news/${news.id}`)}
+                onClick={() => openModal(news)}   
               />
             ))}
           </div>
+
+          {/* Modal */}
+
+          <Modal 
+          className={styles.Modal}
+          open={modalInfo.visible}
+          onOk={() =>
+            setModalInfo( {
+              visible: false,
+              news: null,
+              name: null,
+              photo: null,
+              place: null,
+              text: null,
+            })
+          }
+          onCancel={() =>
+            setModalInfo( {
+              visible: false,
+              news: null,
+              name: null,
+              photo: null,
+              place: null,
+              text: null,
+            })
+          }
+          width={{
+            xs: '90%',
+            sm: '80%',
+            md: '70%',
+            lg: '60%',
+            xl: '50%',
+            xxl: '40%',
+          }}
+
+          okButtonProps={{
+            style: { backgroundColor: '#109191', 
+            color: '#fff' }, 
+          }}
+          cancelButtonProps={{
+            style: { border: '#109191 1px solid', 
+            color: '#109191'
+             }, 
+          }}
+
+          >
+            {modalInfo.loading ? (
+             <Skeleton active />
+            ) : (
+              modalInfo.news && (
+                <div className={styles.ModalContent}>
+                  <div className={styles.ModalImageContainer}>
+                  <Image
+                    src={modalInfo.news.photo || "/noticia.jpeg"}
+                    alt={modalInfo.news.name}
+                    width={500}
+                    height={300}
+                    className={styles.ModalImage}
+                  />
+                  </div>
+                  <h2 className={styles.ModalTitle}>{modalInfo.news.name}</h2>
+                  <p className={styles.ModalPlace}>{modalInfo.news.place}</p>
+                  <p className={styles.ModalText}>{modalInfo.news.text}</p>
+                </div>
+              )
+            )}          
+
+          </Modal>
+
           <div className={styles.PaginationContainer}>
-          <Pagination 
-          className={styles.Pagination}
-          defaultCurrent={1} 
-          current={dataNews.current}
-          pageSize={dataNews.pageSize}
-          total={dataNews.news.length}
-          onChange={(page, size) => {
-            setDataNews((prev) => ({
-              ...prev, 
-              current: page, 
-              pageSize: size,
-              }));
-            }}
-         />
-        </div>
+            <Pagination
+              className={styles.Pagination}
+              defaultCurrent={1}
+              current={dataNews.current}
+              pageSize={dataNews.pageSize}
+              total={dataNews.news.length}
+              onChange={(page, size) => {
+                setDataNews((prev) => ({
+                  ...prev,
+                  current: page,
+                  pageSize: size,
+                }));
+              }}
+            />
+          </div>
         </div>
       </div>
 

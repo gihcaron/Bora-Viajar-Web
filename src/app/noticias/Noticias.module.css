@@ -115,6 +115,33 @@
     margin-bottom: 3%;
 }
 
+/* Estilização do Modal */
+
+.Modal{
+    background-color: #109191;
+    border-radius: 10px;
+    padding: 0.5rem;
+}
+
+.ModalImage{
+    border-radius: 15px;
+}
+
+.ModalImageContainer{
+    margin: 1rem;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.ModalTitle{
+    font-size: 1.5rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+}
+
 /* Paginação */
 
 .PaginationContainer{
@@ -122,6 +149,7 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    margin: 1rem;
     margin-bottom: 2rem;
 }
 
