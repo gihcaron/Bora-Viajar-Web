@@ -137,10 +137,34 @@
 
 .ModalTitle{
     font-size: 1.5rem;
-    font-weight: 600;
-    text-transform: uppercase;
+    font-weight: 700;
+    color: #045959;
     margin-bottom: 0.5rem;
 }
+
+.Place{
+    display: flex;
+    align-content: center;
+    justify-content: flex-start;
+    align-items: center;
+ }
+
+.ModalPlace{
+    padding: 0.4rem 1rem;
+    border-radius: 30px;
+    background-color: #045959;
+    font-size: 1rem;
+    color: #ffffff;
+    font-weight: 500;
+    margin: 0.5rem  0 0.5rem;
+}
+
+.ModalText{
+    margin: 0.5rem 0;
+    line-height: 1.5;
+    text-align: justify;
+}
+
 
 /* Paginação */
 
@@ -294,6 +318,10 @@
 
     .subtitleBanner {
         font-size: 4rem; 
+    }
+
+    .ModalImage {
+        max-width: 100%;
     }
 
     .AnuncioSection {

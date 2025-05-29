@@ -73,14 +73,14 @@ export default function Noticias() {
     news: [],
   });
 
-  const  [modalInfo, setModalInfo] = useState({
+  const [modalInfo, setModalInfo] = useState({
     visible: false,
     news: null,
     name: null,
     photo: null,
     place: null,
     text: null,
-})
+  });
 
   const fetchNews = async (news = "") => {
     setIsLoading(true);
@@ -108,22 +108,24 @@ export default function Noticias() {
 
   const openModal = async (news) => {
     setModalInfo({
-        visible: true, 
-        news: null,
-        loading:true})
+      visible: true,
+      news: null,
+      loading: true,
+    });
 
-    try{
+    try {
       const { data: newsData } = await axios.get(
         `${process.env.NEXT_PUBLIC_API_URL}/news/${news.id}`
       );
-        setModalInfo((m)=> ({
-            ...m, 
-            news,
-            loading:false}))
-    } catch(error){
-        setModalInfo((m)=> ({...m, loading:false}))
-    };
-}
+      setModalInfo((m) => ({
+        ...m,
+        news,
+        loading: false,
+      }));
+    } catch (error) {
+      setModalInfo((m) => ({ ...m, loading: false }));
+    }
+  };
 
   useEffect(() => {
     fetchNews();
@@ -250,77 +252,73 @@ export default function Noticias() {
                 place={news.place}
                 name={news.name}
                 link={`/news/${news.id}`}
-                onClick={() => openModal(news)}   
+                onClick={() => openModal(news)}
               />
             ))}
           </div>
 
           {/* Modal */}
 
-          <Modal 
-          className={styles.Modal}
-          open={modalInfo.visible}
-          onOk={() =>
-            setModalInfo( {
-              visible: false,
-              news: null,
-              name: null,
-              photo: null,
-              place: null,
-              text: null,
-            })
-          }
-          onCancel={() =>
-            setModalInfo( {
-              visible: false,
-              news: null,
-              name: null,
-              photo: null,
-              place: null,
-              text: null,
-            })
-          }
-          width={{
-            xs: '90%',
-            sm: '80%',
-            md: '70%',
-            lg: '60%',
-            xl: '50%',
-            xxl: '40%',
-          }}
-
-          okButtonProps={{
-            style: { backgroundColor: '#109191', 
-            color: '#fff' }, 
-          }}
-          cancelButtonProps={{
-            style: { border: '#109191 1px solid', 
-            color: '#109191'
-             }, 
-          }}
-
+          <Modal
+            className={styles.Modal}
+            open={modalInfo.visible}
+            onOk={() =>
+              setModalInfo({
+                visible: false,
+                news: null,
+                name: null,
+                photo: null,
+                place: null,
+                text: null,
+              })
+            }
+            onCancel={() =>
+              setModalInfo({
+                visible: false,
+                news: null,
+                name: null,
+                photo: null,
+                place: null,
+                text: null,
+              })
+            }
+            width={{
+              xs: "90%",
+              sm: "80%",
+              md: "70%",
+              lg: "60%",
+              xl: "50%",
+              xxl: "40%",
+            }}
+            okButtonProps={{
+              style: { backgroundColor: "#109191", color: "#fff" },
+            }}
+            cancelButtonProps={{
+              style: { border: "#109191 1px solid", color: "#109191" },
+            }}
           >
             {modalInfo.loading ? (
-             <Skeleton active />
+              <Skeleton active />
             ) : (
               modalInfo.news && (
                 <div className={styles.ModalContent}>
                   <div className={styles.ModalImageContainer}>
-                  <Image
-                    src={modalInfo.news.photo || "/noticia.jpeg"}
-                    alt={modalInfo.news.name}
-                    width={500}
-                    height={300}
-                    className={styles.ModalImage}
-                  />
+                    <Image
+                      src={modalInfo.news.photo || "/noticia.jpeg"}
+                      alt={modalInfo.news.name}
+                      width={200}
+                      height={200}
+                      className={styles.ModalImage}
+                    />
                   </div>
                   <h2 className={styles.ModalTitle}>{modalInfo.news.name}</h2>
-                  <p className={styles.ModalPlace}>{modalInfo.news.place}</p>
+                  <div className={styles.Place}>
+                    <p className={styles.ModalPlace}>{modalInfo.news.place}</p>
+                  </div>
                   <p className={styles.ModalText}>{modalInfo.news.text}</p>
                 </div>
               )
-            )}          
-
+            )}
           </Modal>
 
           <div className={styles.PaginationContainer}>
