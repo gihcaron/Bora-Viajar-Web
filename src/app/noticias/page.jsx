@@ -7,18 +7,74 @@ import Loader from "../../components/Loader";
 import Header from "../../components/Header";
 import NoticiaCard from "../../components/NoticiaCard";
 import Footer from "../../components/Footer";
+import { Pagination, Modal } from 'antd'
 import NoticiaNewsCard from "../../components/NoticiaNewsCard";
 import styles from "./Noticias.module.css";
 import axios from "axios";
 
 export default function Noticias() {
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = useState(true);
   const [news, setNews] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [allNews, setAllNews] = useState([]);
-  const [current, setCurrentDestino] = useState(0);
-  const [currentNews, setCurrentNews] = useState(0);
   const router = useRouter();
+  const cardsPerPage = 3
+  
+  // Regiões
+  const [data, setData] = useState({
+    current: 1,
+    pageSize: cardsPerPage,
+    destinos: [
+      
+          {
+            photo: "/norte.jpg",
+            info: "Imagem região Norte",
+            title: "Norte",
+            description: "Principais destinos da região Norte",
+            link: "/regiaoNorte",
+          },
+      
+          {
+            photo: "/nordeste.jpg",
+            info: "Imagem região Nordeste",
+            title: "Nordeste",
+            description: "Principais destinos da região Nordeste",
+            link: "/regiaoNordeste",
+          },
+      
+          {
+            photo: "/centro.jpg",
+            info: "Imagem região Centro-Oeste",
+            title: "Centro-Oeste",
+            description: "Principais destinos da região Centro-Oeste",
+            link: "/regiaoCentroOeste",
+          },
+      
+          {
+            photo: "/sudeste.jpg",
+            info: "Imagem região Sudeste",
+            title: "Sudeste",
+            description: "Principais destinos da região Sudeste",
+            link: "/regiaoSudeste",
+          
+          },
+      
+          {
+            photo: "/sul.jpg",
+            info: "Imagem região Sul",
+            title: "Sul",
+            description: "Principais destinos da região Sul",
+            link: "/regiaoSul",
+          },
+          
+        ],
+  })
+
+  const [dataNews, setDataNews] = useState({
+    current: 1,
+    pageSize: cardsPerPage,
+    news: [],
+  })
 
   const fetchNews = async (news = "") => {
     setIsLoading(true);
@@ -26,6 +82,10 @@ export default function Noticias() {
     try {
       const { data : newsData } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/news`,);
       setNews(newsData);
+      setDataNews((prev) => ({
+        ...prev,
+        news: newsData || [],
+      }))
       if (!newsData) {
         setAllNews([]);
       } else  {
@@ -54,50 +114,6 @@ export default function Noticias() {
     return <Loader />;
   }
 
-  // Regiões
-
-  const destinos = [
-    {
-      photo: "/norte.jpg",
-      info: "Imagem região Norte",
-      title: "Norte",
-      description: "Principais destinos da região Norte",
-      link: "/regiaoNorte",
-    },
-
-    {
-      photo: "/nordeste.jpg",
-      info: "Imagem região Nordeste",
-      title: "Nordeste",
-      description: "Principais destinos da região Nordeste",
-      link: "/regiaoNordeste",
-    },
-
-    {
-      photo: "/centro.jpg",
-      info: "Imagem região Centro-Oeste",
-      title: "Centro-Oeste",
-      description: "Principais destinos da região Centro-Oeste",
-      link: "/regiaoCentroOeste",
-    },
-
-    {
-      photo: "/sudeste.jpg",
-      info: "Imagem região Sudeste",
-      title: "Sudeste",
-      description: "Principais destinos da região Sudeste",
-      link: "/regiaoSudeste",
-    
-    },
-
-    {
-      photo: "/sul.jpg",
-      info: "Imagem região Sul",
-      title: "Sul",
-      description: "Principais destinos da região Sul",
-      link: "/regiaoSul",
-    },
-  ];
   const cardData = {
     photo: "/rio-redirecionamento.jpg",
     info: "Descrição da imagem",
@@ -106,49 +122,15 @@ export default function Noticias() {
     link: "/noticia",
   };
 
-  //  Paginação 
-  
-  const cardsPorPagina = 3;
-  const totalPaginas = Math.ceil(destinos.length / cardsPorPagina);
+  const paginatedDestinos = () => {
+      const start = (data.current - 1) * data.pageSize;
+      return data.destinos.slice(start, start + data.pageSize);
+  };
 
-  //  Paginação Destinos
-
-  function nextCard() {
-    setCurrentDestino((prev) =>
-      prev + cardsPorPagina >= destinos.length ? 0 : prev + cardsPorPagina
-    );
-  }
-
-  function prevCard() {
-    setCurrentDestino((prev) =>
-      prev - cardsPorPagina < 0
-        ? (totalPaginas - 1) * cardsPorPagina
-        : prev - cardsPorPagina
-    );
-  }
-
-  const cardsParaExibir = [];
-  for (let i = 0; i < cardsPorPagina; i++) {
-    const id = (current + i) % destinos.length;
-    cardsParaExibir.push(destinos[id]);
-  }
-
-  //  Paginação para notícias
-  
-  function nextCard() {
-    setCurrentNews((prev) =>
-      prev + cardsPorPagina >= news.length ? 0 : prev + cardsPorPagina
-    );
-  }
-
-  function prevCard() {
-    setCurrentNews((prev) =>
-      prev - cardsPorPagina < 0
-        ? (totalPaginas - 1) * cardsPorPagina
-        : prev - cardsPorPagina
-    );
-  }
-
+  const paginatedNews = () => {
+      const start = (dataNews.current - 1) * dataNews.pageSize;
+      return dataNews.news.slice(start, start + data.pageSize);
+  };
 
 
   return (
@@ -171,7 +153,7 @@ export default function Noticias() {
         </div>
 
         <div className={styles.CardContainer}>
-          {cardsParaExibir.map((destino, id) => (
+          {paginatedDestinos().map((destino, id) => (
             <NoticiaCard
               key={destino.title + id}
               photo={destino.photo}
@@ -182,18 +164,17 @@ export default function Noticias() {
             />
           ))}
         </div>
-        <div className={styles.PaginationButtons}>
-          <button className={styles.button} onClick={prevCard}>
-            Anterior
-          </button>
-
-          <span className={styles.pageInfo}>
-            {Math.floor(current / cardsPorPagina) + 1} / {totalPaginas}
-          </span>
-
-          <button className={styles.button} onClick={nextCard}>
-            Próximo
-          </button>
+        <div className={styles.PaginationContainer}>
+          <Pagination 
+          className={styles.Pagination}
+          defaultCurrent={1} 
+          current={data.current}
+          pageSize={data.pageSize}
+          total={data.destinos.length}
+          onChange={(page, size) => {
+            setData((d) => ({...d, current: page, pageSize: size}));
+            }}
+         />
         </div>
       </div>
 
@@ -243,7 +224,7 @@ export default function Noticias() {
 
         <div className={styles.NoticiasCard}>
           <div className={styles.NoticiasCardContainer}>
-            {news.map((news) => (
+            {paginatedNews().map((news) => (
               <NoticiaNewsCard
                 key={news.id}
                 photo={news.photo ? news.photo : "/noticia.jpeg"}
@@ -255,20 +236,23 @@ export default function Noticias() {
               />
             ))}
           </div>
+          <div className={styles.PaginationContainer}>
+          <Pagination 
+          className={styles.Pagination}
+          defaultCurrent={1} 
+          current={dataNews.current}
+          pageSize={dataNews.pageSize}
+          total={dataNews.news.length}
+          onChange={(page, size) => {
+            setDataNews((prev) => ({
+              ...prev, 
+              current: page, 
+              pageSize: size,
+              }));
+            }}
+         />
         </div>
-         {/* <div className={styles.PaginationButtons}>
-          <button className={styles.button} onClick={prevCard}>
-            Anterior
-          </button>
-
-          <span className={styles.pageInfo}>
-            {Math.floor(currentNews / cardsPorPagina) + 1} / {totalPaginas}
-          </span>
-
-          <button className={styles.button} onClick={nextCard}>
-            Próximo
-          </button>
-        </div> */}
+        </div>
       </div>
 
       <Footer />

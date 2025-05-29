@@ -115,35 +115,21 @@
     margin-bottom: 3%;
 }
 
-.PaginationButtons{
+/* Paginação */
+
+.PaginationContainer{
     display: flex;
-    gap: 1rem;
-    justify-content: center;
-    margin-bottom: 2%;
     flex-direction: row;
-    align-content: center;
-    align-items: center;
-
-}
-
-.button{
-    padding: 0.3rem 3rem;
-    background-color: #109191;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
     justify-content: center;
-    text-align: center;
+    align-items: center;
+    margin-bottom: 2rem;
 }
-.pageInfo{
-    font-size: 1.2rem;
-    color: #045959;
-    font-weight: 500;
-    margin: 0 1rem;
+
+.Pagination {
+    display: flex;
+    gap: 0.5rem;
 }
+
 /* Seção com Anuncio */
 
 .AnuncioSection{
