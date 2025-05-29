@@ -1,25 +1,41 @@
+.ant-typography,
+.ant-btn,
+.ant-input,
+.ant-select,
+.ant-checkbox-wrapper,
+.ant-form,
+.ant-menu,
+.ant-modal,
+.ant-notification,
+.ant-radio-wrapper,
+.ant-tabs,
+.ant-table,
+.ant-pagination {
+  font-family: 'Poppins', sans-serif !important;
+}
+
 .container{
     display: flex;
     height: 100vh;
     font-family: poppins, sans-serif;
+    flex-wrap: wrap;
 }
 
 .LeftContainer{
     flex: 1;
-    height: 100vh;
-   background: linear-gradient(135deg, rgba(4, 89, 89, 0.773), rgba(16, 145, 145, 0.5)), 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, rgba(4, 89, 89, 0.773), rgba(16, 145, 145, 0.5)), 
     url('../../../public/rio-redirecionamento.jpg');
     background-size: cover;
     background-position: center;
-    width: 50%;
-    display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
     text-align: center;
     border-top-right-radius: 50px;
     border-bottom-right-radius: 50px;
     color: white;
+    min-width: 300px;
 }
 
 .BoraLogo{
@@ -38,26 +54,30 @@
 }
 
 .TextContent{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: left;
     font-size: 2.5rem;
     font-weight: 600;
     word-break: break-word;
-    height: 100%;
     margin:2rem;
 }
+.LeftContainer, .RightContainer{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .RightContainer{
     flex: 1;
-    width: 50%;
-    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 300px;
+    background-color: rgb(255, 255, 255);
+    flex-direction: column;
 }
 
 .form{
-    background-color:#f0f4f8;
-    display: flex;
+    background-color:#ffffff;
     flex-direction: column;
     align-items: center;
     font-size: 1rem;
@@ -65,9 +85,10 @@
     margin:1rem auto;
     padding: 2rem;
     border-radius: 12px;
-    width: 90%;
-    max-width: 800%;
+    width: 100%;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    color: #fff;
 }
 
 .form-grid{
@@ -81,7 +102,7 @@
 .form select,
 .form textarea{
     background-color: rgba(255, 255, 255, 0.773);
-    color: blueviolet;
+    color: rgb(20, 117, 104);
     font-size: 1rem;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -104,7 +125,6 @@
     margin-bottom: 0.3rem;
     font-weight: 600;
     color: #333;
-    display: block;
 }
 
 .form textarea{
@@ -119,7 +139,7 @@
 
 .form button{
     margin-top: 1.5rem;
-    background-color: aquamarine;
+    background-color: rgb(22, 136, 117);
     color: #fff;
     font-size: 1rem;
     font-weight: bold;
@@ -128,4 +148,22 @@
     padding: 0.8rem 2rem;
     cursor: pointer;
     transition: background-color 0.3s ease;
+}
+
+.ant-checkbox-wrapper{
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: rgb(114, 205, 221);
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    flex-wrap: nowrap;
+    white-space: normal;
+    width: 100%;
+}
+
+.ant-checkbox-wrapper a{
+    white-space: nowrap;
+    font-weight: bold;
+    color: #fff;
 }
