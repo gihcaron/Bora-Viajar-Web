@@ -14,7 +14,7 @@ const Footer = () => {
   ];
 
   const Redes = [
-    { url: "#", icon: "/instagram.png", text: "📸 Instagram" },
+    { url: "#", text: "📸 Instagram" },
     { url: "#", text: "🎵 TikTok" },
     { url: "#", text: "🦜 Twitter" },
     { url: "#", text: "📼 YouTube" },
