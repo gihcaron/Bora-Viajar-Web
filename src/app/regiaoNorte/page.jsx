@@ -6,11 +6,12 @@ import axios from "axios";
 import Loader from "../../components/Loader";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { toast } from "react-toastify";
 import PlaceCard from "../../components/PlaceCard";
 import styles from "./Regioes.module.css";
 
 export default function Noticias() {
-  const [loading, setLoading] = React.useState(true);
+  const [loading, setLoading] = useState(true);
   
   const [data, setData] = useState({
         touristicPoints: [], 

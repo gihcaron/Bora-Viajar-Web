@@ -5,7 +5,7 @@ const nextConfig = {
       {
         protocol: 'http',
         // ou localhost ou o ip da maquina que esta rodando o servidor
-        hostname: '10.88.200.177',
+        hostname: 'localhost',
         
         port: '3000',
         pathname: '/uploads/**',
