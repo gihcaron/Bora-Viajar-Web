@@ -297,7 +297,7 @@ const Cadastro = () => {
             name="register"
             onFinish={onFinish}
             initialValues={{ residence: ["Região", "Estado"], prefix: "86" }}
-            style={styles.form2}
+            className={styles.form2}
             scrollToFirstError
           >
             <Form.Item
@@ -419,8 +419,7 @@ const Cadastro = () => {
 
             <Form.Item
               name="Gênero"
-              label="Gênero"
-              className={styles.genero}
+ label={<label className={styles.label}>Gênero</label>}              className={styles.genero}
               rules={[
                 { required: true, message: "Favor, selecione seu gênero!" },
               ]}
@@ -429,7 +428,7 @@ const Cadastro = () => {
                 <Option value="male">Homem</Option>
                 <Option value="female">Mulher</Option>
                 <Option value="other">Outro</Option>
-                <Option value="other">Prefiro não informar</Option>
+                <Option value="none">Prefiro não informar</Option>
               </Select>
             </Form.Item>
 
@@ -451,7 +450,7 @@ const Cadastro = () => {
             >
               <Checkbox>
                 Eu li e concordo com os{" "}
-                <a href="">termos de uso e privacidade</a>
+                <a href="/termos">termos de uso e privacidade</a>
               </Checkbox>
             </Form.Item>
             <Form.Item {...tailFormItemLayout}>
