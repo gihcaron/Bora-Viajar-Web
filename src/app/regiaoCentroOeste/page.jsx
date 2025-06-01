@@ -6,6 +6,7 @@ import axios from "axios";
 import Loader from "../../components/Loader";
 import Header from "../../components/Header";
 import Footer from "../../components/Footer";
+import { toast } from "react-toastify";
 import PlaceCard from "../../components/PlaceCard";
 import styles from "./CentroOeste.module.css";
 
@@ -19,11 +20,10 @@ export default function Noticias() {
   });
 
   useEffect(() => {
-    const fetchNorte = async () => {
+    const fetchCentro = async () => {
       try {
         const { data: regions } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/regions`,);
         const centroPoints = regions.filter((region) => region.region === "Centro-Oeste");
-
 
         setData({
           touristicPoints: centroPoints,
@@ -37,7 +37,7 @@ export default function Noticias() {
         setData((d) => ({ ...d, loading: false }));
       }
     };
-    fetchNorte();
+    fetchCentro();
 
   }, [])
 
