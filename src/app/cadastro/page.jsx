@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Cadastro.module.css";
+import { Skeleton } from "antd";
 
 import {
   AutoComplete,
@@ -155,6 +156,8 @@ const residences = [
     ],
   },
 ];
+
+
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -278,19 +281,37 @@ const Cadastro = () => {
     label: website,
     value: website,
   }));
+  
+    const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 1500); 
+    return () => clearTimeout(timer); 
+  }, []);
+
+
   return (
     <div className={styles.container}>
       <div className={styles.LeftContainer}>
+                <h1 className={styles.title}>Cadastre se </h1>
+        <p className={styles.subtitle}>
+          Crie uma conta para começar a planejar sua próxima viagem!
+        </p>
         <h1 className={styles.BoraLogo}>
           {" "}
           Bora <span className={styles.hightlight}> Viajar</span>
         </h1>
-        <p className={styles.TextContent}> Sua próxima aventura começa aqui!</p>
       </div>
       <div className={styles.RightContainer}>
         <div className={styles.singnIn}></div>
         <div className={styles.head}></div>
         <div className={styles.form}>
+          {!loading ? (
+            <Skeleton active paragraph={{ rows: 10 }} />
+          ) : (
+            <h1 className={styles.formTitle}>Formulário de Cadastro</h1>
+          )}
           <Form
             {...formItemLayout}
             form={form}
@@ -419,7 +440,7 @@ const Cadastro = () => {
 
             <Form.Item
               name="Gênero"
- label={<label className={styles.label}>Gênero</label>}              className={styles.genero}
+              label={<label className={styles.label}>Gênero</label>} className={styles.genero}
               rules={[
                 { required: true, message: "Favor, selecione seu gênero!" },
               ]}
@@ -442,8 +463,8 @@ const Cadastro = () => {
                     value
                       ? Promise.resolve()
                       : Promise.reject(
-                          new Error("Você deve aceitar os termos!")
-                        ),
+                        new Error("Você deve aceitar os termos!")
+                      ),
                 },
               ]}
               {...tailFormItemLayout}
