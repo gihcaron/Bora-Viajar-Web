@@ -84,10 +84,11 @@
     width: 100%;
     max-width: 1200px;
     display: flex;
+
     justify-content: space-evenly;
-    padding: 10px 0;
+    padding: 20px;
     background-color: #cfe8e8;
-    box-sizing: border-box;
+
   }
   
   .navLink {
@@ -103,13 +104,22 @@
   }
   
   .menuButton{
+    display: none;
     border: none;
     background: transparent;
-    padding: 0;
-    margin: 0;
+    padding: 8px;
+    margin: 8px;
     cursor: pointer;
     box-shadow: none;
-  
+    z-index: 1001;
+    width: 40px;
+    height: 40px;
+  }
+
+  .menuButton image{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
   }
 
 
