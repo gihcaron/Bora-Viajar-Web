@@ -1,24 +1,30 @@
 "use client";
 
 import React, { useState } from "react";
-import { Button, Form, Input, Rate, Skeleton } from "antd";
+import { Button, Form, Input, Rate, Skeleton, message } from "antd";
 import styles from "../contato/Contato.module.css";
 import Header from "../../components/Header";
 import Image from "next/image";
 import Footer from "../../components/Footer";
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const Contato = () => {
   const [formDisabled, setFormDisabled] = useState(false);
   const [loading, setLoading] = useState(false);
+  const [form] = Form.useForm();
 
   const onFinish = (values) => {
     console.log("Form values:", values);
     setLoading(true);
     setFormDisabled(true);
+
     setTimeout(() => {
       setLoading(false);
       setFormDisabled(false);
+      form.resetFields();
+      toast.success("Mensagem enviada com sucesso!");
     }, 2000);
   };
 
@@ -155,6 +161,8 @@ const Contato = () => {
       </div>
       <div>
         <Footer />
+              <ToastContainer position="top-right" autoClose={3000} />
+
       </div>
     </div>
   );
