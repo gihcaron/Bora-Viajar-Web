@@ -1,4 +1,4 @@
-![Imagem do Projeto](URL_DA_IMAGEM) <!-- Substitua pela URL da imagem do seu projeto -->
+![Capa do Projeto](./public/capa-de-readme.png)
 
 # Bora Viajar! - Rede Social para Turistas 🛫
 

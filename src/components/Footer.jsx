@@ -1,6 +1,7 @@
 "use client";
 
 import Icon from "@ant-design/icons";
+import { FaInstagram, FaTiktok, FaTwitter, FaYoutube } from "react-icons/fa";
 import styles from "./../styles/Footer.module.css";
 
 import FooterLinks from "./FooterLinks";
@@ -14,10 +15,10 @@ const Footer = () => {
   ];
 
   const Redes = [
-    { url: "#", text: "📸 Instagram" },
-    { url: "#", text: "🎵 TikTok" },
-    { url: "#", text: "🦜 Twitter" },
-    { url: "#", text: "📼 YouTube" },
+    { url: "#", text: "Instagram", icon: <FaInstagram /> },
+    { url: "#", text: "TikTok", icon: <FaTiktok /> },
+    { url: "#", text: "Twitter", icon: <FaTwitter /> },
+    { url: "#", text: "YouTube", icon: <FaYoutube /> },
   ];
 
   return (
@@ -32,7 +33,8 @@ const Footer = () => {
           </div>
           <p className={styles.contentTitle}>Onde histórias ganham vida!</p>
           <p className={styles.content}>
-            Viva a magia de colecionar momentos, com as melhores viagens nacionais com as melhores companhias. Se junte com a gente, vem pro Bora Viajar!
+            Viva a magia de colecionar momentos, com as melhores viagens nacionais
+            com as melhores companhias. Se junte com a gente, vem pro Bora Viajar!
           </p>
         </div>
 
