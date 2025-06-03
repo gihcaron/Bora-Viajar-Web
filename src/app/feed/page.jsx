@@ -124,7 +124,7 @@ export default function HomePage() {
 
       {/* Seções de cidades */}
       <Cidades
-        cidade="SALVADOR - BA"
+        cidade="NOVIDADES!"
         pontos={[
           {
             imagem: "/elevador-lacerda.jpg",
@@ -145,7 +145,7 @@ export default function HomePage() {
       />
 
       <Cidades
-        cidade="RIO DE JANEIRO - RJ"
+        cidade="ALERTA!"
         pontos={[
           {
             imagem: "/cristo-redentor.jpg",
@@ -160,6 +160,26 @@ export default function HomePage() {
           {
             imagem: "/parque-lage.jpg",
             titulo: "Parque Lage",
+            legenda: "Pequeno texto sobre guia turístico",
+          },
+        ]}
+      />
+            <Cidades
+        cidade="PROMOÇÃO!"
+        pontos={[
+          {
+            imagem: "/beto-carrero.jpg",
+            titulo: "Bato Carrero World",
+            legenda: "Pequeno texto sobre guia turístico",
+          },
+          {
+            imagem: "/roda-gigante-de-Balneario-Camboriu.jpg",
+            titulo: "Roda gigante Balneário",
+            legenda: "Pequeno texto sobre guia turístico",
+          },
+          {
+            imagem: "/serra-catarinense.jpg",
+            titulo: "Serra catarinense",
             legenda: "Pequeno texto sobre guia turístico",
           },
         ]}
