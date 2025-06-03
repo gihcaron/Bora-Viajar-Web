@@ -35,44 +35,29 @@ export default function CardTuristico({ imagem, titulo, legenda }) {
       </div>
       <div style={{ padding: "12px" }}>
         <p style={{ fontSize: "14px", marginBottom: "10px" }}>{legenda}</p>
-        <div style={{ display: "flex", gap: "10px" }}>
-          <button
+        <div style={{ display: "flex", gap: "18px" }}>
+          <Heart
+            size={28}
+            color={curtido ? "red" : "#888"}
+            fill={curtido ? "red" : "none"}
+            style={{ cursor: "pointer" }}
             onClick={() => setCurtido((v) => !v)}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: 0,
-              display: "flex",
-              alignItems: "center"
-            }}
             aria-label="Curtir"
-          >
-            <Heart
-              size={16}
-              color={curtido ? "red" : "#888"}
-              fill={curtido ? "red" : "none"}
-            />
-          </button>
-          <MessageCircle size={16} color="#888" />
-          <button
+          />
+          <MessageCircle
+            size={28}
+            color="#888"
+            style={{ cursor: "pointer" }}
+            aria-label="Comentar"
+          />
+          <Bookmark
+            size={28}
+            color={salvo ? "#2e8b57" : "#888"}
+            fill={salvo ? "#2e8b57" : "none"}
+            style={{ cursor: "pointer" }}
             onClick={() => setSalvo((v) => !v)}
-            style={{
-              background: "none",
-              border: "none",
-              cursor: "pointer",
-              padding: 0,
-              display: "flex",
-              alignItems: "center"
-            }}
             aria-label="Salvar"
-          >
-            <Bookmark
-              size={16}
-              color={salvo ? "#2e8b57" : "#888"}
-              fill={salvo ? "#2e8b57" : "none"}
-            />
-          </button>
+          />
         </div>
       </div>
     </div>
