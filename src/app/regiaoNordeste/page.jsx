@@ -10,6 +10,9 @@ import { toast } from "react-toastify";
 import PlaceCard from "../../components/PlaceCard";
 import styles from "./Nordeste.module.css";
 
+const Headers = {"x-api-key" : process.env.NEXT_PUBLIC_API_KEY};
+
+
 export default function Noticias() {
   const [loading, setLoading] = React.useState(true);
   
@@ -22,7 +25,11 @@ export default function Noticias() {
    useEffect (() => {
         const fetchNordeste = async () => {
             try{
-              const { data : regions } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/regions`,);
+              const { data : regions } = await axios.get(`${process.env.NEXT_PUBLIC_API_URL}/regions`,
+              {
+                headers: Headers,
+              }
+              );
               const nordestePoints = regions.filter((region) => region.region === "Nordeste");
                 
             
