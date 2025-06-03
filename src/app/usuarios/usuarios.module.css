@@ -1,6 +1,82 @@
+.container{
+    width: 100%;
+    height: 100%;
+}
 
+.PaginationContainer{
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+    margin: 5rem; 
+}
+
+.Pagination {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.Title{
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem 0;
+    font-family: poppins, sans-serif;
+
+}
+
+.text{
+    font-size: 1.5rem;
+    text-align: center;
+    margin: 0 1rem;
+    color: #109191;
+}
+
+.description{
+    font-size: 1.2rem;
+    text-align: center;
+    margin: 0 1rem;
+    color: #4c4c4c; 
+}
+
+.searchInput {
+    display: flex;
+    justify-content: center;
+}
+
+.searchInput input {
+    width: 40%;
+    height: 1.8rem;
+    border-radius: 30px 0 0 30px;
+    border: none;
+    background-color: #7171714e;
+    padding: 0 0 0 10px;
+    outline: none;
+}
+
+.searchButton {
+    display: flex;
+    justify-content: center;
+    width: 4%;
+    border-radius: 0 30px 30px 0;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 1.8rem;
+    background-color: #7171714e;
+    transition: .3s ease-in-out;
+}
+
+.searchButton:hover {
+    background-color: #109191;
+    transition: .3s ease-in-out;
+}
 
 .cardContainer{
+    min-height: 80vh;
     display: flex ;
     align-items: center;
     flex-wrap: wrap;
