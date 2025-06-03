@@ -1,12 +1,12 @@
 "use client";
 
+import Icon from "@ant-design/icons";
 import styles from "./../styles/Footer.module.css";
 
 import FooterLinks from "./FooterLinks";
 
 const Footer = () => {
   const links = [
-    { url: "/home", text: "Home" },
     { url: "/feed", text: "Feed" },
     { url: "/noticias", text: "Noticias" },
     { url: "/sobre-nos", text: "Sobre Nós" },
