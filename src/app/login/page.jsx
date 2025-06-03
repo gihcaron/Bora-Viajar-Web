@@ -29,6 +29,13 @@ export default function Login() {
       setTimeout(() => setToast(""), 3000);
       return;
     }
+
+    const senhaValida = senha.length >= 6 && /[!@#$%^&*(),.?":{}|<>]/.test(senha);
+    if (!senhaValida) {
+      setToast("A senha deve ter pelo menos 6 caracteres e conter pelo menos um caractere especial.");
+      setTimeout(() => setToast(""), 4000);
+      return;
+    }
     setToast("");
     setSuccess(true);
     setTimeout(() => {
