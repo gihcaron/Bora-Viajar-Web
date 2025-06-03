@@ -11,8 +11,36 @@ import styles from "../../styles/Header.module.css";
 import Footer from "../../components/Footer";
 import Cidades from "../../components/Cidades";
 
+const Headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
+
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
+  // manca mexendo aqui || BOTANDO MODAL DE COMENTÁRIOS
+  const [modalOpen, setModalOpen] = useState(false);
+  const [comentarios, setComentarios] = useState([]);
+  const [comentariosLoading, setComentariosLoading] = useState(false);
+
+  const fetchComentarios = async () => {
+    setComentariosLoading(true);
+    try {
+      // ver se a url tá certinha dps
+      const res = await fetch("http://localhost:3000/api/comentarios", { headers: Headers });
+      const data = await res.json();
+      setComentarios(data);
+    } catch (err) {
+      setComentarios([]);
+    }
+    setComentariosLoading(false);
+  };
+
+  const handleOpenModal = () => {
+    setModalOpen(true);
+    fetchComentarios();
+  };
+
+  const handleCloseModal = () => {
+    setModalOpen(false);
+  };
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -31,67 +59,67 @@ export default function HomePage() {
       <Header bannerTitle={"BORA VIAJAR"} />
 
       {/* Primeiro Card */}
+      <div
+        style={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "space-between",
+          padding: "15px",
+          backgroundColor: "#e6e6e6",
+          marginBottom: "15px",
+        }}
+      >
+        <img
+          src="/escadaria-Selaron.jpeg"
+          alt="Escadaria colorida"
+          style={{ width: "25%", borderRadius: "8px" }}
+        />
+
         <div
           style={{
+            width: "65%",
             display: "flex",
-            alignItems: "center",
-            justifyContent: "space-between",
-            padding: "15px",
-            backgroundColor: "#e6e6e6",
-            marginBottom: "15px",
+            flexDirection: "column",
+            alignItems: "flex-start",
           }}
         >
-          <img
-            src="/escadaria-Selaron.jpeg"
-            alt="Escadaria colorida"
-            style={{ width: "25%", borderRadius: "8px" }}
-          />
-
-          <div
+          <p
             style={{
-          width: "65%",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "flex-start", 
-            }}
-          >
-            <p
-          style={{
-            fontSize: "16px",
-            lineHeight: "1.4",
-            fontFamily: "poppins",
-            textAlign: "justify",
-          }}
-            >
-          Somos jovens apaixonados por programação e por explorar o mundo. Criamos um site que une tecnologia e turismo para ajudar você a planejar viagens de forma simples, personalizada e inesquecível. Conheça nossa equipe e aproveite os recursos pensados para tornar cada jornada única.
-            </p>
-
-            <div style={{ marginTop: "20px", textAlign: "center", width: "100%" }}>
-          <button
-            onClick={() => window.location.href = "/sobre-nos"}
-            style={{
-              padding: "10px 20px",
-              fontSize: "13px",
-              backgroundColor: "#cfe8e8",
-              color: "#5f7f7a",
-              border: "none",
-              borderRadius: "5px",
-              cursor: "pointer",
+              fontSize: "16px",
+              lineHeight: "1.4",
               fontFamily: "poppins",
-              fontWeight: "bold",
-              transition: "background-color 0.3s ease",
-              textTransform: "uppercase",
-              letterSpacing: "1px",
-              boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+              textAlign: "justify",
             }}
           >
-            Conheça equipe!
-          </button>
-            </div>
+            Somos jovens apaixonados por programação e por explorar o mundo. Criamos um site que une tecnologia e turismo para ajudar você a planejar viagens de forma simples, personalizada e inesquecível. Conheça nossa equipe e aproveite os recursos pensados para tornar cada jornada única.
+          </p>
+
+          <div style={{ marginTop: "20px", textAlign: "center", width: "100%" }}>
+            <button
+              onClick={() => window.location.href = "/sobre-nos"}
+              style={{
+                padding: "10px 20px",
+                fontSize: "13px",
+                backgroundColor: "#cfe8e8",
+                color: "#5f7f7a",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+                fontFamily: "poppins",
+                fontWeight: "bold",
+                transition: "background-color 0.3s ease",
+                textTransform: "uppercase",
+                letterSpacing: "1px",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+              }}
+            >
+              Conheça equipe!
+            </button>
           </div>
         </div>
+      </div>
 
-        {/* Segundo Card */}
+      {/* Segundo Card */}
       <div
         style={{
           display: "flex",
@@ -118,7 +146,7 @@ export default function HomePage() {
             textAlign: "justify",
           }}
         >
-          Nosso site é o ponto de encontro entre guias e viajantes apaixonados. Aqui, guias mostram seu trabalho e turistas trocam dicas, memórias e achados incríveis pelo Brasil. É um espaço leve, feito pra inspirar, divulgar e conectar histórias reais. Curtiu a ideia? Então... BORA VIAJAR! 
+          Nosso site é o ponto de encontro entre guias e viajantes apaixonados. Aqui, guias mostram seu trabalho e turistas trocam dicas, memórias e achados incríveis pelo Brasil. É um espaço leve, feito pra inspirar, divulgar e conectar histórias reais. Curtiu a ideia? Então... BORA VIAJAR!
         </p>
       </div>
 
@@ -164,7 +192,7 @@ export default function HomePage() {
           },
         ]}
       />
-            <Cidades
+      <Cidades
         cidade="PROMOÇÃO!"
         pontos={[
           {
@@ -197,15 +225,15 @@ export default function HomePage() {
         padding: 0,
         alignItems: "stretch",
         gap: 0,
-        maxWidth: "800px", 
-        height: "auto",    
+        maxWidth: "800px",
+        height: "auto",
         overflow: "hidden"
       }}>
         <img
           src="/avaliacao-aquario.jpg"
           alt="Mulher no aquário"
           style={{
-            width: "40%", 
+            width: "40%",
             height: "100%",
             objectFit: "cover",
             borderRadius: "8px 0 0 8px"
@@ -229,7 +257,7 @@ export default function HomePage() {
             </div>
           </div>
           <p style={{ marginTop: "10px", textAlign: "justify", fontSize: "15px" }}>
-            O Rio de Janeiro continua lindooo!🎶 Moro aqui há anos e só agora fui conhecer o famoso AquaRio — e que experiência incrível! Tudo isso graças ao Bora Viajar, que me conectou com uma guia top, super atenciosa. Ela cuidou de tudo, até dos ingressos, e me ajudou a descobrir esse mundo marinho maravilhoso. 
+            O Rio de Janeiro continua lindooo!🎶 Moro aqui há anos e só agora fui conhecer o famoso AquaRio — e que experiência incrível! Tudo isso graças ao Bora Viajar, que me conectou com uma guia top, super atenciosa. Ela cuidou de tudo, até dos ingressos, e me ajudou a descobrir esse mundo marinho maravilhoso.
             Super recomendo o passeio! Fica a dica pra quem vier curtir a Cidade Maravilhosa 🌊🐠✨
           </p>
         </div>
@@ -243,15 +271,15 @@ export default function HomePage() {
         alignItems: "stretch",
         gap: 0,
         flexDirection: "row-reverse",
-        maxWidth: "800px", 
-        height: "auto",    
+        maxWidth: "800px",
+        height: "auto",
         overflow: "hidden"
       }}>
         <img
           src="/avaliacao-lencois.jpg"
           alt="Mulher nos lençóis maranhenses"
           style={{
-            width: "40%", 
+            width: "40%",
             height: "100%",
             objectFit: "cover",
             borderRadius: "0 8px 8px 0"
@@ -274,6 +302,28 @@ export default function HomePage() {
             <span style={{ color: "#5f7f7a", fontWeight: "bold" }}>Local: Lençóis Maranhenses</span>
             <div>
               <Rate allowHalf disabled defaultValue={5} style={{ color: "#f7b801", fontSize: "16px" }} />
+              <span
+                style={{ cursor: "pointer", marginLeft: 12, fontSize: 20 }}
+                title="Ver comentários"
+                onClick={handleOpenModal}
+                role="button"
+                aria-label="Ver comentários"
+              >
+                💬
+              </span>
+
+              <div>
+                <Rate allowHalf disabled defaultValue={5} style={{ color: "#f7b801", fontSize: "16px" }} />
+                <span
+                  style={{ cursor: "pointer", marginLeft: 12, fontSize: 20 }}
+                  title="Ver comentários"
+                  onClick={handleOpenModal}
+                  role="button"
+                  aria-label="Ver comentários"
+                >
+                  💬
+                </span>
+              </div>
             </div>
           </div>
           <p style={{ marginTop: "10px", fontSize: "15px" }}>
@@ -282,6 +332,26 @@ export default function HomePage() {
           </p>
         </div>
       </div>
+      {modalOpen && (
+        <div style={{
+          position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh",
+          background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000
+        }}>
+          <div style={{ background: "#fff", padding: 24, borderRadius: 8, minWidth: 300, maxWidth: 500 }}>
+            <button onClick={handleCloseModal} style={{ float: "right" }}>Fechar</button>
+            <h3>Comentários</h3>
+            {comentariosLoading ? (
+              <p>Carregando...</p>
+            ) : (
+              <ul>
+                {comentarios.map((c, i) => (
+                  <li key={i}>{c.texto}</li>
+                ))}
+              </ul>
+            )}
+          </div>
+        </div>
+      )}
 
       <Footer />
     </div>

@@ -63,3 +63,4 @@ export default function CardTuristico({ imagem, titulo, legenda }) {
     </div>
   );
 }
+
