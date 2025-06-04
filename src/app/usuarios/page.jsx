@@ -3,10 +3,11 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
-import { Pagination, Modal, Skeleton, Card,  Input, Space } from "antd";
+import { Pagination, Modal, Skeleton, Card, Input, Space } from "antd";
 import styles from "./usuarios.module.css";
-import Header from '../../components/Header';
-import Footer from '../../components/Footer';
+import { FaSearch } from "react-icons/fa";
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
 import Loader from "../../components/Loader";
 import UserCard from "../../components/CardUser";
 import axios from "axios";
@@ -18,8 +19,9 @@ export default function Usuarios() {
   const [loading, setLoading] = useState(true);
   const [isLoading, setIsLoading] = useState(true);
   const [allUsers, setAllUsers] = useState([]);
+  const [search, setSearch] = useState("");
   const router = useRouter();
-  const cardsPerPage = 3;
+  const cardsPerPage = 4;
 
   const [usersData, setDataUsers] = useState({
     current: 1,
@@ -27,12 +29,12 @@ export default function Usuarios() {
     users: [],
   });
 
-  const fetchUsers = async (users = "") => {
+  const fetchUsers = async (name = "") => {
     setIsLoading(true);
 
     try {
       const { data: usersData } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/users`,
+        `${process.env.NEXT_PUBLIC_API_URL}/users/?name=${name}`,
         { headers: Headers }
       );
       setUsers(usersData);
@@ -51,6 +53,11 @@ export default function Usuarios() {
       setIsLoading(false);
     }
   };
+
+  const handleSearch = () => {
+    const name = search.trim();
+    fetchUsers(name, 1);
+  }; 
 
   useEffect(() => {
     fetchUsers();
@@ -71,40 +78,49 @@ export default function Usuarios() {
 
   if (loading) {
     return <Loader />;
-  };
+  }
 
   return (
     <div className={styles.container}>
-
       <Header />
 
       <div className={styles.Title}>
         <h1 className={styles.text}>Conheça nossos viajantes!</h1>
-        <p className={styles.description}>Encontre pessoas incríveis para se conectar!</p>
+        <p className={styles.description}>
+          Encontre pessoas incríveis para se conectar!
+        </p>
       </div>
 
       <div className={styles.searchInput}>
-        <input type="text" placeholder="Buscar Usuário" />
-        <button className={styles.searchButton}>✈️</button>
-      </div>
-
-      <div className={styles.cardContainer}>
-
-      {paginatedUser().map((user) => (
-        <UserCard
-          key={user.id}
-          type_user={(user.type_user  || "").toLowerCase()}
-          photo={user.photo}
-          alt={user.name}
-          name={user.name}
-          city={user.city}
-          state={user.state}
-          onClick={() => router.push(`/usuarios/${user.id}`)}
+        <input 
+        type="text" 
+        placeholder="Buscar Usuário"
+        value={search}
+        onChange={(e) => setSearch(e.target.value)} 
         />
-      ))}
-      <div className={styles.paginationContainer}>
-      <Pagination 
-       className={styles.Pagination}
+        <button className={styles.searchButton}
+        onClick={handleSearch}>
+          <FaSearch />
+        </button>
+      </div>
+      <div className={styles.usersContainer}>
+        <div className={styles.cardContainer}>
+          {paginatedUser().map((user) => (
+            <UserCard
+              key={user.id}
+              type_user={(user.type_user || "").toLowerCase()}
+              photo={user.photo }
+              alt={user.name}
+              name={user.name}
+              city={user.city}
+              state={user.state}
+              onClick={() => router.push(`/usuarios/${user.id}`)}
+            />
+          ))}
+        </div>
+          <div className={styles.paginationContainer}>
+            <Pagination
+              className={styles.Pagination}
               defaultCurrent={1}
               current={usersData.current}
               pageSize={usersData.pageSize}
@@ -116,14 +132,11 @@ export default function Usuarios() {
                   pageSize: size,
                 }));
               }}
-      />
+            />
+          </div>
       </div>
-      </div>
-
 
       <Footer />
-
     </div>
   );
-
 }

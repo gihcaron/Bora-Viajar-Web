@@ -7,7 +7,7 @@ import { Card } from "antd";
 import axios from "axios";
 import styles from "../styles/CardUser.module.css"
 
-const UserCard = ({ photo,  type_user, name, city, state }) => {
+const UserCard = ({ photo, type_user, name, city, state }) => {
 
     const [seguindo, setSeguindo] = useState(false);
 
@@ -15,17 +15,26 @@ const UserCard = ({ photo,  type_user, name, city, state }) => {
         <div className={styles.cardContainer}>
 
             <Card className={styles.card}>
-
-                { type_user === "usuário" && (
+             
+                {type_user && type_user.trim().toLowerCase() === "usuário"  && (
                     <p className={styles.UserAndGuia}>Usuário</p>
                 )}
 
-                { type_user === "guia turístico" && (
+                {type_user && type_user.trim().toLowerCase() === "guia turístico" && (
                     <button className={styles.UserAndGuia}>Guia</button>
                 )}
+
+
                 <Image
                     className={styles.userImage}
-                    src={`http://localhost:3000/uploads/` + photo}
+                    src={
+                        photo &&
+                            photo !== "undefined" &&
+                            photo !== "null" &&
+                            photo.trim() !== ""
+                            ? `http://localhost:3000/uploads/${photo}`
+                            : "/perfil.jpg"
+                    }
                     alt={name}
                     width={150}
                     height={150}
@@ -38,6 +47,11 @@ const UserCard = ({ photo,  type_user, name, city, state }) => {
                     <p className={styles.state}>{state}</p>
                 </div>
                 <p className={styles.typeUser}
+                    style={{
+                        color: seguindo ? "#109191" : "#fff",
+                        background: seguindo ? "transparent" : "#109191",
+                        border: seguindo ? "1px solid #109191" : "none",
+                    }}
                     onClick={() => setSeguindo((prev) => !prev)}>
                     {seguindo ? "Seguindo" : "Seguir"}
                 </p>
