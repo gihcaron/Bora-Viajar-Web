@@ -10,12 +10,12 @@ import Banner from "../../components/Banner";
 import styles from "../../styles/Header.module.css";
 import Footer from "../../components/Footer";
 import Cidades from "../../components/Cidades";
+import ModalComentarios from "../../components/ModalComentarios";
 
 const Headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
 
 export default function HomePage() {
   const [loading, setLoading] = useState(true);
-  // manca mexendo aqui || BOTANDO MODAL DE COMENTÁRIOS
   const [modalOpen, setModalOpen] = useState(false);
   const [comentarios, setComentarios] = useState([]);
   const [comentariosLoading, setComentariosLoading] = useState(false);
@@ -23,14 +23,24 @@ export default function HomePage() {
   const fetchComentarios = async () => {
     setComentariosLoading(true);
     try {
-      // ver se a url tá certinha dps
       const res = await fetch("http://localhost:3000/api/comentarios", { headers: Headers });
       const data = await res.json();
+      console.log("Resposta bruta da API:", data);
+
       setComentarios(data);
+      if (Array.isArray(data)) {
+        setComentarios(data); 
+      } else if (Array.isArray(data.comentarios)) {
+        setComentarios(data.comentarios); 
+      } else {
+        setComentarios([]);
+        console.error("A resposta da API não é um array:", data);
+      }
     } catch (err) {
+          console.error("Erro ao buscar comentários:", err);
       setComentarios([]);
     }
-    setComentariosLoading(false);
+    fetchComentarios();
   };
 
   const handleOpenModal = () => {
@@ -170,6 +180,7 @@ export default function HomePage() {
             legenda: "Pequeno texto sobre guia turístico",
           },
         ]}
+        onComentarioClick={handleOpenModal}
       />
 
       <Cidades
@@ -191,6 +202,7 @@ export default function HomePage() {
             legenda: "Pequeno texto sobre guia turístico",
           },
         ]}
+        onComentarioClick={handleOpenModal}
       />
       <Cidades
         cidade="PROMOÇÃO!"
@@ -211,6 +223,7 @@ export default function HomePage() {
             legenda: "Pequeno texto sobre guia turístico",
           },
         ]}
+        onComentarioClick={handleOpenModal}
       />
 
       {/* Avaliações*/}
@@ -260,6 +273,13 @@ export default function HomePage() {
             O Rio de Janeiro continua lindooo!🎶 Moro aqui há anos e só agora fui conhecer o famoso AquaRio — e que experiência incrível! Tudo isso graças ao Bora Viajar, que me conectou com uma guia top, super atenciosa. Ela cuidou de tudo, até dos ingressos, e me ajudou a descobrir esse mundo marinho maravilhoso.
             Super recomendo o passeio! Fica a dica pra quem vier curtir a Cidade Maravilhosa 🌊🐠✨
           </p>
+          <span
+            onClick={handleOpenModal}
+            style={{ cursor: "pointer", fontSize: 20 }}
+            title="Ver comentários"
+            role="button"
+            aria-label="Ver comentários"
+          >💬</span>
         </div>
       </div>
       <div style={{
@@ -303,14 +323,12 @@ export default function HomePage() {
             <div>
               <Rate allowHalf disabled defaultValue={5} style={{ color: "#f7b801", fontSize: "16px" }} />
               <span
-                style={{ cursor: "pointer", marginLeft: 12, fontSize: 20 }}
-                title="Ver comentários"
                 onClick={handleOpenModal}
+                style={{ cursor: "pointer", fontSize: 20 }}
+                title="Ver comentários"
                 role="button"
                 aria-label="Ver comentários"
-              >
-                💬
-              </span>
+              >💬</span>
 
               <div>
                 <Rate allowHalf disabled defaultValue={5} style={{ color: "#f7b801", fontSize: "16px" }} />
@@ -330,6 +348,13 @@ export default function HomePage() {
             A viagem foi simplesmente incrível, a realização de um sonho mesmo! Encontrar a página de uma guia no Maranhão fez toda a diferença — ajudou em cada detalhe do roteiro. Sou muito grato ao site por ter facilitado tudo isso.
             Recomendo demais, tanto o passeio quanto a página! Pode confiar que o pessoal é super eficiente e de verdade, tudo feito com muito carinho e profissionalismo
           </p>
+          <span
+            onClick={handleOpenModal}
+            style={{ cursor: "pointer", fontSize: 20 }}
+            title="Ver comentários"
+            role="button"
+            aria-label="Ver comentários"
+          >💬</span>
         </div>
       </div>
       {modalOpen && (
@@ -352,6 +377,13 @@ export default function HomePage() {
           </div>
         </div>
       )}
+
+      <ModalComentarios
+        open={modalOpen}
+        onClose={handleCloseModal}
+        comentarios={comentarios}
+        loading={comentariosLoading}
+      />
 
       <Footer />
     </div>

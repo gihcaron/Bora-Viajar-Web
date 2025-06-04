@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import CardTuristico from "./CardTuristico";
 
-export default function SecaoCidade({ cidade, pontos }) {
+export default function SecaoCidade({ cidade, pontos, onComentarioClick }) {
   return (
     <section style={{ padding: "40px 0" }}>
       <h2 style={{
@@ -24,7 +24,7 @@ export default function SecaoCidade({ cidade, pontos }) {
         gap: "20px"
       }}>
         {pontos.map((p, i) => (
-          <CardTuristico key={i} imagem={p.imagem} titulo={p.titulo} legenda={p.legenda} />
+          <CardTuristico key={i} imagem={p.imagem} titulo={p.titulo} legenda={p.legenda} onComentarioClick={onComentarioClick}/>
         ))}
       </div>
     </section>
@@ -39,5 +39,6 @@ SecaoCidade.propTypes = {
       titulo: PropTypes.string.isRequired,
       legenda: PropTypes.string.isRequired
     })
-  ).isRequired
+  ).isRequired,
+  onComentarioClick: PropTypes.func,
 };
