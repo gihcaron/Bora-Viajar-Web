@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Heart, MessageCircle, Bookmark } from "lucide-react";
+import ModalComentarios from "./ModalComentarios";
 
-export default function CardTuristico({ imagem, titulo, legenda }) {
+export default function CardTuristico({ imagem, titulo, legenda, onComentarioClick }) {
   const [curtido, setCurtido] = useState(false);
   const [salvo, setSalvo] = useState(false);
 
@@ -48,7 +49,8 @@ export default function CardTuristico({ imagem, titulo, legenda }) {
             size={28}
             color="#888"
             style={{ cursor: "pointer" }}
-            aria-label="Comentar"
+            onClick={onComentarioClick }
+            title="Ver comentários"
           />
           <Bookmark
             size={28}
