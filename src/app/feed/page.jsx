@@ -23,24 +23,29 @@ export default function HomePage() {
   const fetchComentarios = async () => {
     setComentariosLoading(true);
     try {
-      const res = await fetch("http://localhost:3000/api/comentarios", { headers: Headers });
-      const data = await res.json();
+const res = await fetch('http://localhost:3000/api/comments', {
+  headers: {
+    'x-api-key': 'B0raV1@j@2025'
+  }
+});      const data = await res.json();
       console.log("Resposta bruta da API:", data);
+console.log("Comentários recebidos:", data);
 
       setComentarios(data);
       if (Array.isArray(data)) {
-        setComentarios(data); 
+        setComentarios(data);
       } else if (Array.isArray(data.comentarios)) {
-        setComentarios(data.comentarios); 
+        setComentarios(data.comentarios);
       } else {
         setComentarios([]);
         console.error("A resposta da API não é um array:", data);
       }
     } catch (err) {
-          console.error("Erro ao buscar comentários:", err);
+      console.error("Erro ao buscar comentários:", err);
       setComentarios([]);
+    } finally {
+      setComentariosLoading(false);
     }
-    fetchComentarios();
   };
 
   const handleOpenModal = () => {
