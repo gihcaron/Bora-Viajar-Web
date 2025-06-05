@@ -12,12 +12,12 @@ export default function SobreNosPage() {
 
   const pessoas = [
     { nome: 'Amanda', idade: 17, cidade: 'Campinas', linkedin: 'https://www.linkedin.com/in/amanda-mechi-4287b52b1', imagem: '/amanda.png', cor: '#14746f' },
-    { nome: 'André', idade: 18, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/maria', imagem: '/andre.jpg', cor: '#209c91' },
+    { nome: 'André', idade: 18, cidade: 'Campinas', linkedin: 'https://www.linkedin.com/in/andré-lucca-santos-63345934a', imagem: '/andre.jpg', cor: '#209c91' },
     { nome: 'Flavia', idade: 17, cidade: 'Campinas', linkedin: 'https://www.linkedin.com/in/flaviamendes17', imagem: '/flavia.jfif', cor: '#38b2ac' },
     { nome: 'Giovanna', idade: 17, cidade: 'Valinhos', linkedin: 'https://www.linkedin.com/in/giovanna-caron/', imagem: '/giovanna.jpeg', cor: '#57c6a9' },
-    { nome: 'Isabella', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/isabella.jpg', cor: '#7de2d1' },
-    { nome: 'João Vitor', idade: 17, cidade: 'Campinas', linkedin: 'https://linkedin.com/in/andre', imagem: '/joao.jpg', cor: '#b2f7ef' },
-    { nome: 'Laura', idade: 17, cidade: 'Valinhos', linkedin: 'https://linkedin.com/in/andre', imagem: '/laura.jpg', cor: '#e0fcf9' },
+    { nome: 'Isabella', idade: 17, cidade: 'Valinhos', linkedin: 'https://www.linkedin.com/in/isabella-borin-792b222b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', imagem: '/isabella.jpg', cor: '#7de2d1' },
+    { nome: 'João Vitor', idade: 17, cidade: 'Campinas', linkedin: 'https://www.linkedin.com/in/jo%C3%A3o-vitor-porto-sales-18bb202b1?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app', imagem: '/joao.jpg', cor: '#b2f7ef' },
+    { nome: 'Laura', idade: 17, cidade: 'Valinhos', linkedin: 'https://www.linkedin.com/in/laura-ferreira-violla-a526b12b1', imagem: '/laura.jpg', cor: '#e0fcf9' },
   ];
 
   useEffect(() => {

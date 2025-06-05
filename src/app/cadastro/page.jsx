@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Cadastro.module.css";
 
 import {
@@ -155,6 +155,8 @@ const residences = [
     ],
   },
 ];
+
+
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -278,26 +280,33 @@ const Cadastro = () => {
     label: website,
     value: website,
   }));
+  
+
   return (
     <div className={styles.container}>
       <div className={styles.LeftContainer}>
+        <h1 className={styles.title}>Cadastre se </h1>
+        <p className={styles.subtitle}>
+          Crie uma conta para começar a planejar sua próxima viagem!
+        </p>
         <h1 className={styles.BoraLogo}>
           {" "}
           Bora <span className={styles.hightlight}> Viajar</span>
         </h1>
-        <p className={styles.TextContent}> Sua próxima aventura começa aqui!</p>
       </div>
       <div className={styles.RightContainer}>
         <div className={styles.singnIn}></div>
         <div className={styles.head}></div>
         <div className={styles.form}>
+          <h1 className={styles.formTitle}>Formulário de Cadastro</h1>
+
           <Form
             {...formItemLayout}
             form={form}
             name="register"
             onFinish={onFinish}
             initialValues={{ residence: ["Região", "Estado"], prefix: "86" }}
-            style={styles.form2}
+            className={styles.form2}
             scrollToFirstError
           >
             <Form.Item
@@ -419,8 +428,7 @@ const Cadastro = () => {
 
             <Form.Item
               name="Gênero"
-              label="Gênero"
-              className={styles.genero}
+              label={<label className={styles.label}>Gênero</label>} className={styles.genero}
               rules={[
                 { required: true, message: "Favor, selecione seu gênero!" },
               ]}
@@ -429,7 +437,7 @@ const Cadastro = () => {
                 <Option value="male">Homem</Option>
                 <Option value="female">Mulher</Option>
                 <Option value="other">Outro</Option>
-                <Option value="other">Prefiro não informar</Option>
+                <Option value="none">Prefiro não informar</Option>
               </Select>
             </Form.Item>
 
@@ -443,15 +451,15 @@ const Cadastro = () => {
                     value
                       ? Promise.resolve()
                       : Promise.reject(
-                          new Error("Você deve aceitar os termos!")
-                        ),
+                        new Error("Você deve aceitar os termos!")
+                      ),
                 },
               ]}
               {...tailFormItemLayout}
             >
               <Checkbox>
                 Eu li e concordo com os{" "}
-                <a href="">termos de uso e privacidade</a>
+                <a href="/termos">termos de uso e privacidade</a>
               </Checkbox>
             </Form.Item>
             <Form.Item {...tailFormItemLayout}>
@@ -460,6 +468,15 @@ const Cadastro = () => {
               </Button>
             </Form.Item>
           </Form>
+          <div style={{ textAlign: "center", marginTop: 16, width: "65%", alignItems: "center", marginLeft: "11rem", }}>
+            <Button
+              type="default"
+              className={styles.entrarButton}
+              onClick={() => window.location.href = "/feed"}
+            >
+              Entrar
+            </Button>
+          </div>
         </div>
       </div>
     </div>
