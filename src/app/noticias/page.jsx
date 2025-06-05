@@ -309,9 +309,16 @@ export default function Noticias() {
                 <div className={styles.ModalContent}>
                   <div className={styles.ModalImageContainer}>
                     <Image
-                      src={modalInfo.news.photo || "/noticia.jpeg"}
+                       src={
+                        modalInfo?.news?.image &&
+                        modalInfo.news.image !== "undefined" &&
+                        modalInfo.news.image !== "null" &&
+                        modalInfo.news.image.trim() !== ""
+                          ? `http://localhost:3000/uploads/${modalInfo.news.image}`
+                          : "/perfil.jpg"
+                      }
                       alt={modalInfo.news.name}
-                      width={200}
+                      width={400}
                       height={200}
                       className={styles.ModalImage}
                     />

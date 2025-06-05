@@ -14,10 +14,10 @@
     box-shadow: 0 12px 20px rgba(0, 0, 0, 0.3);
 }
 
-.User{
+.UserAndGuia{
     position: absolute;
     top: 3%;
-    left: 75%;
+    left: 60%;
     background-color: rgb(16, 145, 145);
     color: #fff;
     border: none;
@@ -67,5 +67,99 @@
     font-weight: bold;
     color: white;
 }
+
+
+
+/* Responsividade */
+
+
+
+@media (max-width: 900px) {
+    .card {
+        width: 30vw;
+        height: 100%;
+        margin: 0.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .UserAndGuia {
+        left: 50%;
+        top: 2%;
+        transform: translateX(-50%);
+        font-size: 0.7rem;
+        padding: 0.15rem 0.4rem;
+    }
+
+    .userImage {
+        width: 90px;
+        height: 90px;
+        margin-top: 1rem;
+    }
+
+    .userName {
+        font-size: 1rem;
+    }
+
+    .locationContainer {
+        flex-direction: column;
+        gap: 0.2rem;
+    }
+
+    .typeUser {
+        margin: 0.5rem;
+        font-size: 0.9rem;
+        padding: 0.3rem;
+    }
+
+
+}
+
+@media (max-width: 650px) {
+    .card {
+        width: 80vw;
+        height: 100%;
+        margin: 0.5rem;
+        padding-bottom: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        width: 90vw;
+        height: 100%;
+        margin: 0.5rem;
+        padding-bottom: 1rem;
+    }
+
+    .UserAndGuia {
+        left: 50%;
+        top: 2%;
+        transform: translateX(-50%);
+        font-size: 0.6rem;
+        padding: 0.1rem 0.3rem;
+    }
+
+    .userImage {
+        width: 80px;
+        height: 80px;
+        margin-top: 1rem;
+    }
+
+    .userName {
+        font-size: 0.9rem;
+    }
+
+    .locationContainer {
+        flex-direction: column;
+        gap: 0.1rem;
+    }
+
+    .typeUser {
+        margin: 0.3rem;
+        font-size: 0.8rem;
+        padding: 0.2rem;
+    }
+}
+
 
 
