@@ -15,13 +15,7 @@ export default function Usuarios({photo, type_user, name, city, state, email}) {
         <div className={styles.Profile}>
 
             <div className={styles.Background}>
-                <Image
-                    className={styles.profileBackground}
-                    src="/norte.jpg"
-                    alt="Background Image"
-                    width={890}
-                    height={250}
-                />
+               
             </div>
             <div className={styles.ProfileImage}>
                 <Image
@@ -35,8 +29,8 @@ export default function Usuarios({photo, type_user, name, city, state, email}) {
                             : "/perfil.jpg"
                     }
                     alt={name}
-                    width={250}
-                    height={250}
+                    width={160}
+                    height={160}
                     priority={true}
                 />
             </div>

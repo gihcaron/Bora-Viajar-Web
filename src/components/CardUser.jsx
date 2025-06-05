@@ -7,12 +7,12 @@ import { Card } from "antd";
 import axios from "axios";
 import styles from "../styles/CardUser.module.css"
 
-const UserCard = ({ photo, type_user, name, city, state }) => {
+const UserCard = ({ photo, type_user, name, city, state, onClick}) => {
 
     const [seguindo, setSeguindo] = useState(false);
 
     return (
-        <div className={styles.cardContainer}>
+        <div className={styles.cardContainer} onClick={onClick}>
 
             <Card className={styles.card}>
              
