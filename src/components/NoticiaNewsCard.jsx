@@ -16,7 +16,7 @@ const NewsCard = ({photo, info, place, name, onClick}) => {
         src= {photo}
         alt={name}
         width={350}
-        height={240}
+        height={300}
         priority={true}
       />
       <div className={styles.overlay}></div>

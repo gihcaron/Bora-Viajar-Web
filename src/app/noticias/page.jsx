@@ -12,6 +12,8 @@ import NoticiaNewsCard from "../../components/NoticiaNewsCard";
 import styles from "./Noticias.module.css";
 import axios from "axios";
 
+const Headers = {"x-api-key" : process.env.NEXT_PUBLIC_API_KEY};
+
 export default function Noticias() {
   const [loading, setLoading] = useState(true);
   const [news, setNews] = useState([]);
@@ -87,7 +89,8 @@ export default function Noticias() {
 
     try {
       const { data: newsData } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/news`
+        `${process.env.NEXT_PUBLIC_API_URL}/news`,
+        {headers: Headers}
       );
       setNews(newsData);
       setDataNews((prev) => ({
@@ -115,7 +118,9 @@ export default function Noticias() {
 
     try {
       const { data: newsData } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/news/${news.id}`
+        `${process.env.NEXT_PUBLIC_API_URL}/news/${news.id}`,
+        { headers: Headers }
+
       );
       setModalInfo((m) => ({
         ...m,
@@ -304,9 +309,16 @@ export default function Noticias() {
                 <div className={styles.ModalContent}>
                   <div className={styles.ModalImageContainer}>
                     <Image
-                      src={modalInfo.news.photo || "/noticia.jpeg"}
+                       src={
+                        modalInfo?.news?.image &&
+                        modalInfo.news.image !== "undefined" &&
+                        modalInfo.news.image !== "null" &&
+                        modalInfo.news.image.trim() !== ""
+                          ? `http://localhost:3000/uploads/${modalInfo.news.image}`
+                          : "/perfil.jpg"
+                      }
                       alt={modalInfo.news.name}
-                      width={200}
+                      width={400}
                       height={200}
                       className={styles.ModalImage}
                     />

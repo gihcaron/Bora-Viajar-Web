@@ -422,7 +422,7 @@
         font-size: 0.9rem;
     }
     .AnuncioSection {
-    min-height: 80vh;
+    min-height: 40vh;
     width: 100%;
     flex-direction: column;
     padding: 2rem 1rem;

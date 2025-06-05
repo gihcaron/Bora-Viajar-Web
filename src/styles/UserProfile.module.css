@@ -1,0 +1,160 @@
+
+.ProfileContainer{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 2rem;
+}
+.Profile{
+    min-height: 50vh;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0.8rem;
+    background-color: #f0f0f0;
+    border-radius: 30px;
+}
+
+.Background{
+    width: 100%;
+    height: 200px;
+    background-image: url('/planoFundo.jpg');
+    background-size: cover;
+    background-position: center;
+    border-radius: 20px 20px 0 0;
+
+}
+
+
+.ProfileContent{
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.ProfileInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10%;
+}
+
+.profileImage{
+    position: absolute;;
+    transform: translate(-50%, -50%);
+    border: 5px solid white;
+    border-radius: 50%;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    width: 10rem;
+    height: 10rem;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.userName{
+    font-size: 1.2rem;
+    font-weight: bold;
+    color:  rgb(16, 145, 145);
+    margin-top: 0.5rem;
+}
+
+.userEmail{
+    font-size: 1rem;
+    font-weight: 500;
+    color:  rgb(112, 112, 112);
+    margin-top: 0.5rem;
+}
+
+.locationContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0.5rem;
+    gap: 0.5rem;
+}
+
+.city{
+    font-size: 1rem;
+    color: #555;
+}
+
+.state{
+    font-size: 0.9rem;
+    color: #777;
+}
+
+.UserAndGuia{
+    background-color: rgb(16, 145, 145);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    padding: 0.2rem 2rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.8rem; 
+    margin: 0.8rem;
+}
+
+/* Posts */
+
+/* Responsividade */
+
+
+
+@media (max-width: 900px) {
+    .Profile {
+        width: 90%;
+        padding: 0.5rem;
+    }
+    .profileImage {
+        width: 8rem;
+        height: 8rem;
+    }
+}
+
+@media (max-width: 600px) {
+    .Profile {
+        width: 100%;
+        min-height: 55vh;
+        padding: 0.3rem;
+    }
+    .ProfileContainer {
+        margin-top: 1rem;
+    }
+    .profileImage {
+        width: 6rem;
+        height: 6rem;
+        border-width: 3px;
+    }
+    .Background,
+    .profileBackground {
+        height: 120px;
+    }
+
+    .ProfileInfo{
+        margin-top: 20%;
+    }
+    .userName {
+        font-size: 1rem;
+    }
+    .userEmail,
+    .city,
+    .state {
+        font-size: 0.9rem;
+    }
+    .UserAndGuia {
+        font-size: 0.7rem;
+        padding: 0.2rem 1rem;
+    }
+}
+
+

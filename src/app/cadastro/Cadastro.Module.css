@@ -193,3 +193,22 @@
     margin-bottom: 1rem;
     text-align: center;
 }
+
+.entrarButton{
+    width: 100%;
+    height: auto;
+    margin-top: 1.5rem;
+    background-color: rgb(22, 136, 117);
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bold;
+    border: none;
+    border-radius: 50px;
+    padding: 0.8rem 2rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.entrarButton :hover{
+    background-color: rgb(16, 145, 145);
+}
