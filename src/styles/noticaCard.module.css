@@ -85,7 +85,7 @@
 @media (max-width: 1024px) {
     .card {
         width: calc(33.333% - 1rem);
-        height: auto;
+        height: 100%;
         margin: 0.5rem;
     }
 
@@ -109,7 +109,7 @@
 @media (max-width: 780px) {
     .card {
         width: 16rem;
-        height: 12rem;
+        height: 100%;
         margin: 0.5rem auto;
     }
 
@@ -124,8 +124,7 @@
 
 @media (max-width: 480px) {
     .card {
-        width: 90%;
-        margin: 0.5rem auto;
+    height: 100%;
     }
 
     .titulo {
