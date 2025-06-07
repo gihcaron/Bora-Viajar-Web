@@ -112,89 +112,146 @@
   
   }
 
-
- 
-
-  @media (max-width: 720px) {
-    .topBar {
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 10px 20px;
-    }
-
-    .searchBox {
-      max-width: 100%;
-      margin: 10px 0;
-    }
-
-    .navBar {
-      flex-direction: column;
-      align-items: flex-start;
-      gap: 10px;
-      padding: 10px 20px;
-    }
-
-    .navLink {
-      font-size: 12px;
-    }
-
-    .logoImage {
-      height: 100px;
-    }
-
-    .menuIcon {
-      display: flex;
-    }
+@media (max-width: 720px) {
+  .topBar {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+    position: relative;
   }
+
+  .logoImage {
+    height: 60px;
+    width: auto;
+  }
+
+  .searchBox {
+    background-color: #e6f0f0;
+    padding: 6px 10px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    flex-grow: 1;
+    max-width: 200px;
+    margin-left: 10px;
+  }
+
+  .searchInput {
+    font-size: 14px;
+  }
+
+  .loginLink {
+    font-size: 14px;
+    margin-left: auto;
+    color: #237373;
+    text-decoration: none;
+  }
+
+  .menuButton {
+    display: block;
+    margin-top: 8px;
+    margin-left: 10px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+  }
+
+  .menuIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .navBar {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    background-color: #e1eded;
+    padding: 10px;
+    width: 100%;
+    gap: 10px;
+  }
+
+  .navBar.open {
+    display: flex;
+  }
+
+  .navLink {
+    font-size: 16px;
+    color: #237373;
+    text-decoration: none;
+  }
+
+  .navLink:hover {
+    color: #91b9b9;
+  }
+}
 
   @media (max-width: 480px) {
-    .topBar {
-      padding: 10px 10px;
-    }
-    .menuIcon {
-      align-self: flex-end;
-    }
-
-    .loginLink {
-      font-size: 12px;
-      margin-right: 10px;
-    }
-
-    .searchInput {
-      font-size: 12px;
-    }
-    .searchBox {
-      max-width: 100%;
-      margin: 5px 0;
-    }
-
-    .navBar {
-      display: none;
-      background-color: #cfe8e8;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      padding: 10px;
-      position: absolute;
-      top: 60px;
-      right: 0;
-      width: 100%;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .navLink {
-      font-size: 10px;
-    }
-
-    .logoImage {
-      height: 80px;
-    }
-    .menuButton {
-      display: block;
-      border: none;
-    }
-
-    .navBar.open {
-      display: flex;
-    }
+.topBar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 8px;
+    position: relative;
   }
+
+  .logoImage {
+    height: 60px;
+    align-self: center;
+  }
+
+  .searchBox {
+    max-width: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 6px 10px;
+  }
+
+  .searchInput {
+    font-size: 12px;
+  }
+
+  .loginLink {
+    font-size: 12px;
+    align-self: flex-end;
+    margin-right: 0;
+  }
+
+  .menuButton {
+    display: block;
+    align-self: flex-end;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+  }
+
+  .menuIcon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .navBar {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    width: 100%;
+    background-color: #cfe8e8;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 4;
+  }
+
+  .navBar.open {
+    display: flex;
+  }
+
+  .navLink {
+    font-size: 12px;
+  }
+}

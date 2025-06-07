@@ -10,6 +10,10 @@ const Header = () => {
     setMenuOpen(!menuOpen);
   };
 
+  const handleOutsideClick = () => {
+    setMenuOpen(false);
+  };
+
   return (
     <div className={styles.headerWrapper}>
       <div className={styles.topBar}>
