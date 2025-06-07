@@ -18,7 +18,11 @@ const Header = () => {
     <div className={styles.headerWrapper}>
       <div className={styles.topBar}>
         <div className={styles.logo}>
-          <img src="/logo.png" alt="Logo Bora" className={styles.logoImage} />  </div>
+         <Link href="/feed" className={styles.logo}>
+  <Image src="/logo.png" alt="Logo Bora" className={styles.logoImage}    width={100}
+            height={100}/>
+</Link>
+        </div>
 
         <div className={styles.searchBox}>
           <Image src="/lupa.png"
