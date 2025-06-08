@@ -19,6 +19,7 @@ export default function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [comentarios, setComentarios] = useState([]);
   const [comentariosLoading, setComentariosLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
 
   const fetchComentarios = async () => {
     setComentariosLoading(true);
@@ -28,23 +29,27 @@ const res = await fetch('http://localhost:3000/api/comments', {
     'x-api-key': 'B0raV1@j@2025'
   }
 });      const data = await res.json();
-      console.log("Resposta bruta da API:", data);
-console.log("Comentários recebidos:", data);
-
-      setComentarios(data);
-      if (Array.isArray(data)) {
-        setComentarios(data);
-      } else if (Array.isArray(data.comentarios)) {
-        setComentarios(data.comentarios);
-      } else {
-        setComentarios([]);
-        console.error("A resposta da API não é um array:", data);
-      }
+         setComentarios(Array.isArray(data) ? data : data.comentarios || []);
     } catch (err) {
       console.error("Erro ao buscar comentários:", err);
       setComentarios([]);
     } finally {
       setComentariosLoading(false);
+    }
+  };
+
+  // parte do código da gi
+    const fetchPosts = async () => {
+    try {
+      const res = await fetch('http://localhost:3000/api/posts', {
+        method: 'GET',
+        headers: {  'Content-Type': 'application/json', 'x-api-key': 'B0raV1@j@2025' }
+      });
+      const data = await res.json();
+      console.log("Dados recebidos:", data);
+      setPosts(Array.isArray(data) ? data : data.posts || []);
+    } catch (error) {
+      console.error("Erro ao buscar posts:", error);
     }
   };
 
@@ -60,6 +65,7 @@ console.log("Comentários recebidos:", data);
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
+      fetchPosts();
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -72,6 +78,36 @@ console.log("Comentários recebidos:", data);
   return (
     <div style={styles.container}>
       <Header bannerTitle={"BORA VIAJAR"} />
+
+       {posts.map((post, index) => (
+        <div
+          key={index}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            backgroundColor: "#f0f0f0",
+            borderRadius: 10,
+            margin: "20px auto",
+            padding: "16px",
+            maxWidth: "800px"
+          }}
+        >
+          <img
+            src={post.imagemUrl}
+            alt={post.titulo}
+            style={{
+              width: "30%",
+              height: "auto",
+              borderRadius: "8px",
+              objectFit: "cover"
+            }}
+          />
+          <div style={{ flex: 1, paddingLeft: "16px" }}>
+            <h3 style={{ fontFamily: "poppins" }}>{post.titulo}</h3>
+            <p style={{ fontFamily: "poppins", textAlign: "justify" }}>{post.descricao}</p>
+          </div>
+        </div>
+      ))}
 
       {/* Primeiro Card */}
       <div

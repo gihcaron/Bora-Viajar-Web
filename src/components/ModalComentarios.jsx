@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 
-export default function ModalComentarios({ open, onClose, comentarios, loading }) {
+export default function ModalComentarios({ open, onClose, comentarios, loading, postId }) {
     useEffect(() => {
         if (open) {
             document.body.style.overflow = "hidden";
@@ -12,6 +12,8 @@ export default function ModalComentarios({ open, onClose, comentarios, loading }
         };
     }, [open]);
     if (!open) return null;
+
+    const comentariosFiltados = comentarios.filter(c => c.postId === postId);
 
     return (
         <div style={{
@@ -96,20 +98,21 @@ export default function ModalComentarios({ open, onClose, comentarios, loading }
                         textAlign: "center", color: "#999"
                     }}>Carregando...</p>
                 ) : (
-                     <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                        {comentarios.map((c, i) => (
-                            <li key={i} style={{ marginBottom: 16 }}>
-                                <div>
-                                    <p style={{ margin: 0, fontWeight: "bold", fontSize: "0.95rem" }}>
-                                        {c.usuario}
-                                    </p>
-                                    <p style={{ margin: 0, fontSize: "0.9rem", color: "#ddd" }}>
-                                        {c.comentario}
-                                    </p>
-                                </div>
-                            </li>
-                        ))}
-                    </ul>
+<ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
+    {comentariosFiltados.map((c, i) => (
+        <li key={i} style={{ marginBottom: 16 }}>
+            <div>
+                <p style={{ margin: 0, fontWeight: "bold", fontSize: "0.95rem" }}>
+                    {c.usuario}
+                </p>
+                <p style={{ margin: 0, fontSize: "0.9rem", color: "#ddd" }}>
+                    {c.comentario}
+                </p>
+            </div>
+        </li>
+    ))}
+</ul>
+
                 )}
             </div>
         </div>
