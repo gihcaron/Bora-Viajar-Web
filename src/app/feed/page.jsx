@@ -11,6 +11,8 @@ import styles from "../../styles/Header.module.css";
 import Footer from "../../components/Footer";
 import Cidades from "../../components/Cidades";
 import ModalComentarios from "../../components/ModalComentarios";
+import AvaliacaoApp from "../../components/AvaliacaoApp";
+
 
 const Headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
 
@@ -389,6 +391,9 @@ console.log("Comentários recebidos:", data);
         comentarios={comentarios}
         loading={comentariosLoading}
       />
+
+      <AvaliacaoApp />
+
 
       <Footer />
     </div>
