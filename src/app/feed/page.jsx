@@ -1,16 +1,18 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Rate } from "antd";
 import "antd/dist/reset.css";
 
 import Header from "../../components/Header";
 import Loader from "../../components/Loader";
 import Banner from "../../components/Banner";
+import axios from "axios";
 import styles from "../../styles/Header.module.css";
 import Footer from "../../components/Footer";
 import Cidades from "../../components/Cidades";
 import ModalComentarios from "../../components/ModalComentarios";
+import  PostUsers from "../../components/PostUsers";
 
 const Headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
 
@@ -41,17 +43,22 @@ const res = await fetch('http://localhost:3000/api/comments', {
   // parte do código da gi
     const fetchPosts = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/posts', {
-        method: 'GET',
-        headers: {  'Content-Type': 'application/json', 'x-api-key': 'B0raV1@j@2025' }
-      });
-      const data = await res.json();
+      const { data }= await axios.get(
+       `${process.env.NEXT_PUBLIC_API_URL}/posts`,
+        { headers: Headers } 
+      );
       console.log("Dados recebidos:", data);
-      setPosts(Array.isArray(data) ? data : data.posts || []);
+      setPosts(data)
     } catch (error) {
       console.error("Erro ao buscar posts:", error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchPosts();
+  })
 
   const handleOpenModal = () => {
     setModalOpen(true);
@@ -78,36 +85,16 @@ const res = await fetch('http://localhost:3000/api/comments', {
   return (
     <div style={styles.container}>
       <Header bannerTitle={"BORA VIAJAR"} />
-
-       {posts.map((post, index) => (
-        <div
-          key={index}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            backgroundColor: "#f0f0f0",
-            borderRadius: 10,
-            margin: "20px auto",
-            padding: "16px",
-            maxWidth: "800px"
-          }}
-        >
-          <img
-            src={post.imagemUrl}
-            alt={post.titulo}
-            style={{
-              width: "30%",
-              height: "auto",
-              borderRadius: "8px",
-              objectFit: "cover"
-            }}
-          />
-          <div style={{ flex: 1, paddingLeft: "16px" }}>
-            <h3 style={{ fontFamily: "poppins" }}>{post.titulo}</h3>
-            <p style={{ fontFamily: "poppins", textAlign: "justify" }}>{post.descricao}</p>
-          </div>
+       <div>
+       {posts.map((post) => (
+            <PostUsers
+              key={post.id}
+              image={post.image}
+              description={post.description}
+              tag={post.tag}
+            />
+          ))}
         </div>
-      ))}
 
       {/* Primeiro Card */}
       <div
