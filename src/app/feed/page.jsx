@@ -13,6 +13,7 @@ import Footer from "../../components/Footer";
 import Cidades from "../../components/Cidades";
 import ModalComentarios from "../../components/ModalComentarios";
 import  PostUsers from "../../components/PostUsers";
+import AvaliacaoApp from "../../components/AvaliacaoApp";
 
 const Headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
 
@@ -21,7 +22,6 @@ export default function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [comentarios, setComentarios] = useState([]);
   const [comentariosLoading, setComentariosLoading] = useState(false);
-  const [posts, setPosts] = useState([]);
 
   const fetchComentarios = async () => {
     setComentariosLoading(true);
@@ -31,7 +31,18 @@ const res = await fetch('http://localhost:3000/api/comments', {
     'x-api-key': 'B0raV1@j@2025'
   }
 });      const data = await res.json();
-         setComentarios(Array.isArray(data) ? data : data.comentarios || []);
+      console.log("Resposta bruta da API:", data);
+console.log("Comentários recebidos:", data);
+
+      setComentarios(data);
+      if (Array.isArray(data)) {
+        setComentarios(data);
+      } else if (Array.isArray(data.comentarios)) {
+        setComentarios(data.comentarios);
+      } else {
+        setComentarios([]);
+        console.error("A resposta da API não é um array:", data);
+      }
     } catch (err) {
       console.error("Erro ao buscar comentários:", err);
       setComentarios([]);
@@ -40,7 +51,6 @@ const res = await fetch('http://localhost:3000/api/comments', {
     }
   };
 
-  // parte do código da gi
     const fetchPosts = async () => {
     try {
       const { data }= await axios.get(
@@ -60,6 +70,7 @@ const res = await fetch('http://localhost:3000/api/comments', {
     fetchPosts();
   })
 
+
   const handleOpenModal = () => {
     setModalOpen(true);
     fetchComentarios();
@@ -72,7 +83,6 @@ const res = await fetch('http://localhost:3000/api/comments', {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-      fetchPosts();
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -85,6 +95,7 @@ const res = await fetch('http://localhost:3000/api/comments', {
   return (
     <div style={styles.container}>
       <Header bannerTitle={"BORA VIAJAR"} />
+
        <div>
        {posts.map((post) => (
             <PostUsers
@@ -96,7 +107,8 @@ const res = await fetch('http://localhost:3000/api/comments', {
           ))}
         </div>
 
-      {/* Primeiro Card. */}
+      {/* Primeiro Card */}
+
       <div
         style={{
           display: "flex",
@@ -412,6 +424,9 @@ const res = await fetch('http://localhost:3000/api/comments', {
         comentarios={comentarios}
         loading={comentariosLoading}
       />
+
+      <AvaliacaoApp />
+
 
       <Footer />
     </div>
