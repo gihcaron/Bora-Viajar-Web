@@ -110,6 +110,22 @@
 
 
 
+@media (max-width: 1024px) {
+    .Profile {
+        width: 90%;
+        padding: 0.5rem;
+    }
+    .profileImage {
+        width: 8rem;
+        height: 8rem;
+    }
+
+    .ProfileContent{
+        margin-top: 2rem;
+    }
+
+}
+
 @media (max-width: 900px) {
     .Profile {
         width: 90%;
@@ -119,12 +135,17 @@
         width: 8rem;
         height: 8rem;
     }
+
+    .ProfileContent{
+        margin-top: 1rem;
+    }
+
 }
 
 @media (max-width: 600px) {
     .Profile {
         width: 100%;
-        min-height: 55vh;
+        min-height: 45vh;
         padding: 0.3rem;
     }
     .ProfileContainer {
@@ -140,10 +161,15 @@
         height: 120px;
     }
 
+    .ProfileContent{
+        margin-top: 1rem;
+    }
+
     .ProfileInfo{
         margin-top: 20%;
     }
     .userName {
+
         font-size: 1rem;
     }
     .userEmail,

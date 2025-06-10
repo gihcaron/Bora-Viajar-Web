@@ -1,0 +1,195 @@
+.Post {
+  width: 50%;
+  display: flex;
+  align-items: flex-start;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  background-color: #f0f0f0;
+  border-radius: 20px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+  align-content: flex-start;
+  justify-content: flex-start;
+}
+
+.PostHeader {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  justify-content: flex-start;
+}
+
+.profileImage {
+  margin-top: 10%;
+  margin-bottom: 5%;
+  margin-right: 1rem;
+  border: 1px solid #f5f5f5;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+}
+
+.Name {
+  font-size: 1rem;
+  font-weight: bold;
+  color: rgb(16, 145, 145);
+  margin-right: 1rem;
+}
+
+.UserName {
+  font-size: 0.8rem;
+  color: #333;
+  margin-right: 1rem;
+}
+
+.PostImage {
+  width: 100%;
+  height: 25rem;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+.PostActions {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 0.6rem;
+    width: 100%;
+    margin-top: 1.5rem;
+}
+
+.postCurtidas{
+    font-size: 1.2rem;
+    color: #555;
+}
+
+.Promocao {
+  background-color: #b5c7ba;
+  color: #155724a1;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  border: none;
+  margin-top: 0.5rem;
+  border-radius: 15px;
+  padding: 0.5rem 3rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.Alerta {
+  background-color: #ff838da6;
+  color: #db5560;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  border: none;
+  margin-top: 0.5rem;
+  border-radius: 15px;
+  padding: 0.5rem 3rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+.Novidades {
+  background-color: #fff3cd;
+  color: #755a00;
+  width: 20%;
+  display: flex;
+  justify-content: center;
+  border: none;
+  margin-top: 0.5rem;
+  border-radius: 15px;
+  padding: 0.5rem 3rem;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-size: 0.8rem;
+}
+
+.Description {
+  font-size: 1rem;
+  color: #333;
+  margin-top: 1rem;
+  word-break: break-word;
+}
+
+@media (max-width: 768px) {
+  .Post {
+    width: 90%;
+    padding: 0.8rem;
+  }
+
+  .PostHeader {
+    margin: 0.3rem;
+    align-items: flex-start;
+  }
+
+  .profileImage {
+    width: 2.5rem;
+    height: 2.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .Name,
+  .UserName {
+    font-size: 0.9rem;
+    margin-right: 0.5rem;
+  }
+
+  .PostImage {
+    height: 15rem;
+  }
+
+  .PostActions {
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .Promocao,
+  .Alerta,
+  .Novidades {
+    width: 30%;
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .Description {
+    font-size: 0.8rem;
+    display: flex;
+    justify-content: justify;
+  }
+}
+
+@media (max-width: 480px) {
+  .Post {
+    width: 100%;
+    padding: 0.5rem;
+  }
+
+  .profileImage {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
+  .Name,
+  .UserName {
+    margin: 0.1rem;
+    font-size: 0.7rem;
+  }
+
+  .PostImage {
+    height: 12rem;
+  }
+
+  .Promocao,
+  .Alerta,
+  .Novidades {
+    font-size: 0.6rem;
+    padding: 0.5rem 0.8rem;
+  }
+
+  .Description {
+    font-size: 0.8rem;
+  }
+}
