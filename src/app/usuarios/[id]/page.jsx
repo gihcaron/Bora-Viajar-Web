@@ -61,6 +61,20 @@ export default function Usuarios() {
     }
   };
 
+  const fetchComments = async (postId) => {
+    try {
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/comments/post/${postId}`,
+        { headers: Headers }
+      );
+      console.log("Resposta da API (comentários):", data);
+      setComments(data);
+      setIsLoading(false);
+    } catch (error) {
+      console.error("Erro ao carregar comentários:", error);
+    }
+  }
+
   // Exibir Comentários do Post
 
   // Modal para ver comentários
@@ -70,6 +84,7 @@ export default function Usuarios() {
     comments: [],
     post_id: null,
     user_id: null,
+    photo: null,
   });
 
   const openModal = async (post) => {
@@ -77,25 +92,14 @@ export default function Usuarios() {
     console.log("Post selecionado:", post);
     setModalInfo({
       visible: true,
-      description: post.description,
       comments: [],
       post_id: post.id,
       user_id: post.user_id,
+      description: post.description,
     });
-    setIsLoading(true);
 
-    try {
-      const { data } = await axios.get(
-        `${process.env.NEXT_PUBLIC_API_URL}/comments`,
-        { headers: Headers }
-      );
-      
-      setComments(data);
-    } catch (error) {
-      console.error("Erro ao carregar comentário:", error);
-    } finally {
-      setIsLoading(false);
-    }
+    setIsLoading(true);
+    fetchComments(post.id);
   };
 
   useEffect(() => {
@@ -108,13 +112,8 @@ export default function Usuarios() {
 
   // Debugging logs
 
-  console.log("user", user);
-
-  console.log("posts", posts);
 
   console.log("comments", comments);
-
-  console.log(selectedPost?.id);
 
   return (
     <div className={styles.container}>
@@ -146,7 +145,7 @@ export default function Usuarios() {
             onComentarioClick={() => openModal(post)}
             description={post.description}
             tag={post.tag}
-            curtidas={post. likes_count}
+            curtidas={post.likes_count}
           />
         ))}
       </div>
@@ -169,19 +168,25 @@ export default function Usuarios() {
           <Skeleton active />
         ) : (
           <div>
-            <p>
-              <strong>Descrição:</strong>
+            <p
+              className={styles.descricao}
+            >
+              <strong className={styles.descricaoText}>Descrição:</strong>
             </p>
-            <p>{modalInfo.description}</p>
+            <p className={styles.descricaoText}>{modalInfo.description}</p>
 
             {comments.length > 0 ? (
               comments.map((comment) => (
-                <p key={comment.id}>
-                  <strong>{comment.usuario}:</strong> {comment.comment}
+                <p
+                  className={styles.commentText}
+                  key={comment.id}>
+                  <strong>@{comment.usuario}:</strong>
+                  <p>{comment.comentario}</p>
                 </p>
               ))
             ) : (
-              <p>Sem comentários neste post.</p>
+              <p
+                className={styles.semComentariosMensagem}>Sem comentários neste post.</p>
             )}
           </div>
         )}

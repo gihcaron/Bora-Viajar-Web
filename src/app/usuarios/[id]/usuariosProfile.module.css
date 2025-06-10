@@ -28,3 +28,31 @@
     justify-content: center;
     margin: 2rem;
 }
+
+.descricao{
+    font-size: 1rem;
+    color: #333;
+    margin-top: 1rem;
+}
+
+.descricaoText{
+    font-family: poppins, sans-serif;
+    font-size: 0.8rem;
+    color: #333;
+    margin-top: 1rem;
+}
+
+.commentText{
+    font-family: poppins, sans-serif;
+    font-size: 0.8rem;
+    color: #333;
+    margin-top: 1rem;
+}
+
+.semComentariosMensagem{
+    font-family: poppins, sans-serif;
+    font-size: 0.8rem;
+    font-weight: bold;
+    color: #09474d;
+    margin-top: 1rem;
+}
