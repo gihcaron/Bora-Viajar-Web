@@ -37,17 +37,47 @@
     margin-top: 1.5rem;
 }
 
-.UserAndGuia{
-    background-color: rgb(16, 145, 145);
-    color: #fff;
+.Promocao{
+    background-color:#155724a1;
+    color: #b5c7ba;
+    width: 20%;
+    display: flex;
+    justify-content: center;
     border: none;
     margin-top: 1rem;
-    border-radius: 30px;
-    padding: 0.3rem 2rem;
+    border-radius:15px;
+    padding: 0.8rem 3rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+.Alerta{
+    background-color:#ff838da6;
+    color: #db5560;
+    width: 20%;
+    display: flex;
+    justify-content: center;
+    border: none;
+    margin-top: 1rem;
+    border-radius:15px;
+    padding: 0.8rem 3rem;
     text-transform: uppercase;
     font-weight: 600;
     font-size: 0.8rem; 
+}
+.Novidades{
+    background-color: #fff3cd;
+    color: #755a00;
     width: 20%;
+    display: flex;
+    justify-content: center;
+    border: none;
+    margin-top: 1rem;
+    border-radius:15px;
+    padding: 0.8rem 3rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: 0.8rem;
 }
 
 .Description{
