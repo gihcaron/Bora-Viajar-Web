@@ -24,28 +24,17 @@ export default function HomePage() {
   const [comentariosLoading, setComentariosLoading] = useState(false);
   const [posts, setPosts] = useState([]);
 
-  const fetchComentarios = async () => {
+  const fetchComentarios = async (postId) => {
     setComentariosLoading(true);
     try {
-const res = await fetch('http://localhost:3000/api/comments', {
-  headers: {
-    'x-api-key': 'B0raV1@j@2025'
-  }
-});      const data = await res.json();
-      console.log("Resposta bruta da API:", data);
-console.log("Comentários recebidos:", data);
-
-      setComentarios(data);
-      if (Array.isArray(data)) {
-        setComentarios(data);
-      } else if (Array.isArray(data.comentarios)) {
-        setComentarios(data.comentarios);
-      } else {
-        setComentarios([]);
-        console.error("A resposta da API não é um array:", data);
-      }
+      const res = await fetch(`http://localhost:3000/api/comments?postId=${postId}`, {
+        headers: {
+          'x-api-key': 'B0raV1@j@2025'
+        }
+      });
+      const data = await res.json();
+      setComentarios(Array.isArray(data) ? data : data.comentarios || []);
     } catch (err) {
-      console.error("Erro ao buscar comentários:", err);
       setComentarios([]);
     } finally {
       setComentariosLoading(false);
@@ -97,19 +86,7 @@ console.log("Comentários recebidos:", data);
     <div style={styles.container}>
       <Header bannerTitle={"BORA VIAJAR"} />
 
-       <div>
-       {posts.map((post) => (
-            <PostUsers
-              key={post.id}
-              image={post.image}
-              description={post.description}
-              tag={post.tag}
-            />
-          ))}
-        </div>
-
       {/* Primeiro Card */}
-
       <div
         style={{
           display: "flex",
@@ -188,18 +165,75 @@ console.log("Comentários recebidos:", data);
           alt="Turista na cachoeira"
           style={{ width: "25%", borderRadius: "8px" }}
         />
-        <p
-          style={{
-            width: "65%",
-            fontSize: "16px",
-            lineHeight: "1.4",
-            fontFamily: "poppins",
-            textAlign: "justify",
-          }}
-        >
-          Nosso site é o ponto de encontro entre guias e viajantes apaixonados. Aqui, guias mostram seu trabalho e turistas trocam dicas, memórias e achados incríveis pelo Brasil. É um espaço leve, feito pra inspirar, divulgar e conectar histórias reais. Curtiu a ideia? Então... BORA VIAJAR!
-        </p>
+        <div style={{ width: "65%", display: "flex", flexDirection: "column", alignItems: "flex-start" }}>
+          <p
+            style={{
+              width: "100%",
+              fontSize: "16px",
+              lineHeight: "1.4",
+              fontFamily: "poppins",
+              textAlign: "justify",
+              marginBottom: "16px"
+            }}
+          >
+            Nosso site é o ponto de encontro entre guias e viajantes apaixonados. Aqui, guias mostram seu trabalho e turistas trocam dicas, memórias e achados incríveis pelo Brasil. É um espaço leve, feito pra inspirar, divulgar e conectar histórias reais. Curtiu a ideia? Então... BORA VIAJAR!
+          </p>
+          <div style={{ textAlign: "center", width: "100%" }}>
+            <button
+              onClick={() => {
+                const feedbackSection = document.getElementById("feedback-section");
+                if (feedbackSection) {
+                  feedbackSection.scrollIntoView({ behavior: "smooth" });
+                }
+              }}
+              style={{
+                padding: "10px 20px",
+                fontSize: "13px",
+                backgroundColor: "#cfe8e8",
+                color: "#5f7f7a",
+                border: "none",
+                borderRadius: "5px",
+                cursor: "pointer",
+                fontFamily: "poppins",
+                fontWeight: "bold",
+                transition: "background-color 0.3s ease",
+                textTransform: "uppercase",
+                letterSpacing: "1px",
+                boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+              }}
+            >
+              Ver feedback dos usuários
+            </button>
+          </div>
+        </div>
       </div>
+
+      <div
+  style={{
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+    gap: "32px",
+    margin: "0 auto",
+    maxWidth: 500,
+    width: "100%",
+    padding: "0 8px",
+  }}
+>
+  {[ // Ordena: posts com imagem primeiro
+    ...posts.filter(post => post.image && post.image.trim() !== ""),
+    ...posts.filter(post => !post.image || post.image.trim() === "")
+  ].map((post) => (
+    <PostUsers
+      key={post.id}
+      {...post}
+      onComentarioClick={() => {
+        setModalOpen(true);
+        fetchComentarios(post.id);
+      }}
+    />
+  ))}
+</div>
 
       {/* Seções de cidades */}
       <Cidades
@@ -294,7 +328,38 @@ console.log("Comentários recebidos:", data);
         loading={comentariosLoading}
       />
 
-      <AvaliacaoApp />
+      {/* Coloque o id na seção de feedback dos usuários */}
+      <div id="feedback-section">
+        <AvaliacaoApp />
+      </div>
+
+      {/* Botão para subir ao topo */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        style={{
+          position: "fixed",
+          bottom: 32,
+          right: 32,
+          background: "#3ddad7",
+          border: "none",
+          borderRadius: "50%",
+          width: 56,
+          height: 56,
+          boxShadow: "0 4px 16px rgba(0,0,0,0.18)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          zIndex: 9999,
+          transition: "background 0.2s",
+        }}
+        aria-label="Voltar ao topo"
+        title="Voltar ao topo"
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="18 15 12 9 6 15" />
+        </svg>
+      </button>
 
       <Footer />
     </div>
