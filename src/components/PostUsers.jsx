@@ -29,9 +29,23 @@ export default function Posts({
     setCurtido((v) => !v);
   };
 
-
   return (
-    <div className={styles.Post}>
+    <div
+      className={styles.Post}
+      style={{
+        background: "#fff",
+        borderRadius: 16,
+        boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
+        margin: "0 auto",
+        width: "100%",
+        maxWidth: 420,
+        border: "1px solid #ececec",
+        overflow: "hidden",
+        marginBottom: "0px",
+        display: "flex",
+        flexDirection: "column",
+      }}
+    >
       <div className={styles.PostHeader}>
         <div>
           <Image
@@ -44,7 +58,7 @@ export default function Posts({
                 ? `http://localhost:3000/uploads/${photo}`
                 : "/perfil.jpg"
             }
-            alt={name}
+            alt={name ? `Foto de perfil de ${name}` : "Foto de perfil do usuário"}
             width={160}
             height={160}
             priority={true}
