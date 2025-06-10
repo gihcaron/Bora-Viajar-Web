@@ -5,10 +5,9 @@ import Image from "next/image";
 import styles from "../styles/PostUsers.module.css";
 import { Heart, MessageCircle, Bookmark } from "lucide-react";
 
-export default function Posts ({ image, description, tag }) {
+export default function Posts ({ image, description, tag, onComentarioClick}) {
   const [curtido, setCurtido] = useState(false);
   const [salvo, setSalvo] = useState(false);
-  const onComentarioClick = () => {};
    
     return (
                <div className={styles.Post}>
@@ -37,7 +36,7 @@ export default function Posts ({ image, description, tag }) {
                   <p className={styles.UserAndGuia}>{tag}</p>
 
                   <p className={styles.Description}>{description}</p>
-                  
+
                   <div className={styles.PostInfo}>
                     <div className={styles.PostActions}>
                     <Heart
