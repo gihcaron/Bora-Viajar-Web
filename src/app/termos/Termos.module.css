@@ -1,5 +1,5 @@
 .container{
-    background-color: rgb(238, 250, 247);
+    background-color: rgb(252, 255, 254);
     max-width: 800px;
     margin: 0 auto;
     padding: 40px 20px;
@@ -13,7 +13,7 @@
     font-weight: 700;
     text-align: center;
     margin-bottom: 24px;
-    color: rgb(39, 207, 185);
+    color: rgb(9, 126, 110);
 }
 
 .content{
@@ -35,7 +35,7 @@
 
 .button {
     padding: 10px 28px;
-    background-color: rgb(39, 207, 185);
+    background-color: rgb(51, 177, 160);
     color: white;
     border-radius: 8px;
     font-weight: 600;

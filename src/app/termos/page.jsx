@@ -21,11 +21,14 @@ export default function Termos() {
             </div>
             <div className={styles.content}>
                 <h2 className={styles.subTitle}>4. Conteúdo Gerado por Usuários</h2>
-                <p className={styles.texto}>Os usuários podem compartilhar relatos, avaliações e imagens dos destinos que visitaram. Ao publicar esse conteúdo, você declara que:
-                    <p className={styles.topico}>É o autor do conteúdo ou tem permissão para publicá-lo;</p>
-                    <p className={styles.topico}>Não incluirá material ofensivo, ilegal ou que infrinja direitos de terceiros;</p>
-                    <p className={styles.topico}>Autoriza o site a exibir e, se necessário, moderar esse conteúdo para manter um ambiente seguro.</p>
+                <p className={styles.texto}>
+                    Os usuários podem compartilhar relatos, avaliações e imagens dos destinos que visitaram. Ao publicar esse conteúdo, você declara que:
                 </p>
+                <ul>
+                    <li className={styles.topico}>É o autor do conteúdo ou tem permissão para publicá-lo;</li>
+                    <li className={styles.topico}>Não incluirá material ofensivo, ilegal ou que infrinja direitos de terceiros;</li>
+                    <li className={styles.topico}>Autoriza o site a exibir e, se necessário, moderar esse conteúdo para manter um ambiente seguro.</li>
+                </ul>
             </div>
             <div className={styles.content}>
                 <h2 className={styles.subTitle}>5. Responsabilidades</h2>

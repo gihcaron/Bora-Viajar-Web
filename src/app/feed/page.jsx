@@ -86,6 +86,20 @@ export default function HomePage() {
     <div style={styles.container}>
       <Header bannerTitle={"BORA VIAJAR"} />
 
+
+       <div>
+       {posts.map((post) => (
+            <PostUsers
+              key={post.id}
+              image={post.image}
+              description={post.description}
+              tag={post.tag}
+              alt={post.alt}
+            />
+          ))}
+        </div>
+
+
       {/* Primeiro Card */}
       <div
         style={{
