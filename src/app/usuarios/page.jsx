@@ -135,8 +135,36 @@ export default function Usuarios() {
             />
           </div>
       </div>
-
       <Footer />
+
+       {/* Botão para subir ao topo */}
+      <button
+        onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+        style={{
+          position: "fixed",
+          bottom: 32,
+          right: 32,
+          background: "#3ddad7",
+          border: "none",
+          borderRadius: "50%",
+          width: 56,
+          height: 56,
+          boxShadow: "0 4px 16px rgba(0,0,0,0.18)",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          zIndex: 9999,
+          transition: "background 0.2s",
+        }}
+        aria-label="Voltar ao topo"
+        title="Voltar ao topo"
+      >
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#fff" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="18 15 12 9 6 15" />
+        </svg>
+      </button>
     </div>
+    
   );
 }
