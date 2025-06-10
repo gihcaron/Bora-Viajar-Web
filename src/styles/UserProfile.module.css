@@ -110,9 +110,8 @@
 
 
 
-@media (max-width: 1024px) {
+@media (max-width: 1444px) {
     .Profile {
-        width: 90%;
         padding: 0.5rem;
     }
     .profileImage {
@@ -121,7 +120,7 @@
     }
 
     .ProfileContent{
-        margin-top: 2rem;
+        margin-top: 1rem;
     }
 
 }
