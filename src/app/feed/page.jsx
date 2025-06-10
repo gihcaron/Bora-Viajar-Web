@@ -1,18 +1,19 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Rate } from "antd";
 import "antd/dist/reset.css";
 
 import Header from "../../components/Header";
 import Loader from "../../components/Loader";
 import Banner from "../../components/Banner";
+import axios from "axios";
 import styles from "../../styles/Header.module.css";
 import Footer from "../../components/Footer";
 import Cidades from "../../components/Cidades";
 import ModalComentarios from "../../components/ModalComentarios";
+import  PostUsers from "../../components/PostUsers";
 import AvaliacaoApp from "../../components/AvaliacaoApp";
-
 
 const Headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
 
@@ -50,6 +51,26 @@ console.log("Comentários recebidos:", data);
     }
   };
 
+    const fetchPosts = async () => {
+    try {
+      const { data }= await axios.get(
+       `${process.env.NEXT_PUBLIC_API_URL}/posts`,
+        { headers: Headers } 
+      );
+      console.log("Dados recebidos:", data);
+      setPosts(data)
+    } catch (error) {
+      console.error("Erro ao buscar posts:", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchPosts();
+  })
+
+
   const handleOpenModal = () => {
     setModalOpen(true);
     fetchComentarios();
@@ -75,7 +96,19 @@ console.log("Comentários recebidos:", data);
     <div style={styles.container}>
       <Header bannerTitle={"BORA VIAJAR"} />
 
+       <div>
+       {posts.map((post) => (
+            <PostUsers
+              key={post.id}
+              image={post.image}
+              description={post.description}
+              tag={post.tag}
+            />
+          ))}
+        </div>
+
       {/* Primeiro Card */}
+
       <div
         style={{
           display: "flex",
