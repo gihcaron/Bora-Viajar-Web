@@ -1,16 +1,19 @@
 'use client';
 
-import React, { useEffect, useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import { Rate } from "antd";
 import "antd/dist/reset.css";
 
 import Header from "../../components/Header";
 import Loader from "../../components/Loader";
 import Banner from "../../components/Banner";
+import axios from "axios";
 import styles from "../../styles/Header.module.css";
 import Footer from "../../components/Footer";
 import Cidades from "../../components/Cidades";
 import ModalComentarios from "../../components/ModalComentarios";
+import  PostUsers from "../../components/PostUsers";
+import AvaliacaoApp from "../../components/AvaliacaoApp";
 
 const Headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
 
@@ -29,7 +32,18 @@ const res = await fetch('http://localhost:3000/api/comments', {
     'x-api-key': 'B0raV1@j@2025'
   }
 });      const data = await res.json();
-         setComentarios(Array.isArray(data) ? data : data.comentarios || []);
+      console.log("Resposta bruta da API:", data);
+console.log("Comentários recebidos:", data);
+
+      setComentarios(data);
+      if (Array.isArray(data)) {
+        setComentarios(data);
+      } else if (Array.isArray(data.comentarios)) {
+        setComentarios(data.comentarios);
+      } else {
+        setComentarios([]);
+        console.error("A resposta da API não é um array:", data);
+      }
     } catch (err) {
       console.error("Erro ao buscar comentários:", err);
       setComentarios([]);
@@ -38,20 +52,25 @@ const res = await fetch('http://localhost:3000/api/comments', {
     }
   };
 
-  // parte do código da gi
     const fetchPosts = async () => {
     try {
-      const res = await fetch('http://localhost:3000/api/posts', {
-        method: 'GET',
-        headers: {  'Content-Type': 'application/json', 'x-api-key': 'B0raV1@j@2025' }
-      });
-      const data = await res.json();
+      const { data }= await axios.get(
+       `${process.env.NEXT_PUBLIC_API_URL}/posts`,
+        { headers: Headers } 
+      );
       console.log("Dados recebidos:", data);
-      setPosts(Array.isArray(data) ? data : data.posts || []);
+      setPosts(data)
     } catch (error) {
       console.error("Erro ao buscar posts:", error);
+    } finally {
+      setLoading(false);
     }
   };
+
+  useEffect(() => {
+    fetchPosts();
+  })
+
 
   const handleOpenModal = () => {
     setModalOpen(true);
@@ -65,7 +84,6 @@ const res = await fetch('http://localhost:3000/api/comments', {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-      fetchPosts();
     }, 1000);
 
     return () => clearTimeout(timer);
@@ -79,37 +97,19 @@ const res = await fetch('http://localhost:3000/api/comments', {
     <div style={styles.container}>
       <Header bannerTitle={"BORA VIAJAR"} />
 
-       {posts.map((post, index) => (
-        <div
-          key={index}
-          style={{
-            display: "flex",
-            flexDirection: "row",
-            backgroundColor: "#f0f0f0",
-            borderRadius: 10,
-            margin: "20px auto",
-            padding: "16px",
-            maxWidth: "800px"
-          }}
-        >
-          <img
-            src={post.imagemUrl}
-            alt={post.titulo}
-            style={{
-              width: "30%",
-              height: "auto",
-              borderRadius: "8px",
-              objectFit: "cover"
-            }}
-          />
-          <div style={{ flex: 1, paddingLeft: "16px" }}>
-            <h3 style={{ fontFamily: "poppins" }}>{post.titulo}</h3>
-            <p style={{ fontFamily: "poppins", textAlign: "justify" }}>{post.descricao}</p>
-          </div>
+       <div>
+       {posts.map((post) => (
+            <PostUsers
+              key={post.id}
+              image={post.image}
+              description={post.description}
+              tag={post.tag}
+            />
+          ))}
         </div>
-      ))}
 
       {/* Primeiro Card */}
+
       <div
         style={{
           display: "flex",
@@ -266,138 +266,6 @@ const res = await fetch('http://localhost:3000/api/comments', {
         ]}
         onComentarioClick={handleOpenModal}
       />
-
-      {/* Avaliações*/}
-      <h2 style={{ textAlign: "center", fontFamily: "poppins", fontWeight: "bold", fontSize: "24px", marginBottom: "20px", marginTop: "40px" }}>
-        AVALIAÇÕES
-      </h2>
-      <div style={{
-        display: "flex",
-        backgroundColor: "#cbebe9",
-        borderRadius: "8px",
-        margin: "20px auto",
-        padding: 0,
-        alignItems: "stretch",
-        gap: 0,
-        maxWidth: "800px",
-        height: "auto",
-        overflow: "hidden"
-      }}>
-        <img
-          src="/avaliacao-aquario.jpg"
-          alt="Mulher no aquário"
-          style={{
-            width: "40%",
-            height: "100%",
-            objectFit: "cover",
-            borderRadius: "8px 0 0 8px"
-          }}
-        />
-        <div style={{
-          fontFamily: "Poppins",
-          fontSize: "15px",
-          color: "#333",
-          flex: 1,
-          padding: "20px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center"
-        }}>
-          <div style={{ margin: 0 }}>
-            <strong>@usuariodasilva</strong><br />
-            <span style={{ color: "#5f7f7a", fontWeight: "bold" }}>Local: AguaRio</span>
-            <div>
-              <Rate allowHalf disabled defaultValue={5} style={{ color: "#f7b801", fontSize: "16px" }} />
-            </div>
-          </div>
-          <p style={{ marginTop: "10px", textAlign: "justify", fontSize: "15px" }}>
-            O Rio de Janeiro continua lindooo!🎶 Moro aqui há anos e só agora fui conhecer o famoso AquaRio — e que experiência incrível! Tudo isso graças ao Bora Viajar, que me conectou com uma guia top, super atenciosa. Ela cuidou de tudo, até dos ingressos, e me ajudou a descobrir esse mundo marinho maravilhoso.
-            Super recomendo o passeio! Fica a dica pra quem vier curtir a Cidade Maravilhosa 🌊🐠✨
-          </p>
-          <span
-            onClick={handleOpenModal}
-            style={{ cursor: "pointer", fontSize: 20 }}
-            title="Ver comentários"
-            role="button"
-            aria-label="Ver comentários"
-          >💬</span>
-        </div>
-      </div>
-      <div style={{
-        display: "flex",
-        backgroundColor: "#cbebe9",
-        borderRadius: "8px",
-        margin: "20px auto",
-        padding: 0,
-        alignItems: "stretch",
-        gap: 0,
-        flexDirection: "row-reverse",
-        maxWidth: "800px",
-        height: "auto",
-        overflow: "hidden"
-      }}>
-        <img
-          src="/avaliacao-lencois.jpg"
-          alt="Mulher nos lençóis maranhenses"
-          style={{
-            width: "40%",
-            height: "100%",
-            objectFit: "cover",
-            borderRadius: "0 8px 8px 0"
-          }}
-        />
-        <div style={{
-          fontFamily: "Poppins",
-          fontSize: "15px",
-          color: "#333",
-          flex: 1,
-          padding: "20px",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          direction: "rtl",
-          textAlign: "justify"
-        }}>
-          <div style={{ margin: 0 }}>
-            <strong>usuariocosta@</strong><br />
-            <span style={{ color: "#5f7f7a", fontWeight: "bold" }}>Local: Lençóis Maranhenses</span>
-            <div>
-              <Rate allowHalf disabled defaultValue={5} style={{ color: "#f7b801", fontSize: "16px" }} />
-              <span
-                onClick={handleOpenModal}
-                style={{ cursor: "pointer", fontSize: 20 }}
-                title="Ver comentários"
-                role="button"
-                aria-label="Ver comentários"
-              >💬</span>
-
-              <div>
-                <Rate allowHalf disabled defaultValue={5} style={{ color: "#f7b801", fontSize: "16px" }} />
-                <span
-                  style={{ cursor: "pointer", marginLeft: 12, fontSize: 20 }}
-                  title="Ver comentários"
-                  onClick={handleOpenModal}
-                  role="button"
-                  aria-label="Ver comentários"
-                >
-                  💬
-                </span>
-              </div>
-            </div>
-          </div>
-          <p style={{ marginTop: "10px", fontSize: "15px" }}>
-            A viagem foi simplesmente incrível, a realização de um sonho mesmo! Encontrar a página de uma guia no Maranhão fez toda a diferença — ajudou em cada detalhe do roteiro. Sou muito grato ao site por ter facilitado tudo isso.
-            Recomendo demais, tanto o passeio quanto a página! Pode confiar que o pessoal é super eficiente e de verdade, tudo feito com muito carinho e profissionalismo
-          </p>
-          <span
-            onClick={handleOpenModal}
-            style={{ cursor: "pointer", fontSize: 20 }}
-            title="Ver comentários"
-            role="button"
-            aria-label="Ver comentários"
-          >💬</span>
-        </div>
-      </div>
       {modalOpen && (
         <div style={{
           position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh",
@@ -425,6 +293,9 @@ const res = await fetch('http://localhost:3000/api/comments', {
         comentarios={comentarios}
         loading={comentariosLoading}
       />
+
+      <AvaliacaoApp />
+
 
       <Footer />
     </div>

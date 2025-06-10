@@ -1,0 +1,63 @@
+.avaliacaoAppWrapper {
+    background-color: #f9f9f9;
+    padding: 4rem 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+}
+
+.avaliacaoApp {
+    max-width: 800px;
+    width: 100%;
+    text-align: center;
+    color: #f9f9f9;
+}
+
+.avaliacaoApp {
+    width: 100%;
+    max-width: 800px;
+    text-align: center;
+    color: #f9f9f9;
+}
+
+.titulo {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #038a6d;
+}
+
+.listaAvaliacao ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.itemAvaliacao {
+    background-color: #fff;
+    color: #000;
+    padding: 1.5rem;
+    border-radius: 12px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.2s ease;
+}
+
+.itemAvaliacao:hover {
+    transform: translateY(-5px);
+}
+
+.usuario,
+.nota,
+.comentario {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.nota {
+    font-weight: bold;
+    color: #ff9800; 
+}
