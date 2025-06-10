@@ -139,10 +139,14 @@ export default function Usuarios() {
         {posts.map((post) => (
           <PostUsers
             key={post.id}
+            username={user?.user?.name}
+            name={user.user.name}
+            photo={user?.user?.photo}
             image={post.image}
             onComentarioClick={() => openModal(post)}
             description={post.description}
             tag={post.tag}
+            curtidas={post. likes_count}
           />
         ))}
       </div>

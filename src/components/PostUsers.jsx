@@ -5,20 +5,55 @@ import Image from "next/image";
 import styles from "../styles/PostUsers.module.css";
 import { Heart, MessageCircle, Bookmark } from "lucide-react";
 
-export default function Posts({ image, description, tag, onComentarioClick }) {
+export default function Posts({
+  image,
+  photo,
+  description,
+  tag,
+  onComentarioClick,
+  username,
+  name,
+  curtidas,
+}) {
   const [curtido, setCurtido] = useState(false);
   const [salvo, setSalvo] = useState(false);
+
+  const [curtidasCount, setCurtidasCount] = useState(curtidas);
+
+  const handleCurtidaClick = () => {
+    if (curtido) {
+      setCurtidasCount((prev) => prev - 1);
+    } else {
+      setCurtidasCount((prev) => prev + 1);
+    }
+    setCurtido((v) => !v);
+  };
+
 
   return (
     <div className={styles.Post}>
       <div className={styles.PostHeader}>
-        <Image
-          src="/tres-pontos.png"
-          alt="Post Image"
-          width={30}
-          height={30}
-          className={styles.PostThreePoints}
-        />
+        <div>
+          <Image
+            className={styles.profileImage}
+            src={
+              photo &&
+              photo !== "undefined" &&
+              photo !== "null" &&
+              photo.trim() !== ""
+                ? `http://localhost:3000/uploads/${photo}`
+                : "/perfil.jpg"
+            }
+            alt={name}
+            width={160}
+            height={160}
+            priority={true}
+          />
+        </div>
+        <div>
+          <h1 className={styles.Name}>{name}</h1>
+          <p className={styles.UserName}>@{username}</p>
+        </div>
       </div>
       {image && image.trim() !== "" && (
         <div className={styles.PostImage}>
@@ -42,7 +77,9 @@ export default function Posts({ image, description, tag, onComentarioClick }) {
         {tag &&
           (tag.trim().toLowerCase() === "promoção" ||
             tag.trim().toLowerCase() === "promo€ço") && (
-            <p className={styles.Promocao} styles={{}}>Promoção</p>
+            <p className={styles.Promocao} styles={{}}>
+              Promoção
+            </p>
           )}
         {tag && tag.trim().toLowerCase() === "novidades" && (
           <p className={styles.Novidades}>Novidades</p>
@@ -57,9 +94,12 @@ export default function Posts({ image, description, tag, onComentarioClick }) {
               color={curtido ? "rgb(16, 145, 145)" : "black"}
               fill={curtido ? " rgb(16, 145, 145)" : "none"}
               style={{ cursor: "pointer" }}
-              onClick={() => setCurtido((v) => !v)}
+              onClick={handleCurtidaClick}
               aria-label="Curtir"
             />
+            <div className={styles.postCurtidas}>
+              <p className={styles.curtidas}>{curtidasCount}</p>
+            </div>
             <MessageCircle
               size={28}
               color="black"
