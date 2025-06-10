@@ -104,6 +104,7 @@ console.log("Comentários recebidos:", data);
               image={post.image}
               description={post.description}
               tag={post.tag}
+              alt={post.alt}
             />
           ))}
         </div>

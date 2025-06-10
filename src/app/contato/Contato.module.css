@@ -15,12 +15,14 @@
 .topBar{
     background-color: #d1e9e9;
     width: 100%;
-    height: 280px;
+    min-height: 120px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center;
-    padding: 0.5rem 0;
+    justify-content: flex-start;
+    padding: 1rem 0.5rem;
+    position: relative;
+    box-sizing: border-box;
 }
 
 .form{
@@ -175,15 +177,19 @@
     border: 1px solid rgb(2, 114, 108);
     padding: 0.5rem;
     width: 100%;
-}
-
 @media (max-width: 480px) {
     .contatoWrapper {
         padding: 0 0.5rem;
     }
 
     .topBar {
+        min-height: unset;
         height: auto;
+        padding: 1rem 0.5rem;
+        flex-direction: column;
+        align-items: stretch;
+        justify-content: flex-start;
+    }
         padding: 1rem 0.5rem;
     }
 
