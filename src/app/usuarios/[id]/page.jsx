@@ -8,6 +8,7 @@ import Footer from "../../../components/Footer";
 import PostUsers from "../../../components/PostUsers";
 import styles from "./usuariosProfile.module.css";
 import { Heart, MessageCircle, Bookmark } from "lucide-react";
+import { Modal, Skeleton } from "antd";
 import UserProfile from "../../../components/UserProfile";
 import axios from "axios";
 
@@ -18,8 +19,12 @@ export default function Usuarios() {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
   const [posts, setPosts] = useState([]);
+  const [comments, setComments] = useState([]);
+  const [selectedPost, setSelectedPost] = useState(null);
 
   console.log(id);
+
+  // Exibir Usuário
 
   const fetchUser = async () => {
     setIsLoading(true);
@@ -39,6 +44,8 @@ export default function Usuarios() {
     }
   };
 
+  // Exibir Posts do Usuário
+
   const fetchPosts = async () => {
     try {
       const { data } = await axios.get(
@@ -54,6 +61,43 @@ export default function Usuarios() {
     }
   };
 
+  // Exibir Comentários do Post
+
+  // Modal para ver comentários
+  const [modalInfo, setModalInfo] = useState({
+    visible: false,
+    description: null,
+    comments: [],
+    post_id: null,
+    user_id: null,
+  });
+
+  const openModal = async (post) => {
+    setSelectedPost(post);
+    console.log("Post selecionado:", post);
+    setModalInfo({
+      visible: true,
+      description: post.description,
+      comments: [],
+      post_id: post.id,
+      user_id: post.user_id,
+    });
+    setIsLoading(true);
+
+    try {
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/comments`,
+        { headers: Headers }
+      );
+      
+      setComments(data);
+    } catch (error) {
+      console.error("Erro ao carregar comentário:", error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
   useEffect(() => {
     console.log("id", id);
     if (id) {
@@ -62,9 +106,15 @@ export default function Usuarios() {
     }
   }, [id]);
 
+  // Debugging logs
+
   console.log("user", user);
 
   console.log("posts", posts);
+
+  console.log("comments", comments);
+
+  console.log(selectedPost?.id);
 
   return (
     <div className={styles.container}>
@@ -89,12 +139,53 @@ export default function Usuarios() {
         {posts.map((post) => (
           <PostUsers
             key={post.id}
+            username={user?.user?.name}
+            name={user.user.name}
+            photo={user?.user?.photo}
             image={post.image}
+            onComentarioClick={() => openModal(post)}
             description={post.description}
             tag={post.tag}
+            curtidas={post. likes_count}
           />
         ))}
       </div>
+
+      <Modal
+        className={styles.Modal}
+        open={modalInfo.visible}
+        onCancel={() => setModalInfo({ visible: false, comments: null })}
+        footer={null}
+        width={{
+          xs: "90%",
+          sm: "80%",
+          md: "70%",
+          lg: "60%",
+          xl: "50%",
+          xxl: "40%",
+        }}
+      >
+        {isLoading ? (
+          <Skeleton active />
+        ) : (
+          <div>
+            <p>
+              <strong>Descrição:</strong>
+            </p>
+            <p>{modalInfo.description}</p>
+
+            {comments.length > 0 ? (
+              comments.map((comment) => (
+                <p key={comment.id}>
+                  <strong>{comment.usuario}:</strong> {comment.comment}
+                </p>
+              ))
+            ) : (
+              <p>Sem comentários neste post.</p>
+            )}
+          </div>
+        )}
+      </Modal>
 
       <Footer />
     </div>

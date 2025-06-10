@@ -43,10 +43,7 @@ export default function Usuarios({photo, type_user, name, city, state, email}) {
                         <p className={styles.state}>{state}</p>
                     </div>
 
-
-                    {type_user && type_user.trim().toLowerCase() === "usuário" && (
                         <p className={styles.UserAndGuia}>Usuário</p>
-                    )}
 
                     {type_user && type_user.trim().toLowerCase() === "guia turístico" && (
                         <button className={styles.UserAndGuia}>Guia</button>
