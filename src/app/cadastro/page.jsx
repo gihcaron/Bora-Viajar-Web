@@ -156,7 +156,6 @@ const residences = [
   },
 ];
 
-
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
@@ -280,7 +279,6 @@ const Cadastro = () => {
     label: website,
     value: website,
   }));
-  
 
   return (
     <div className={styles.container}>
@@ -336,18 +334,21 @@ const Cadastro = () => {
                   required: true,
                   message: "Por favor, insira sua senha!",
                 },
+                {
+                  pattern: /^(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{6,}$/,
+                  message:
+                    "A senha deve ter pelo menos 6 caracteres e um caractere especial!",
+                },
               ]}
               hasFeedback
             >
-              {/* Senha - Confirmação */}
-
               <Input.Password />
             </Form.Item>
 
             <Form.Item
               name="ConfirmarSenha"
               label="Confirme sua Senha"
-              dependencies={["password"]}
+              dependencies={["Senha"]}
               className={styles.senha}
               hasFeedback
               rules={[
@@ -357,7 +358,7 @@ const Cadastro = () => {
                 },
                 ({ getFieldValue }) => ({
                   validator(_, value) {
-                    if (!value || getFieldValue("password") === value) {
+                    if (!value || getFieldValue("Senha") === value) {
                       return Promise.resolve();
                     }
                     return Promise.reject(
@@ -428,7 +429,8 @@ const Cadastro = () => {
 
             <Form.Item
               name="Gênero"
-              label={<label className={styles.label}>Gênero</label>} className={styles.genero}
+              label={<label className={styles.label}>Gênero</label>}
+              className={styles.genero}
               rules={[
                 { required: true, message: "Favor, selecione seu gênero!" },
               ]}
@@ -451,8 +453,8 @@ const Cadastro = () => {
                     value
                       ? Promise.resolve()
                       : Promise.reject(
-                        new Error("Você deve aceitar os termos!")
-                      ),
+                          new Error("Você deve aceitar os termos!")
+                        ),
                 },
               ]}
               {...tailFormItemLayout}
@@ -462,20 +464,23 @@ const Cadastro = () => {
                 <a href="/termos">termos de uso e privacidade</a>
               </Checkbox>
             </Form.Item>
-            <Form.Item {...tailFormItemLayout}>
-              <Button type="primary" htmlType="submit">
-                Cadastrar
-              </Button>
-            </Form.Item>
           </Form>
-          <div style={{ textAlign: "center", marginTop: 16, width: "65%", alignItems: "center", marginLeft: "11rem", }}>
-            <Button
-              type="default"
+          <div
+            style={{
+              textAlign: "center",
+              marginTop: 16,
+              width: "65%",
+              alignItems: "center",
+              marginLeft: "11rem",
+            }}
+          >
+            <button
               className={styles.entrarButton}
-              onClick={() => window.location.href = "/feed"}
+              type="button"
+              onClick={() => (window.location.href = "/feed")}
             >
               Entrar
-            </Button>
+            </button>
           </div>
         </div>
       </div>
