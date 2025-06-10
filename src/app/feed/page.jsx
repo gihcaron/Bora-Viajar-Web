@@ -269,15 +269,15 @@ console.log("Comentários recebidos:", data);
       {modalOpen && (
         <div style={{
           position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh",
-          background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000
+          background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, textDecoration: "none", color: "black", fontFamily: "Poppins"
         }}>
-          <div style={{ background: "#fff", padding: 24, borderRadius: 8, minWidth: 300, maxWidth: 500 }}>
-            <button onClick={handleCloseModal} style={{ float: "right" }}>Fechar</button>
-            <h3>Comentários</h3>
+          <div>
+            <button onClick={handleCloseModal} style={{ float: "right", textDecoration: "none" }}>Fechar</button>
+            <h3 style={{ fontWeight: "normal", fontSize: "20px", margin: "10px 0" }}>Comentários</h3>
             {comentariosLoading ? (
               <p>Carregando...</p>
             ) : (
-              <ul>
+              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
                 {comentarios.map((c, i) => (
                   <li key={i}>{c.texto}</li>
                 ))}
@@ -295,7 +295,6 @@ console.log("Comentários recebidos:", data);
       />
 
       <AvaliacaoApp />
-
 
       <Footer />
     </div>
