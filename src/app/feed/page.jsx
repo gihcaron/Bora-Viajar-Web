@@ -96,7 +96,7 @@ const res = await fetch('http://localhost:3000/api/comments', {
           ))}
         </div>
 
-      {/* Primeiro Card */}
+      {/* Primeiro Card. */}
       <div
         style={{
           display: "flex",
