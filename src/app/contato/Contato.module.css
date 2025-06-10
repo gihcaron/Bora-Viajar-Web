@@ -176,3 +176,67 @@
     padding: 0.5rem;
     width: 100%;
 }
+
+@media (max-width: 480px) {
+    .contatoWrapper {
+        padding: 0 0.5rem;
+    }
+
+    .topBar {
+        height: auto;
+        padding: 1rem 0.5rem;
+    }
+
+    .form {
+        max-width: 100%;
+        padding: 1rem;
+        font-size: 15px;
+        gap: 1rem;
+    }
+
+    .title {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 14px;
+        width: 100%;
+        margin-top: 10px;
+        padding: 0.25rem;
+    }
+
+    .contentRow {
+        flex-direction: column;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .contactImage {
+        max-width: 100%;
+        height: auto;
+    }
+
+    .infoContainer {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+        margin-top: 1rem;
+    }
+
+    .infoBox1,
+    .infoBox2,
+    .infoBox3 {
+        width: 100%;
+        min-width: unset;
+        height: auto;
+        margin-bottom: 0.5rem;
+    }
+
+    .mapBox {
+        flex-direction: column;
+        width: 100%;
+        gap: 1rem;
+        margin: 0.5rem 0 2rem 0;
+        padding: 0;
+    }
+}
