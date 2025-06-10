@@ -22,6 +22,7 @@ export default function HomePage() {
   const [modalOpen, setModalOpen] = useState(false);
   const [comentarios, setComentarios] = useState([]);
   const [comentariosLoading, setComentariosLoading] = useState(false);
+  const [posts, setPosts] = useState([]);
 
   const fetchComentarios = async () => {
     setComentariosLoading(true);
