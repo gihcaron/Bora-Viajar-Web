@@ -227,6 +227,7 @@ export default function HomePage() {
         ].map((post) => (
           <PostUsers
             key={post.id}
+            curtidas={post.likes_count}
             {...post}
             onComentarioClick={() => {
               setModalOpen(true);
