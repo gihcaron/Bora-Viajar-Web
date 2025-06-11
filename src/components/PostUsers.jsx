@@ -37,11 +37,9 @@ export default function Posts({
         borderRadius: 16,
         boxShadow: "0 2px 12px rgba(0,0,0,0.08)",
         margin: "0 auto",
-        width: "100%",
-        maxWidth: 420,
         border: "1px solid #ececec",
         overflow: "hidden",
-        marginBottom: "0px",
+        marginBottom: "30px",
         display: "flex",
         flexDirection: "column",
       }}
