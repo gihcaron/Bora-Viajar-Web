@@ -12,7 +12,7 @@ import styles from "../../styles/Header.module.css";
 import Footer from "../../components/Footer";
 import Cidades from "../../components/Cidades";
 import ModalComentarios from "../../components/ModalComentarios";
-import  PostUsers from "../../components/PostUsers";
+import PostUsers from "../../components/PostUsers";
 import AvaliacaoApp from "../../components/AvaliacaoApp";
 
 const Headers = { "x-api-key": process.env.NEXT_PUBLIC_API_KEY };
@@ -41,11 +41,11 @@ export default function HomePage() {
     }
   };
 
-    const fetchPosts = async () => {
+  const fetchPosts = async () => {
     try {
-      const { data }= await axios.get(
-       `${process.env.NEXT_PUBLIC_API_URL}/posts`,
-        { headers: Headers } 
+      const { data } = await axios.get(
+        `${process.env.NEXT_PUBLIC_API_URL}/posts`,
+        { headers: Headers }
       );
       console.log("Dados recebidos:", data);
       setPosts(data)
@@ -85,20 +85,6 @@ export default function HomePage() {
   return (
     <div style={styles.container}>
       <Header bannerTitle={"BORA VIAJAR"} />
-
-
-       <div>
-       {posts.map((post) => (
-            <PostUsers
-              key={post.id}
-              image={post.image}
-              description={post.description}
-              tag={post.tag}
-              alt={post.alt}
-            />
-          ))}
-        </div>
-
 
       {/* Primeiro Card */}
       <div
@@ -223,123 +209,40 @@ export default function HomePage() {
       </div>
 
       <div
-  style={{
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    gap: "32px",
-    margin: "0 auto",
-    maxWidth: 500,
-    width: "100%",
-    padding: "0 8px",
-  }}
->
-  {[ // Ordena: posts com imagem primeiro
-    ...posts.filter(post => post.image && post.image.trim() !== ""),
-    ...posts.filter(post => !post.image || post.image.trim() === "")
-  ].map((post) => (
-    <PostUsers
-      key={post.id}
-      {...post}
-      onComentarioClick={() => {
-        setModalOpen(true);
-        fetchComentarios(post.id);
-      }}
-    />
-  ))}
-</div>
-
-      {/* Seções de cidades */}
-      <Cidades
-        cidade="NOVIDADES!"
-        pontos={[
-          {
-            imagem: "/elevador-lacerda.jpg",
-            titulo: "Elevador Lacerda",
-            legenda: "Pequeno texto sobre guia turístico",
-          },
-          {
-            imagem: "/Pelourinho.jpg",
-            titulo: "Pelourinho",
-            legenda: "Pequeno texto sobre guia turístico",
-          },
-          {
-            imagem: "/igreja-do-bonfim.jpg",
-            titulo: "Igreja do Bonfim",
-            legenda: "Pequeno texto sobre guia turístico",
-          },
-        ]}
-        onComentarioClick={handleOpenModal}
-      />
-
-      <Cidades
-        cidade="ALERTA!"
-        pontos={[
-          {
-            imagem: "/cristo-redentor.jpg",
-            titulo: "Cristo Redentor",
-            legenda: "Pequeno texto sobre guia turístico",
-          },
-          {
-            imagem: "/maracana.jpg",
-            titulo: "Maracanã",
-            legenda: "Pequeno texto sobre guia turístico",
-          },
-          {
-            imagem: "/parque-lage.jpg",
-            titulo: "Parque Lage",
-            legenda: "Pequeno texto sobre guia turístico",
-          },
-        ]}
-        onComentarioClick={handleOpenModal}
-      />
-      <Cidades
-        cidade="PROMOÇÃO!"
-        pontos={[
-          {
-            imagem: "/beto-carrero.jpg",
-            titulo: "Bato Carrero World",
-            legenda: "Pequeno texto sobre guia turístico",
-          },
-          {
-            imagem: "/roda-gigante-de-Balneario-Camboriu.jpg",
-            titulo: "Roda gigante Balneário",
-            legenda: "Pequeno texto sobre guia turístico",
-          },
-          {
-            imagem: "/serra-catarinense.jpg",
-            titulo: "Serra catarinense",
-            legenda: "Pequeno texto sobre guia turístico",
-          },
-        ]}
-        onComentarioClick={handleOpenModal}
-      />
-      {modalOpen && (
-        <div style={{
-          position: "fixed", top: 0, left: 0, width: "100vw", height: "100vh",
-          background: "rgba(0,0,0,0.5)", display: "flex", alignItems: "center", justifyContent: "center", zIndex: 1000, textDecoration: "none", color: "black", fontFamily: "Poppins"
-        }}>
-          <div>
-            <button onClick={handleCloseModal} style={{ float: "right", textDecoration: "none" }}>Fechar</button>
-            <h3 style={{ fontWeight: "normal", fontSize: "20px", margin: "10px 0" }}>Comentários</h3>
-            {comentariosLoading ? (
-              <p>Carregando...</p>
-            ) : (
-              <ul style={{ listStyle: "none", padding: 0, margin: 0 }}>
-                {comentarios.map((c, i) => (
-                  <li key={i}>{c.texto}</li>
-                ))}
-              </ul>
-            )}
-          </div>
-        </div>
-      )}
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          alignItems: "center",
+          gap: "32px",
+          margin: "0 auto",
+          maxWidth: 500,
+          width: "100%",
+          padding: "0 8px",
+          fontFamily: "poppins",
+        }}
+      >
+        {[ // Ordena: posts com imagem primeiro
+          ...posts.filter(post => post.image && post.image.trim() !== ""),
+          ...posts.filter(post => !post.image || post.image.trim() === "")
+        ].map((post) => (
+          <PostUsers
+            key={post.id}
+            {...post}
+            onComentarioClick={() => {
+              setModalOpen(true);
+              fetchComentarios(post.id);
+            }}
+            style={{ fontFamily: "poppins" }}
+          />
+        ))}
+      </div>
 
       <ModalComentarios
         open={modalOpen}
         onClose={handleCloseModal}
         comentarios={comentarios}
         loading={comentariosLoading}
+        style={{ fontFamily: "poppins" }}
       />
 
       {/* Coloque o id na seção de feedback dos usuários */}
